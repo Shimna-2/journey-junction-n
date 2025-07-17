@@ -98,7 +98,7 @@ const AboutUs = () => {
             </h2>
             <div className="w-20 h-1 bg-gray-700 mb-6 rounded animate-pulse"></div>
             <p className="text-base sm:text-lg text-gray-700">
-              Journey Junction is the vision of <strong>Arjun Tilakan</strong>{" "}
+              Journey Junction is the vision of <strong>Arjun ET</strong>{" "}
               founded in <strong>2017</strong> — a trusted travel platform
               dedicated to creating unforgettable resort stays and personalized
               travel experiences. With a passionate and growing team, we strive

@@ -12,7 +12,7 @@ import HoneymoonResorts from "./components/Honeymoonresorts";
 import LuxuryResorts from "./components/Luxuryresorts";
 import PremiumResorts from "./components/Premiumresorts";
 import BudgetResorts from "./components/Budgetfriendlyresorts";
-
+import PrivatepoolvillasResorts from "./components/Privatepoolvillas";
 import Aboutus from "./components/Aboutus";
 import Booknow from "./components/Booknow";
 
@@ -33,6 +33,10 @@ function App() {
         <Route path="/luxury-resorts" element={<LuxuryResorts />} />
         <Route path="/premium-resorts" element={<PremiumResorts />} />
         <Route path="/budget-friendly-resorts" element={<BudgetResorts />} />
+        <Route
+          path="/private-pool-villas"
+          element={<PrivatepoolvillasResorts />}
+        />
 
         <Route path="/blog" element={<Blog />} />
         <Route path="/aboutus" element={<Aboutus />} />
