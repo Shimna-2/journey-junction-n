@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
 import abtbg9 from "../assets/images/abtbg9.jpeg";
+import AutoSliderSection from "./AutoSliderSection";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -63,51 +64,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-4 sm:px-6 md:px-20 py-10 sm:py-20">
       {/* Our Mission & Story */}
-      <section
-        className="relative px-4 sm:px-6 md:px-20 py-14 sm:py-20 mb-20 rounded-2xl overflow-hidden"
-        data-aos="fade-up"
-        style={{
-          backgroundImage: `url(${abtbg9})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm rounded-2xl" />
-        <div className="relative z-10 bg-white/80 backdrop-blur-xl rounded-xl shadow-2xl px-6 sm:px-8 md:px-12 py-10 sm:py-14 grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-800">
-          <div data-aos="fade-right" className="space-y-5 sm:space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide">
-              Our Mission
-            </h2>
-            <div className="w-16 h-1 bg-gray-800 rounded-full" />
-            <p className="text-base sm:text-lg text-gray-700">
-              At{" "}
-              <span className="font-semibold text-gray-900">
-                Journey Junction
-              </span>
-              , our mission is to craft travel experiences that are personal,
-              seamless, and unforgettable. From handpicked resorts to local
-              adventures, we focus on quality, comfort, and customer
-              satisfaction. We aim to inspire travelers and promote responsible
-              tourism in every destination we touch.
-            </p>
-          </div>
-
-          <div data-aos="fade-left">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800">
-              Our Story
-            </h2>
-            <div className="w-20 h-1 bg-gray-700 mb-6 rounded animate-pulse"></div>
-            <p className="text-base sm:text-lg text-gray-700">
-              Journey Junction is the vision of <strong>Arjun ET</strong>{" "}
-              founded in <strong>2017</strong> — a trusted travel platform
-              dedicated to creating unforgettable resort stays and personalized
-              travel experiences. With a passionate and growing team, we strive
-              to offer secure, seamless, and memorable getaways across Wayanad
-              and beyond.
-            </p>
-          </div>
-        </div>
-      </section>
+      <AutoSliderSection />
 
       {/* Image Slider */}
       <section className="my-16 sm:my-20" data-aos="fade-up">

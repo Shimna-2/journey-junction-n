@@ -20,9 +20,8 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gray-500 shadow-md text-white">
+    <header className="text-white fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
         <img
           src={logo}
           alt="Journey Junction Logo"
@@ -41,21 +40,17 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 font-semibold">
-          <Link
-            to="/home"
-            className="hover:bg-gray-700 px-4 py-2 rounded transition"
-          >
+        <nav className="hidden md:flex gap-10 font-semibold">
+          <Link to="/home" className="hover:underline">
             HOME
           </Link>
 
-          {/* Desktop Destinations Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopDropdown("destinations")}
             onMouseLeave={() => setDesktopDropdown(null)}
           >
-            <button className="hover:bg-gray-700 px-4 py-2 flex items-center gap-1 rounded">
+            <button className="flex items-center gap-1 hover:underline">
               DESTINATIONS <FaChevronDown size={12} />
             </button>
             {desktopDropdown === "destinations" && (
@@ -70,21 +65,17 @@ export default function Header() {
             )}
           </div>
 
-          {/* Desktop Resorts Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopDropdown("resorts")}
             onMouseLeave={() => setDesktopDropdown(null)}
           >
-            {/* Main Resorts Link (clickable and shows dropdown on hover) */}
             <Link
               to="/resorts"
-              className="hover:bg-slate-100 px-4 py-2 flex items-center gap-1 rounded transition"
+              className="flex items-center gap-1 hover:underline"
             >
               RESORTS <FaChevronDown size={12} />
             </Link>
-
-            {/* Dropdown Items */}
             {desktopDropdown === "resorts" && (
               <div className="absolute top-full left-0 bg-white text-black shadow-md rounded mt-1 z-50 w-64">
                 {[
@@ -108,24 +99,13 @@ export default function Header() {
             )}
           </div>
 
-          <Link
-            to="/blog"
-            className="hover:bg-gray-700 px-4 py-2 rounded transition"
-          >
+          <Link to="/blog" className="hover:underline">
             BLOG
           </Link>
-
-          <Link
-            to="/aboutus"
-            className="hover:bg-gray-700 px-4 py-2 rounded transition"
-          >
+          <Link to="/aboutus" className="hover:underline">
             ABOUT US
           </Link>
-
-          <Link
-            to="/booknow"
-            className="bg-gray-100 text-black px-4 py-2 rounded hover:bg-white transition"
-          >
+          <Link to="/booknow" className="px-4  hover:underline">
             BOOK NOW
           </Link>
         </nav>
@@ -133,56 +113,41 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="md:hidden bg-gray-900 text-white px-4 pb-4 space-y-2 font-semibold">
-          <Link
-            to="/home"
-            className="block hover:bg-gray-700 px-4 py-2 rounded"
-          >
+        <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pb-4 space-y-2 font-semibold">
+          <Link to="/home" className="block px-4 py-2">
             HOME
           </Link>
 
-          {/* Mobile Destinations */}
-          <div className="rounded">
+          {/* Destinations */}
+          <div>
             <button
               onClick={() => toggleDropdown("destinations")}
-              className="w-full flex justify-between items-center px-4 py-2 hover:bg-gray-700 rounded"
+              className="w-full flex justify-between items-center px-4 py-2"
             >
               <span>DESTINATIONS</span>
               {dropdownOpen.destinations ? <FaChevronUp /> : <FaChevronDown />}
             </button>
             {dropdownOpen.destinations && (
-              <div className="ml-4 mt-1 space-y-1">
-                <Link
-                  to="/wayanad"
-                  className="block px-4 py-2 hover:bg-gray-700 rounded"
-                >
+              <div className="ml-4 mt-1">
+                <Link to="/wayanad" className="block px-4 py-2">
                   Wayanad
                 </Link>
               </div>
             )}
           </div>
 
-          {/* Mobile Resorts */}
-          {/* Mobile Resorts */}
-          <div className="rounded flex flex-col">
-            <div className="flex justify-between items-center px-4 py-2 hover:bg-gray-700 rounded">
-              <Link
-                to="/resorts"
-                className="text-white w-full"
-                onClick={() => setMenuOpen(false)} // Close mobile menu on nav
-              >
+          {/* Resorts */}
+          <div>
+            <div className="flex justify-between items-center px-4 py-2">
+              <Link to="/resorts" onClick={() => setMenuOpen(false)}>
                 RESORTS
               </Link>
-              <button
-                onClick={() => toggleDropdown("resorts")}
-                className="text-white ml-2"
-              >
+              <button onClick={() => toggleDropdown("resorts")}>
                 {dropdownOpen.resorts ? <FaChevronUp /> : <FaChevronDown />}
               </button>
             </div>
-
             {dropdownOpen.resorts && (
-              <div className="ml-4 mt-1 space-y-1">
+              <div className="ml-4 mt-1">
                 {[
                   { name: "Honeymoon Resorts", path: "/honeymoon-resorts" },
                   { name: "Luxury Resorts", path: "/luxury-resorts" },
@@ -195,7 +160,7 @@ export default function Header() {
                   <Link
                     key={index}
                     to={item.path}
-                    className="block px-4 py-2 hover:bg-gray-700 rounded"
+                    className="block px-4 py-2"
                     onClick={() => setMenuOpen(false)}
                   >
                     {item.name}
@@ -205,24 +170,13 @@ export default function Header() {
             )}
           </div>
 
-          <Link
-            to="/blog"
-            className="block hover:bg-gray-700 px-4 py-2 rounded"
-          >
+          <Link to="/blog" className="block px-4 py-2">
             BLOG
           </Link>
-
-          <Link
-            to="/aboutus"
-            className="block hover:bg-gray-700 px-4 py-2 rounded"
-          >
+          <Link to="/aboutus" className="block px-4 py-2">
             ABOUT US
           </Link>
-
-          <Link
-            to="/booknow"
-            className="block bg-gray-100 text-black text-center py-2 rounded hover:bg-white"
-          >
+          <Link to="/booknow" className="block px-4 py-2 hover:underline">
             BOOK NOW
           </Link>
         </div>
