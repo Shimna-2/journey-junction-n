@@ -1,6 +1,6 @@
 /* ✅ All @import must come first */
-@import "slick-carousel/slick/slick.css";
-@import "slick-carousel/slick/slick-theme.css";
+/* @import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css"; */
 
 /* ✅ Tailwind base, components, utilities must come next */
 @tailwind base;

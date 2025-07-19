@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import bgImage from "../assets/images/pexels-nandhukumar-450441.jpg";
 import JourneyJunctionPromise from "./JourneyJunctionPromise";
-import Weather from "./Weather";
+// import Weather from "./Weather";
 
 const Home = () => {
   useEffect(() => {
@@ -30,7 +30,7 @@ const Home = () => {
             travel partner.
           </p>
         </div>
-        <Weather />
+        {/* <Weather /> */}
       </div>
 
       {/* Journey Junction Promise */}

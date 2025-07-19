@@ -1,7 +1,8 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const resorts = [
   {
@@ -48,16 +49,6 @@ const resorts = [
   },
 ];
 
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  autoplay: true,
-  autoplaySpeed: 3000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-};
-
 const Budgetfriendlyresorts = () => {
   return (
     <section className="relative min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-16">
@@ -69,23 +60,30 @@ const Budgetfriendlyresorts = () => {
           {resorts.map((resort, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-fadeIn"
+              className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]"
             >
-              <Slider {...sliderSettings}>
+              <Swiper
+                modules={[Autoplay, Pagination]}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 3000 }}
+                loop={true}
+                className="w-full h-56"
+              >
                 {resort.images.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt={`${resort.name} ${idx + 1}`}
-                    className="w-full h-56 object-cover"
-                  />
+                  <SwiperSlide key={idx}>
+                    <img
+                      src={img}
+                      alt={`${resort.name} ${idx + 1}`}
+                      className="w-full h-56 object-cover"
+                    />
+                  </SwiperSlide>
                 ))}
-              </Slider>
+              </Swiper>
               <div className="p-5">
                 <h4 className="text-xl font-semibold text-gray-800 mb-3">
                   {resort.name}
                 </h4>
-                {/* Uncomment if you want facilities list back */}
+                {/* Optional: Add back facility list */}
                 {/* <ul className="space-y-2 text-sm text-gray-600">
                   {resort.facilities.map((facility, i) => (
                     <li key={i}>{facility}</li>

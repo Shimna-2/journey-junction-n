@@ -12,7 +12,7 @@ export default function BookingPage() {
     kids: "",
     checkIn: "",
     checkOut: "",
-    FamilyorStags: "Family",
+    groupType: "Family",
     rooms: "",
     budget: "",
     message: "",
@@ -33,7 +33,7 @@ export default function BookingPage() {
       kids,
       checkIn,
       checkOut,
-      FamilyorStags,
+      groupType,
       rooms,
       budget,
       message,
@@ -45,7 +45,7 @@ Adults: ${adults}
 Kids: ${kids}
 Check-in: ${checkIn}
 Check-out: ${checkOut}
-Family or Stags: ${FamilyorStags}
+Family or Stags: ${groupType}
 No. of Rooms: ${rooms}
 Budget: ₹${budget}
 Message: ${message}`;
@@ -54,7 +54,6 @@ Message: ${message}`;
     const whatsappUrl = `https://wa.me/919633763916?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
 
-    // Reset form and show thank you note
     setFormData({
       name: "",
       phone: "",
@@ -62,7 +61,7 @@ Message: ${message}`;
       kids: "",
       checkIn: "",
       checkOut: "",
-      FamilyorStags: "Family",
+      groupType: "Family",
       rooms: "",
       budget: "",
       message: "",
@@ -72,24 +71,27 @@ Message: ${message}`;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-10 flex items-center justify-center font-sans">
-      <div className="w-full max-w-3xl">
+    <div
+      id="booking"
+      className="scroll-mt-32 bg-gradient-to-b from-gray-100 to-gray-300 pt-32 pb-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24"
+    >
+      <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-4 sm:p-6">
         {!submitted ? (
-          <div className="animate-fadeIn bg-white shadow-lg rounded-lg p-8">
+          <div className="animate-fadeIn bg-white shadow-lg rounded-xl p-6 sm:p-10">
             {/* Header */}
             <div className="mb-8 text-center">
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                 Hi Arjun this side 👋
               </h2>
-              <p className="mt-2 text-lg text-gray-700">
+              <p className="mt-2 text-base sm:text-lg text-gray-700">
                 Tell us — how can we help you?
               </p>
-              <p className="text-md text-gray-600">
+              <p className="text-sm sm:text-md text-gray-600">
                 Let’s start your journey with{" "}
                 <span className="font-semibold text-black">
                   Journey Junction
                 </span>
-                . Fill in the required information to proceed.
+                .
               </p>
             </div>
 
@@ -100,7 +102,7 @@ Message: ${message}`;
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
                 required
               />
               <input
@@ -108,48 +110,51 @@ Message: ${message}`;
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Phone Number"
-                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
                 required
               />
-              <div className="flex gap-4">
+
+              <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   name="adults"
-                  value={formData.adults}
                   type="number"
                   min="0"
-                  placeholder="No. of Adults"
+                  value={formData.adults}
                   onChange={handleChange}
+                  placeholder="No. of Adults"
                   className="w-full border border-gray-300 px-4 py-2 rounded-lg"
                   required
                 />
                 <input
                   name="kids"
-                  value={formData.kids}
                   type="number"
                   min="0"
-                  placeholder="No. of Kids"
+                  value={formData.kids}
                   onChange={handleChange}
+                  placeholder="No. of Kids"
                   className="w-full border border-gray-300 px-4 py-2 rounded-lg"
                 />
               </div>
-              <div className="flex gap-4">
+
+              <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   name="checkIn"
-                  value={formData.checkIn}
                   type="date"
+                  value={formData.checkIn}
                   onChange={handleChange}
                   className="w-full border border-gray-300 px-4 py-2 rounded-lg"
                   required
                 />
                 <input
                   name="checkOut"
-                  value={formData.checkOut}
                   type="date"
+                  value={formData.checkOut}
                   onChange={handleChange}
                   className="w-full border border-gray-300 px-4 py-2 rounded-lg"
                   required
                 />
               </div>
+
               <div>
                 <label className="block text-gray-700 mb-1 font-medium">
                   Family or Stags
@@ -165,23 +170,26 @@ Message: ${message}`;
                   <option value="Stags">Stags</option>
                 </select>
               </div>
+
               <input
                 name="rooms"
-                value={formData.rooms}
                 type="number"
-                placeholder="No. of Rooms"
+                value={formData.rooms}
                 onChange={handleChange}
+                placeholder="No. of Rooms"
                 className="w-full border border-gray-300 px-4 py-2 rounded-lg"
                 required
               />
+
               <input
                 name="budget"
                 value={formData.budget}
-                placeholder="Your Budget (₹)"
                 onChange={handleChange}
+                placeholder="Your Budget (₹)"
                 className="w-full border border-gray-300 px-4 py-2 rounded-lg"
                 required
               />
+
               <textarea
                 name="message"
                 value={formData.message}
@@ -190,26 +198,27 @@ Message: ${message}`;
                 rows="4"
                 className="w-full border border-gray-300 px-4 py-2 rounded-lg"
               />
+
               <button
                 type="submit"
-                className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
+                className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300"
               >
                 Proceed
               </button>
             </form>
           </div>
         ) : (
-          <div className="animate-fadeIn bg-white text-center p-12 rounded-xl shadow-xl">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="animate-fadeIn bg-white text-center p-8 sm:p-12 rounded-xl shadow-xl">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Thank You! 🙌
             </h2>
-            <p className="text-gray-700 text-lg mb-6">
+            <p className="text-gray-700 text-base sm:text-lg mb-6">
               Your request has been submitted successfully. We'll connect with
               you shortly!
             </p>
             <button
               onClick={() => navigate("/home")}
-              className="mt-4 bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
+              className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
             >
               Go to Home
             </button>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import logo from "../assets/images/logojj.jpeg";
 
@@ -11,6 +11,8 @@ export default function Header() {
   });
 
   const [desktopDropdown, setDesktopDropdown] = useState(null);
+  const location = useLocation();
+  const isHome = location.pathname === "/home"; // adjust this based on your routing
 
   const toggleDropdown = (menu) => {
     setDropdownOpen((prev) => ({
@@ -19,8 +21,17 @@ export default function Header() {
     }));
   };
 
+  const navItemClass = isHome ? "text-white" : "text-black";
+  const navLinkHover = isHome
+    ? "hover:underline text-white"
+    : "hover:underline text-black";
+
   return (
-    <header className="text-white fixed w-full z-50">
+    <header
+      className={`fixed w-full z-50 ${
+        isHome ? "bg-transparent" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <img
           src={logo}
@@ -32,7 +43,7 @@ export default function Header() {
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white text-2xl"
+            className={`text-2xl ${navItemClass}`}
             aria-label="Toggle menu"
           >
             <FaBars />
@@ -40,17 +51,18 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-10 font-semibold">
-          <Link to="/home" className="hover:underline">
+        <nav className="hidden md:flex gap-10 font-semibold items-center">
+          <Link to="/home" className={`${navLinkHover}`}>
             HOME
           </Link>
 
+          {/* DESTINATIONS */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopDropdown("destinations")}
             onMouseLeave={() => setDesktopDropdown(null)}
           >
-            <button className="flex items-center gap-1 hover:underline">
+            <button className={`flex items-center gap-1 ${navLinkHover}`}>
               DESTINATIONS <FaChevronDown size={12} />
             </button>
             {desktopDropdown === "destinations" && (
@@ -65,16 +77,16 @@ export default function Header() {
             )}
           </div>
 
+          {/* RESORTS */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopDropdown("resorts")}
             onMouseLeave={() => setDesktopDropdown(null)}
           >
-            <Link
-              to="/resorts"
-              className="flex items-center gap-1 hover:underline"
-            >
-              RESORTS <FaChevronDown size={12} />
+            <Link to="/resorts">
+              <button className={`flex items-center gap-1 ${navLinkHover}`}>
+                RESORTS <FaChevronDown size={12} />
+              </button>
             </Link>
             {desktopDropdown === "resorts" && (
               <div className="absolute top-full left-0 bg-white text-black shadow-md rounded mt-1 z-50 w-64">
@@ -99,13 +111,13 @@ export default function Header() {
             )}
           </div>
 
-          <Link to="/blog" className="hover:underline">
+          <Link to="/blog" className={`${navLinkHover}`}>
             BLOG
           </Link>
-          <Link to="/aboutus" className="hover:underline">
+          <Link to="/aboutus" className={`${navLinkHover}`}>
             ABOUT US
           </Link>
-          <Link to="/booknow" className="px-4  hover:underline">
+          <Link to="/booknow" className={`px-4 ${navLinkHover}`}>
             BOOK NOW
           </Link>
         </nav>

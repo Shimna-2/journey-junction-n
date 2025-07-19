@@ -13,7 +13,7 @@ const AutoSliderSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white px-4 md:px-20" data-aos="fade-up">
+    <section className=" bg-white px-4 md:px-20" data-aos="fade-up">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
         Who We Are
       </h2>
