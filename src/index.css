@@ -9,7 +9,7 @@
 
 /* ✅ Custom Animations and Utility Classes */
 
-/* Fade-in animation */
+/* 🔸 Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -24,24 +24,71 @@
   animation: fadeIn 0.8s ease-in-out both;
 }
 
-/* Moving gradient background */
-@keyframes gradientMove {
+/* 🔸 Floating card animation */
+@keyframes float {
   0% {
-    background-position: 0% 50%;
+    transform: translateY(0px);
   }
   50% {
-    background-position: 100% 50%;
+    transform: translateY(-10px);
   }
   100% {
-    background-position: 0% 50%;
+    transform: translateY(0px);
   }
 }
-/* .bg-animated-gradient {
-  background: linear-gradient(270deg, #f8fafc, #aeb1b5, #cbd5e1, #848789);
-  background-size: 800% 800%;
-  animation: gradientMove 10s ease infinite;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 🔸 3D Flip on Hover */
+.flip-card {
+  perspective: 1000px;
+  position: relative;
+}
+.flip-inner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  backface-visibility: hidden;
+  position: absolute;
   width: 100%;
-} */
+  height: 100%;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* 🔸 Smooth Tilt & Pop Effect on Hover */
+.tilt-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.tilt-hover:hover {
+  transform: perspective(800px) rotateX(5deg) rotateY(-5deg) scale(1.03);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔸 Sequential Delay Utility */
+@layer utilities {
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import logo from "../assets/images/logojj.jpeg";
+import WeatherPreview from "./WeatherPreview"; // ✅ Import here
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
 
   const [desktopDropdown, setDesktopDropdown] = useState(null);
   const location = useLocation();
-  const isHome = location.pathname === "/home"; // adjust this based on your routing
+  const isHome = location.pathname === "/home";
 
   const toggleDropdown = (menu) => {
     setDropdownOpen((prev) => ({
@@ -33,11 +34,19 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <img
-          src={logo}
-          alt="Journey Junction Logo"
-          className="h-20 w-20 object-cover rounded-full"
-        />
+        {/* Logo and Weather */}
+        <div className="flex items-center gap-4">
+          <img
+            src={logo}
+            alt="Journey Junction Logo"
+            className="h-20 w-20 object-cover rounded-full"
+          />
+
+          {/* ✅ Weather Preview: small and compact */}
+          <div className="hidden md:block">
+            <WeatherPreview />
+          </div>
+        </div>
 
         {/* Mobile Hamburger */}
         <div className="md:hidden">

@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import bgImage from "../assets/images/pexels-nandhukumar-450441.jpg";
+import bgImage from "../assets/images/cloud-forest-landscape.jpg";
 import JourneyJunctionPromise from "./JourneyJunctionPromise";
-// import Weather from "./Weather";
+
+import TopDestinationsSlider from "./TopDestinationsSlider";
+import NatureGallery from "./NatureGallery";
 
 const Home = () => {
   useEffect(() => {
@@ -14,27 +16,31 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div
-        className="w-full h-screen bg-cover bg-center flex items-center justify-start px-8 md:px-16 relative"
+        className="w-full h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 relative"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
+        {/* Optional dark overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0" />
+
+        {/* Main content */}
         <div
-          className="max-w-2xl text-left  p-6 text-white "
-          data-aos="fade-right"
+          className="relative z-10 text-center text-white"
+          data-aos="fade-up"
         >
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-md">
-            Explore the Top Resorts in{" "}
-            <span className="text-green-300">Wayanad</span>
+          <h1 className="text-[80px] sm:text-[64px] md:text-[120px] font-extrabold uppercase tracking-widest text-white/30 leading-none drop-shadow-xl">
+            Wayanad
           </h1>
-          <p className="mt-4 text-lg font-medium drop-shadow-sm">
-            with <span className="font-semibold">Journey Junction</span> — your
-            travel partner.
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-medium drop-shadow-sm font-[Merriweather]">
+            Explore the top resorts in <strong>Wayanad</strong> with{" "}
+            <span className="font-semibold">Journey Junction</span>
           </p>
         </div>
-        {/* <Weather /> */}
       </div>
 
-      {/* Journey Junction Promise */}
+      {/* Additional Components */}
       <JourneyJunctionPromise />
+      <TopDestinationsSlider />
+      <NatureGallery />
     </>
   );
 };
