@@ -6,6 +6,8 @@ const ThreeBackground = () => {
   const mountRef = useRef(null);
 
   useEffect(() => {
+    if (!mountRef.current) return;
+
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -17,11 +19,12 @@ const ThreeBackground = () => {
     camera.position.z = 5;
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(
       mountRef.current.clientWidth,
       mountRef.current.clientHeight
     );
+    renderer.setPixelRatio(window.devicePixelRatio);
     mountRef.current.appendChild(renderer.domElement);
 
     // Geometry + Material + Mesh
@@ -40,17 +43,40 @@ const ThreeBackground = () => {
     scene.add(light);
 
     // Animation loop
+    let animationFrameId;
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
       torus.rotation.x += 0.01;
       torus.rotation.y += 0.01;
       renderer.render(scene, camera);
     };
     animate();
 
-    // Clean up on unmount
+    // Handle resize
+    const handleResize = () => {
+      if (!mountRef.current) return;
+      camera.aspect =
+        mountRef.current.clientWidth / mountRef.current.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(
+        mountRef.current.clientWidth,
+        mountRef.current.clientHeight
+      );
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on unmount
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", handleResize);
+
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+
+      if (mountRef.current?.contains(renderer.domElement)) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
     };
   }, []);
 

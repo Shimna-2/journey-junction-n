@@ -19,18 +19,13 @@ const JourneyJunctionPromise = () => {
   const fullText = "Why Choose Journey Junction?";
 
   useEffect(() => {
-    try {
-      AOS.init({
-        duration: 900,
-        easing: "ease-out-cubic",
-        once: true,
-        offset: 100,
-      });
-    } catch (err) {
-      console.error("AOS init failed:", err);
-    }
+    AOS.init({
+      duration: 900,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 100,
+    });
 
-    // Typing Effect (once)
     let i = 0;
     const typingInterval = setInterval(() => {
       setDisplayedText(fullText.slice(0, i + 1));
@@ -42,17 +37,14 @@ const JourneyJunctionPromise = () => {
   }, []);
 
   return (
-    <section
-      className="min-h-screen flex flex-col md:flex-row"
-      role="region"
-      aria-labelledby="jj-promise-heading"
-    >
+    <section className="min-h-screen flex flex-col md:flex-row">
       {/* Left Side */}
       <div
         className="w-full md:w-1/2 flex items-center justify-center bg-center bg-cover relative p-6 sm:p-10"
         style={{
-          backgroundImage: bgImage ? `url(${bgImage})` : "none",
-          backgroundAttachment: "fixed",
+          backgroundImage: `url(${bgImage})`,
+          backgroundColor: bgImage ? "transparent" : "#444",
+          backgroundAttachment: window.innerWidth > 768 ? "fixed" : "scroll",
           minHeight: "50vh",
         }}
       >
@@ -61,10 +53,7 @@ const JourneyJunctionPromise = () => {
           className="relative z-10 text-center md:text-left"
           data-aos="fade-up"
         >
-          <h2
-            id="jj-promise-heading"
-            className="typing-heading text-white text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-wide leading-tight"
-          >
+          <h2 className="typing-heading text-white text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-wide leading-tight">
             {displayedText}
             <span className="cursor">|</span>
           </h2>
@@ -83,15 +72,11 @@ const JourneyJunctionPromise = () => {
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 150}
-            data-aos-duration="800"
-            className="promise-card relative rounded-xl px-5 py-3 flex items-center gap-4 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] bg-white/90 backdrop-blur-md border border-gray-200"
+            className="promise-card relative rounded-xl px-5 py-3 flex items-center gap-4 shadow-lg hover:shadow-xl transition-transform hover:scale-[1.02] bg-white/90 backdrop-blur-md border border-gray-200"
           >
-            {/* Icon */}
             <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-white font-bold shadow">
               ✓
             </div>
-
-            {/* Text */}
             <p className="text-sm sm:text-base font-medium text-gray-800">
               {item}
             </p>
@@ -99,7 +84,6 @@ const JourneyJunctionPromise = () => {
         ))}
       </div>
 
-      {/* Styles */}
       <style jsx>{`
         .typing-heading {
           font-family: "Playfair Display", serif;

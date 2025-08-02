@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const images = [
-  "/src/assets/images/imgslide6.jpeg",
-  "/src/assets/images/imgslide9.jpg",
-  "/src/assets/images/imgslide8.jpg",
-  "/src/assets/images/imgslide5.jpeg",
-  "/src/assets/images/imgslide4.jpeg",
-  "/src/assets/images/imgslide3.jpeg",
-];
+import img1 from "../assets/images/imgslide6.jpeg";
+import img2 from "../assets/images/imgslide9.jpg";
+import img3 from "../assets/images/imgslide8.jpg";
+import img4 from "../assets/images/imgslide5.jpeg";
+import img5 from "../assets/images/imgslide4.jpeg";
+import img6 from "../assets/images/imgslide3.jpeg";
+
+const images = [img1, img2, img3, img4, img5, img6];
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,11 +23,10 @@ const ImageSlider = () => {
   }, []);
 
   const getCurrentImages = () => {
-    let currentImages = [];
-    for (let i = 0; i < imagesPerSlide; i++) {
-      currentImages.push(images[(currentIndex + i) % images.length]);
-    }
-    return currentImages;
+    return Array.from(
+      { length: imagesPerSlide },
+      (_, i) => images[(currentIndex + i) % images.length]
+    );
   };
 
   return (

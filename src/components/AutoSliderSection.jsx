@@ -1,19 +1,8 @@
-import { useState } from "react";
+import React from "react";
 
 const AutoSliderSection = () => {
-  const [active, setActive] = useState("Mission");
-
-  const content = {
-    Mission:
-      "Our mission is to craft travel experiences that are personal, seamless, and unforgettable.",
-    Story:
-      "Journey Junction was founded by Arjun ET in 2017 to connect travelers with comfort and culture.",
-    Vision:
-      "We aim to be a globally trusted travel brand offering curated nature-bound experiences.",
-  };
-
   return (
-    <section className=" bg-white px-4 md:px-20" data-aos="fade-up">
+    <section className="bg-white px-4 md:px-20" data-aos="fade-up">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
         Who We Are
       </h2>
@@ -37,9 +26,11 @@ const AutoSliderSection = () => {
         ].map((item, i) => (
           <div key={i} className="group perspective">
             <div className="relative h-64 transition-transform duration-700 transform-style preserve-3d group-hover:rotate-y-180">
+              {/* Front Side */}
               <div className="absolute w-full h-full bg-gradient-to-br from-blue-100 to-blue-300 rounded-2xl shadow-lg flex items-center justify-center text-5xl font-bold text-gray-800 backface-hidden">
                 {item.front}
               </div>
+              {/* Back Side */}
               <div className="absolute w-full h-full bg-white rounded-2xl shadow-lg px-4 py-6 text-center text-gray-700 text-sm backface-hidden transform rotate-y-180">
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p>{item.back}</p>

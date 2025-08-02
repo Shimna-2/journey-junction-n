@@ -1,34 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+// Import images for Vercel build compatibility
+import msresort1 from "../assets/images/msresort1.jpg";
+import coffeeCounty from "../assets/images/IMG_20250708_071350.jpg";
+import coffeeAcres from "../assets/images/IMG-20250701-WA0035.jpg";
 
 const TopResorts = () => {
   const resorts = [
     {
-      image: "src/assets/images/msresort1.jpg",
+      image: msresort1,
       category: "Best Luxury Resort",
       name: "Mountain Shadows",
     },
     {
-      image: "src/assets/images/IMG_20250708_071350.jpg",
+      image: coffeeCounty,
       category: "Best Premium Resort",
       name: "Coffee County",
     },
     {
-      image: "src/assets/images/IMG-20250701-WA0035.jpg",
+      image: coffeeAcres,
       category: "Budget Friendly Resort",
       name: "Coffee Acres",
     },
   ];
 
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
   return (
     <section className="py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Heading with background animation */}
+        {/* Heading */}
         <h2
           data-aos="fade-up"
           className="relative text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mb-12 tracking-wide animate-gradient"
@@ -37,7 +42,6 @@ const TopResorts = () => {
           }}
         >
           Top Resorts to Explore
-          {/* Animated underline */}
           <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-2 w-16 h-1 bg-gradient-to-r from-gray-700 via-black to-gray-700 rounded-full animate-pulse"></span>
         </h2>
 
@@ -54,14 +58,15 @@ const TopResorts = () => {
                   "polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)",
               }}
             >
-              {/* Resort Image */}
+              {/* Image */}
               <img
                 src={resort.image}
                 alt={resort.name}
+                loading="lazy"
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
               />
 
-              {/* Resort Info */}
+              {/* Info */}
               <div className="p-5 text-center bg-white">
                 <p className="text-xs uppercase tracking-wider text-gray-500 font-medium mb-2">
                   {resort.category}
@@ -74,7 +79,7 @@ const TopResorts = () => {
           ))}
         </div>
 
-        {/* Explore More Button */}
+        {/* Button */}
         <div className="flex justify-center mt-12">
           <button className="bg-gray-800 text-white px-6 py-3 text-lg font-semibold rounded-full shadow-md hover:bg-gray-900 hover:shadow-xl transition-all duration-300">
             Explore More

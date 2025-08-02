@@ -3,6 +3,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Footer from "../components/Footer";
 
+// Import images for Vercel compatibility
+import heroImg from "../assets/images/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand (1).jpg";
+import wayanadMap from "../assets/images/wayanad.jpg";
+
 export default function Wayanad() {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -57,7 +61,7 @@ export default function Wayanad() {
         data-aos="fade-down"
       >
         <img
-          src="src/assets/images/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand (1).jpg"
+          src={heroImg}
           alt="Wayanad Scenic View"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -92,7 +96,7 @@ export default function Wayanad() {
         </h2>
         <div className="flex justify-center">
           <img
-            src="src/assets/images/wayanad.jpg"
+            src={wayanadMap}
             alt="Tourist Map"
             className="w-full max-w-3xl rounded-xl shadow-lg border border-gray-300 transform hover:scale-105 transition duration-500"
           />
@@ -192,7 +196,7 @@ export default function Wayanad() {
           🏞 Places to Visit in Wayanad
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm">
-          {/* Style 1 for first two */}
+          {/* Style 1 */}
           <div
             className="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
             data-aos="fade-right"
@@ -225,7 +229,7 @@ export default function Wayanad() {
             </ul>
           </div>
 
-          {/* Style 2 for next two */}
+          {/* Style 2 */}
           <div
             className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
             data-aos="zoom-in"

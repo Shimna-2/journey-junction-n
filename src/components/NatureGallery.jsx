@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import morskieOko from "../assets/images/view-foggy-mountain-landscape.jpg";
 
 export default function NatureGalleryStyle3() {
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  // Detect screen size to toggle backgroundAttachment for mobile performance
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       role="region"
@@ -12,7 +24,8 @@ export default function NatureGalleryStyle3() {
         backgroundImage: `url(${morskieOko})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: isDesktop ? "fixed" : "scroll",
+        backgroundColor: "#333", // Fallback if image fails
       }}
     >
       {/* Dark overlay */}

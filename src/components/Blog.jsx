@@ -2,45 +2,53 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer.jsx";
 
+// Import images so they work in production
+import tribalCultureImg from "../assets/images/WhatsApp Image 2025-07-10 at 15.14.37 (1).jpeg";
+import climateImg from "../assets/images/beautiful-mountain-landscape.jpg";
+import pothumkaalImg from "../assets/images/pothumkaal2.jpeg";
+import adventureImg from "../assets/images/1000119737_Pml0uYK.jpg";
+import thiruneliImg from "../assets/images/thirunelli.jpg";
+import coffeeImg from "../assets/images/adult-harvesting-coffee.jpg";
+
 const blogs = [
   {
     title: "Wayanadan Tribal Culture: A Journey into the Indigenous Heart",
-    image: "src/assets/images/WhatsApp Image 2025-07-10 at 15.14.37 (1).jpeg",
+    image: tribalCultureImg,
     excerpt:
       "Uncover the fascinating traditions of Wayanad's tribal communities. Learn about their nature-connected lifestyles, rituals, and vibrant heritage.",
     link: "/blogs/tribal-culture",
   },
   {
     title: "Wayanad Climate: Misty Hills and Serene Landscapes",
-    image: "src/assets/images/beautiful-mountain-landscape.jpg",
+    image: climateImg,
     excerpt:
       "Experience Wayanad’s cool mountain climate — perfect for getaways, treks, and peaceful nature retreats across the Western Ghats.",
     link: "/blogs/climate",
   },
   {
     title: "Wayanadan Pothumkaal: A Flavorful Kerala Culinary Experience",
-    image: "src/assets/images/pothumkaal2.jpeg",
+    image: pothumkaalImg,
     excerpt:
       "Taste the iconic Wayanadan Pothumkaal — a bold beef delicacy with authentic Kerala spices that captures the essence of traditional cooking.",
     link: "/blogs/pothumkaal",
   },
   {
     title: "Adventure Activities in Wayanad: Explore Beyond Limits",
-    image: "src/assets/images/1000119737_Pml0uYK.jpg",
+    image: adventureImg,
     excerpt:
       "From treetop ziplining to high-altitude trekking, Wayanad offers adrenaline-packed experiences amidst lush greenery.",
     link: "/blogs/adventure-wayanad",
   },
   {
     title: "Thiruneli Temple",
-    image: "src/assets/images/thirunelli.jpg",
+    image: thiruneliImg,
     excerpt:
       "Discover the spiritual and architectural charm of Thiruneli Temple, nestled in the forests of Wayanad.",
     link: "/blogs/thiruneli",
   },
   {
     title: "Coffee Plantations",
-    image: "src/assets/images/adult-harvesting-coffee.jpg",
+    image: coffeeImg,
     excerpt:
       "Explore the lush coffee estates of Wayanad, where tradition meets the aroma of freshly roasted beans.",
     link: "/blogs/coffee-plantations",

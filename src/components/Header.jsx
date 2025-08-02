@@ -7,7 +7,7 @@ import {
   FaChevronUp,
   FaArrowLeft,
 } from "react-icons/fa";
-import logo from "../assets/images/logojj.jpeg";
+import logo from "../assets/images/logojj.jpeg"; // ✅ Imported image for Vercel
 import WeatherPreview from "./WeatherPreview";
 
 export default function Header() {
@@ -22,7 +22,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const isHome = location.pathname === "/home";
-  const isWayanad = location.pathname === "/wayanad"; // ✅ Show back arrow here
+  const isWayanad = location.pathname === "/wayanad";
 
   const toggleDropdown = (menu) => {
     setDropdownOpen((prev) => ({
@@ -43,9 +43,8 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Left Section: Back Arrow (mobile) + Logo */}
+        {/* Left Section: Back Arrow + Logo */}
         <div className="flex items-center gap-3">
-          {/* Back Arrow for Wayanad on Mobile */}
           {isWayanad && (
             <button
               onClick={() => navigate(-1)}
@@ -57,7 +56,7 @@ export default function Header() {
           )}
 
           <img
-            src={logo}
+            src={logo} // ✅ Imported image path ensures Vercel loads it
             alt="Journey Junction Logo"
             className="h-16 w-16 object-cover rounded-full"
           />
@@ -68,7 +67,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Right Section: Hamburger for Mobile */}
+        {/* Mobile Hamburger */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -81,7 +80,7 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-10 font-semibold items-center">
-          <Link to="/home" className={`${navLinkHover}`}>
+          <Link to="/home" className={navLinkHover}>
             HOME
           </Link>
 
@@ -138,10 +137,10 @@ export default function Header() {
             )}
           </div>
 
-          <Link to="/blog" className={`${navLinkHover}`}>
+          <Link to="/blog" className={navLinkHover}>
             BLOG
           </Link>
-          <Link to="/aboutus" className={`${navLinkHover}`}>
+          <Link to="/aboutus" className={navLinkHover}>
             ABOUT US
           </Link>
           <Link to="/booknow" className={`px-4 ${navLinkHover}`}>
@@ -155,13 +154,13 @@ export default function Header() {
         <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pb-4 space-y-2 font-semibold">
           <Link
             to="/home"
-            className="block px-4 py-2"
             onClick={() => setMenuOpen(false)}
+            className="block px-4 py-2"
           >
             HOME
           </Link>
 
-          {/* Destinations */}
+          {/* Destinations Mobile */}
           <div>
             <button
               onClick={() => toggleDropdown("destinations")}
@@ -183,7 +182,7 @@ export default function Header() {
             )}
           </div>
 
-          {/* Resorts */}
+          {/* Resorts Mobile */}
           <div>
             <div className="flex justify-between items-center px-4 py-2">
               <Link to="/resorts" onClick={() => setMenuOpen(false)}>
@@ -219,22 +218,22 @@ export default function Header() {
 
           <Link
             to="/blog"
-            className="block px-4 py-2"
             onClick={() => setMenuOpen(false)}
+            className="block px-4 py-2"
           >
             BLOG
           </Link>
           <Link
             to="/aboutus"
-            className="block px-4 py-2"
             onClick={() => setMenuOpen(false)}
+            className="block px-4 py-2"
           >
             ABOUT US
           </Link>
           <Link
             to="/booknow"
-            className="block px-4 py-2 hover:underline"
             onClick={() => setMenuOpen(false)}
+            className="block px-4 py-2 hover:underline"
           >
             BOOK NOW
           </Link>

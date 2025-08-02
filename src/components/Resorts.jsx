@@ -8,15 +8,57 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Footer from "./Footer";
 
+// ✅ Import images so Vercel can bundle them
+import aramb1 from "../assets/images/aramb1.jpeg";
+import aramb2 from "../assets/images/aramb2.jpeg";
+import aramb3 from "../assets/images/aramb3.jpeg";
+
+import msresort1 from "../assets/images/msresort1.jpg";
+import msresort2 from "../assets/images/msresort2.jpg";
+import msresort3 from "../assets/images/msresort3.jpg";
+
+import vythiri1 from "../assets/images/vythiri1.webp";
+import vythiri2 from "../assets/images/vythiri2.webp";
+import vythiri4 from "../assets/images/vythiri4.jpeg";
+
+import lords83 from "../assets/images/Lords83.jpeg";
+import lords831 from "../assets/images/lords831.jpeg";
+import lords834 from "../assets/images/lords834.jpeg";
+
+import mountx from "../assets/images/mountx.jpeg";
+import mountx1 from "../assets/images/mountx1.jpeg";
+import mountx3 from "../assets/images/mountx3.jpeg";
+
+import vythirimist from "../assets/images/vythirimist.jpeg";
+import vythirimist2 from "../assets/images/vythirimist2.jpeg";
+import vythirimit1 from "../assets/images/vythirimit1.jpeg";
+
+import coffeeacres1 from "../assets/images/coffeacres1.jpeg";
+import imageslider3 from "../assets/images/imageslider3.jpg";
+
+import seagot from "../assets/images/seagot.jpeg";
+import seogot3 from "../assets/images/seogot3.jpeg";
+import seogot2 from "../assets/images/seogot2.jpeg";
+
+import safari from "../assets/images/safari.jpeg";
+import safari1 from "../assets/images/safari1.jpeg";
+import safari2 from "../assets/images/safari2.jpeg";
+
+import peppertrail from "../assets/images/peppertrail.jpeg";
+import peppertrail1 from "../assets/images/peppertrail1.jpeg";
+import peppertrail3 from "../assets/images/peppertrail3.jpeg";
+
+import theyila from "../assets/images/theyila.jpeg";
+import theyila2 from "../assets/images/theyila2.jpeg";
+import theyila3 from "../assets/images/theyila3.jpeg";
+
+import heroImage from "../assets/images/large-pool-with-hammocks.jpg";
+
 // ---------------- Resort Data ----------------
 const luxuryResorts = [
   {
     name: "Aramb Resorts",
-    images: [
-      "src/assets/images/aramb1.jpeg",
-      "src/assets/images/aramb2.jpeg",
-      "src/assets/images/aramb3.jpeg",
-    ],
+    images: [aramb1, aramb2, aramb3],
     facilities: [
       "🧖 Spa & Wellness Center",
       "🌊 Ocean View Rooms",
@@ -26,11 +68,7 @@ const luxuryResorts = [
   },
   {
     name: "Mountain Shadows",
-    images: [
-      "src/assets/images/msresort1.jpg",
-      "src/assets/images/msresort2.jpg",
-      "src/assets/images/msresort3.jpg",
-    ],
+    images: [msresort1, msresort2, msresort3],
     facilities: [
       "👑 Presidential Suites",
       "🎯 Game Zone",
@@ -40,11 +78,7 @@ const luxuryResorts = [
   },
   {
     name: "Earthetics",
-    images: [
-      "src/assets/images/vythiri1.webp",
-      "src/assets/images/vythiri2.webp",
-      "src/assets/images/vythiri4.jpeg",
-    ],
+    images: [vythiri1, vythiri2, vythiri4],
     facilities: [
       "🌄 Mountain View Cabins",
       "🔥 Fire Pit Lounge",
@@ -57,11 +91,7 @@ const luxuryResorts = [
 const premiumResorts = [
   {
     name: "Lords83",
-    images: [
-      "src/assets/images/Lords83.jpeg",
-      "src/assets/images/lords831.jpeg",
-      "src/assets/images/lords834.jpeg",
-    ],
+    images: [lords83, lords831, lords834],
     facilities: [
       "🧖 Full-Service Spa",
       "🍽️ Gourmet Restaurant",
@@ -71,11 +101,7 @@ const premiumResorts = [
   },
   {
     name: "MountXanadu",
-    images: [
-      "src/assets/images/mountx.jpeg",
-      "src/assets/images/mountx1.jpeg",
-      "src/assets/images/mountx3.jpeg",
-    ],
+    images: [mountx, mountx1, mountx3],
     facilities: [
       "👑 Royal Suites",
       "🍷 Private Wine Cellar",
@@ -85,11 +111,7 @@ const premiumResorts = [
   },
   {
     name: "Vythirimist",
-    images: [
-      "src/assets/images/vythirimist.jpeg",
-      "src/assets/images/vythirimist2.jpeg",
-      "src/assets/images/vythirimit1.jpeg",
-    ],
+    images: [vythirimist, vythirimist2, vythirimit1],
     facilities: [
       "🪵 Premium Wooden Interiors",
       "🌅 Sunset Lounge",
@@ -102,11 +124,7 @@ const premiumResorts = [
 const budgetResorts = [
   {
     name: "Coffee Acres Resort",
-    images: [
-      "src/assets/images/coffeacres1.jpeg",
-      "src/assets/images/coffeacres1.jpeg",
-      "src/assets/images/imageslider3.jpg",
-    ],
+    images: [coffeeacres1, coffeeacres1, imageslider3],
     facilities: [
       "🌿 Peaceful Environment",
       "🛏️ Comfortable Rooms",
@@ -116,11 +134,7 @@ const budgetResorts = [
   },
   {
     name: "Seagot Resort",
-    images: [
-      "src/assets/images/seagot.jpeg",
-      "src/assets/images/seogot3.jpeg",
-      "src/assets/images/seogot2.jpeg",
-    ],
+    images: [seagot, seogot3, seogot2],
     facilities: [
       "⛰️ Hill View Balcony",
       "🍳 In-House Dining",
@@ -130,11 +144,7 @@ const budgetResorts = [
   },
   {
     name: "Safari Hills",
-    images: [
-      "src/assets/images/safari.jpeg",
-      "src/assets/images/safari1.jpeg",
-      "src/assets/images/safari2.jpeg",
-    ],
+    images: [safari, safari1, safari2],
     facilities: [
       "🧳 Budget Friendly Packages",
       "🌾 Local Cultural Touch",
@@ -147,11 +157,7 @@ const budgetResorts = [
 const privatePoolVillas = [
   {
     name: "Peppertrail Resorts",
-    images: [
-      "src/assets/images/peppertrail.jpeg",
-      "src/assets/images/peppertrail1.jpeg",
-      "src/assets/images/peppertrail3.jpeg",
-    ],
+    images: [peppertrail, peppertrail1, peppertrail3],
     facilities: [
       "🏊 Private Infinity Pool",
       "🌅 Sunset Deck View",
@@ -161,11 +167,7 @@ const privatePoolVillas = [
   },
   {
     name: "Theyila Resort",
-    images: [
-      "src/assets/images/theyila.jpeg",
-      "src/assets/images/theyila2.jpeg",
-      "src/assets/images/theyila3.jpeg",
-    ],
+    images: [theyila, theyila2, theyila3],
     facilities: [
       "💦 Jacuzzi with Nature View",
       "🧘 Yoga & Meditation Room",
@@ -175,11 +177,7 @@ const privatePoolVillas = [
   },
   {
     name: "Lords83",
-    images: [
-      "src/assets/images/Lords83.jpeg",
-      "src/assets/images/lords831.jpeg",
-      "src/assets/images/lords834.jpeg",
-    ],
+    images: [lords83, lords831, lords834],
     facilities: [
       "🧖 Full-Service Spa",
       "🍽️ Gourmet Restaurant",
@@ -266,8 +264,7 @@ export default function Resorts() {
       <section
         className="relative w-full h-[80vh] bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('src/assets/images/large-pool-with-hammocks.jpg')",
+          backgroundImage: `url(${heroImage})`,
         }}
       >
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">

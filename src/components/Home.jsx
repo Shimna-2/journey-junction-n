@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import bgImage from "../assets/images/cloud-forest-landscape.jpg";
 
-// Lazy-load heavy components to improve performance
+// Lazy-load heavy components for performance
 const JourneyJunctionPromise = lazy(() => import("./JourneyJunctionPromise"));
 const TopDestinationsSlider = lazy(() => import("./TopDestinationsSlider"));
 const NatureGallery = lazy(() => import("./NatureGallery"));
@@ -26,14 +26,14 @@ const Home = () => {
       <div
         className="w-full h-[90vh] sm:h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 relative"
         style={{
-          backgroundImage: `url(${bgImage || ""})`,
-          backgroundColor: !bgImage ? "#333" : "transparent", // Fallback if image fails
+          backgroundImage: `url(${bgImage})`,
+          backgroundColor: "#333",
         }}
       >
-        {/* Dark overlay for better text visibility */}
-        <div className="absolute inset z-0" />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0" />
 
-        {/* Main content */}
+        {/* Content */}
         <div
           className="relative z-10 text-center text-white"
           data-aos="fade-up"
@@ -51,7 +51,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Lazy-loaded sections for performance */}
+      {/* Lazy-loaded sections */}
       <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
         <JourneyJunctionPromise />
         <TopDestinationsSlider />
