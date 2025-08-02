@@ -6,7 +6,6 @@ import {
   useLocation,
   Navigate,
 } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -92,11 +91,9 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <Router>
-        <AppLayout />
-      </Router>
-    </HelmetProvider>
+    <Router>
+      <AppLayout />
+    </Router>
   );
 }
 
