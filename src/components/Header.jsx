@@ -1,8 +1,14 @@
+// src/components/Header.jsx
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  FaBars,
+  FaChevronDown,
+  FaChevronUp,
+  FaArrowLeft,
+} from "react-icons/fa";
 import logo from "../assets/images/logojj.jpeg";
-import WeatherPreview from "./WeatherPreview"; // ✅ Import here
+import WeatherPreview from "./WeatherPreview";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,10 +16,13 @@ export default function Header() {
     destinations: false,
     resorts: false,
   });
-
   const [desktopDropdown, setDesktopDropdown] = useState(null);
+
   const location = useLocation();
+  const navigate = useNavigate();
+
   const isHome = location.pathname === "/home";
+  const isWayanad = location.pathname === "/wayanad"; // ✅ Show back arrow here
 
   const toggleDropdown = (menu) => {
     setDropdownOpen((prev) => ({
@@ -30,25 +39,36 @@ export default function Header() {
   return (
     <header
       className={`fixed w-full z-50 ${
-        isHome ? "bg-transparent" : "bg-transparent"
+        isHome || isWayanad ? "bg-transparent" : "bg-white shadow"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo and Weather */}
-        <div className="flex items-center gap-4">
+        {/* Left Section: Back Arrow (mobile) + Logo */}
+        <div className="flex items-center gap-3">
+          {/* Back Arrow for Wayanad on Mobile */}
+          {isWayanad && (
+            <button
+              onClick={() => navigate(-1)}
+              className="md:hidden text-2xl"
+              aria-label="Go back"
+            >
+              <FaArrowLeft />
+            </button>
+          )}
+
           <img
             src={logo}
             alt="Journey Junction Logo"
-            className="h-20 w-20 object-cover rounded-full"
+            className="h-16 w-16 object-cover rounded-full"
           />
 
-          {/* ✅ Weather Preview: small and compact */}
+          {/* Weather only on Desktop */}
           <div className="hidden md:block">
             <WeatherPreview />
           </div>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Right Section: Hamburger for Mobile */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -65,7 +85,7 @@ export default function Header() {
             HOME
           </Link>
 
-          {/* DESTINATIONS */}
+          {/* Destinations */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopDropdown("destinations")}
@@ -86,7 +106,7 @@ export default function Header() {
             )}
           </div>
 
-          {/* RESORTS */}
+          {/* Resorts */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopDropdown("resorts")}
@@ -100,21 +120,19 @@ export default function Header() {
             {desktopDropdown === "resorts" && (
               <div className="absolute top-full left-0 bg-white text-black shadow-md rounded mt-1 z-50 w-64">
                 {[
-                  { name: "Honeymoon Resorts", path: "/honeymoon-resorts" },
-                  { name: "Luxury Resorts", path: "/luxury-resorts" },
-                  { name: "Premium Resorts", path: "/premium-resorts" },
-                  {
-                    name: "Budget Friendly Resorts",
-                    path: "/budget-friendly-resorts",
-                  },
+                  { name: "Luxury Resorts", path: "#luxury-resorts" },
+                  { name: "Premium Resorts", path: "#premium-resorts" },
+                  { name: "Budget Friendly Resorts", path: "#budget-resorts" },
+                  { name: "Private Pool Villas", path: "#private-pool" },
                 ].map((item, index) => (
-                  <Link
+                  <a
                     key={index}
-                    to={item.path}
+                    href={item.path}
                     className="block px-4 py-2 hover:bg-gray-100 transition"
+                    onClick={() => setDesktopDropdown(null)}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
             )}
@@ -132,10 +150,14 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pb-4 space-y-2 font-semibold">
-          <Link to="/home" className="block px-4 py-2">
+          <Link
+            to="/home"
+            className="block px-4 py-2"
+            onClick={() => setMenuOpen(false)}
+          >
             HOME
           </Link>
 
@@ -150,7 +172,11 @@ export default function Header() {
             </button>
             {dropdownOpen.destinations && (
               <div className="ml-4 mt-1">
-                <Link to="/wayanad" className="block px-4 py-2">
+                <Link
+                  to="/wayanad"
+                  className="block px-4 py-2"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Wayanad
                 </Link>
               </div>
@@ -191,13 +217,25 @@ export default function Header() {
             )}
           </div>
 
-          <Link to="/blog" className="block px-4 py-2">
+          <Link
+            to="/blog"
+            className="block px-4 py-2"
+            onClick={() => setMenuOpen(false)}
+          >
             BLOG
           </Link>
-          <Link to="/aboutus" className="block px-4 py-2">
+          <Link
+            to="/aboutus"
+            className="block px-4 py-2"
+            onClick={() => setMenuOpen(false)}
+          >
             ABOUT US
           </Link>
-          <Link to="/booknow" className="block px-4 py-2 hover:underline">
+          <Link
+            to="/booknow"
+            className="block px-4 py-2 hover:underline"
+            onClick={() => setMenuOpen(false)}
+          >
             BOOK NOW
           </Link>
         </div>

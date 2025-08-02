@@ -1,52 +1,129 @@
-import React, { useEffect } from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import ThreeBackground from "./ThreeBackground";
+import React, { useEffect, useState, memo } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import bgImage from "../assets/images/sunset.jpg";
 
 const promises = [
-  "Luxury resorts with valley views 🌄",
-  "Budget-friendly eco-stays 🏡",
-  "Romantic cottages for couples 💑",
-  "Adventure trails & waterfalls 🥾",
-  "Camping beneath starry skies ✨",
-  "Instant WhatsApp bookings 📲",
-  "24/7 guest support ☎️",
-  "Local spice garden tours 🌿",
+  "Luxury resorts with valley views",
+  "Budget-friendly eco-stays",
+  "Romantic cottages for couples",
+  "Adventure trails & waterfalls",
+  "Camping beneath starry skies",
+  "Instant WhatsApp bookings",
+  "24/7 guest support",
+  "Local spice garden tours",
 ];
 
 const JourneyJunctionPromise = () => {
+  const [displayedText, setDisplayedText] = useState("");
+  const fullText = "Why Choose Journey Junction?";
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    try {
+      AOS.init({
+        duration: 900,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 100,
+      });
+    } catch (err) {
+      console.error("AOS init failed:", err);
+    }
+
+    // Typing Effect (once)
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      setDisplayedText(fullText.slice(0, i + 1));
+      i++;
+      if (i === fullText.length) clearInterval(typingInterval);
+    }, 80);
+
+    return () => clearInterval(typingInterval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center bg-black text-white px-6 py-20 overflow-hidden">
-      {/* 🔮 3D Background */}
-
-      <div className="relative z-10 max-w-5xl text-center mb-12">
-        <h2 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
-          Why Choose Journey Junction?
-        </h2>
-        <p className="text-gray-300 text-lg sm:text-xl max-w-3xl mx-auto">
-          Your trusted gateway to Wayanad’s untouched beauty. We combine luxury,
-          authenticity, and ease — all curated for your perfect escape.
-        </p>
+    <section
+      className="min-h-screen flex flex-col md:flex-row"
+      role="region"
+      aria-labelledby="jj-promise-heading"
+    >
+      {/* Left Side */}
+      <div
+        className="w-full md:w-1/2 flex items-center justify-center bg-center bg-cover relative p-6 sm:p-10"
+        style={{
+          backgroundImage: bgImage ? `url(${bgImage})` : "none",
+          backgroundAttachment: "fixed",
+          minHeight: "50vh",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div
+          className="relative z-10 text-center md:text-left"
+          data-aos="fade-up"
+        >
+          <h2
+            id="jj-promise-heading"
+            className="typing-heading text-white text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-wide leading-tight"
+          >
+            {displayedText}
+            <span className="cursor">|</span>
+          </h2>
+        </div>
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
+      {/* Right Side */}
+      <div
+        className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col justify-center gap-4 sm:gap-6"
+        style={{
+          background: "linear-gradient(135deg, #e8e8e8, #cfcfcf)",
+        }}
+      >
         {promises.map((item, index) => (
           <div
             key={index}
-            className="bg-white/10 border border-white/20 backdrop-blur-sm p-5 rounded-2xl flex items-center gap-4 transition hover:scale-[1.03] duration-300"
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+            data-aos-duration="800"
+            className="promise-card relative rounded-xl px-5 py-3 flex items-center gap-4 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] bg-white/90 backdrop-blur-md border border-gray-200"
           >
-            <div className="bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md">
-              <FaCheckCircle className="text-lg" />
+            {/* Icon */}
+            <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-white font-bold shadow">
+              ✓
             </div>
-            <p className="text-white text-base sm:text-lg">{item}</p>
+
+            {/* Text */}
+            <p className="text-sm sm:text-base font-medium text-gray-800">
+              {item}
+            </p>
           </div>
         ))}
       </div>
+
+      {/* Styles */}
+      <style jsx>{`
+        .typing-heading {
+          font-family: "Playfair Display", serif;
+        }
+        .cursor {
+          display: inline-block;
+          width: 2px;
+          background: white;
+          animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+          0%,
+          50%,
+          100% {
+            opacity: 1;
+          }
+          25%,
+          75% {
+            opacity: 0;
+          }
+        }
+      `}</style>
     </section>
   );
 };
 
-export default JourneyJunctionPromise;
+export default memo(JourneyJunctionPromise);

@@ -6,9 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Footer from "./Footer";
 
-// Resort Data
-
+// ---------------- Resort Data ----------------
 const luxuryResorts = [
   {
     name: "Aramb Resorts",
@@ -146,11 +146,11 @@ const budgetResorts = [
 
 const privatePoolVillas = [
   {
-    name: "RiverEdge Villas",
+    name: "Peppertrail Resorts",
     images: [
-      "src/assets/images/poolvilla1.jpeg",
-      "src/assets/images/poolvilla2.jpeg",
-      "src/assets/images/poolvilla3.jpeg",
+      "src/assets/images/peppertrail.jpeg",
+      "src/assets/images/peppertrail1.jpeg",
+      "src/assets/images/peppertrail3.jpeg",
     ],
     facilities: [
       "🏊 Private Infinity Pool",
@@ -160,11 +160,11 @@ const privatePoolVillas = [
     ],
   },
   {
-    name: "Serenity Splash",
+    name: "Theyila Resort",
     images: [
-      "src/assets/images/serenity1.jpeg",
-      "src/assets/images/serenity2.jpeg",
-      "src/assets/images/serenity3.jpeg",
+      "src/assets/images/theyila.jpeg",
+      "src/assets/images/theyila2.jpeg",
+      "src/assets/images/theyila3.jpeg",
     ],
     facilities: [
       "💦 Jacuzzi with Nature View",
@@ -173,15 +173,30 @@ const privatePoolVillas = [
       "🍲 Chef-on-Call",
     ],
   },
+  {
+    name: "Lords83",
+    images: [
+      "src/assets/images/Lords83.jpeg",
+      "src/assets/images/lords831.jpeg",
+      "src/assets/images/lords834.jpeg",
+    ],
+    facilities: [
+      "🧖 Full-Service Spa",
+      "🍽️ Gourmet Restaurant",
+      "🏊 Infinity Pool",
+      "🚁 Private Helipad",
+    ],
+  },
 ];
 
-// Section Component
-
-const ResortSection = ({ title, resorts }) => {
+// ---------------- Resort Section Component ----------------
+const ResortSection = ({ id, title, resorts }) => {
   const navigate = useNavigate();
-
   return (
-    <section className="relative bg-gray-50 py-16 px-4 sm:px-6 lg:px-16">
+    <section
+      id={id}
+      className="relative bg-gray-50 py-16 px-4 sm:px-6 lg:px-16 scroll-mt-24"
+    >
       <div className="max-w-screen-xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">
           {title}
@@ -216,9 +231,7 @@ const ResortSection = ({ title, resorts }) => {
                   </h4>
                   <ul className="space-y-1 text-sm text-gray-700 mb-4">
                     {resort.facilities.map((facility, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        {facility}
-                      </li>
+                      <li key={i}>{facility}</li>
                     ))}
                   </ul>
                 </div>
@@ -237,12 +250,15 @@ const ResortSection = ({ title, resorts }) => {
   );
 };
 
-// Main Component
-
+// ---------------- Main Resorts Component ----------------
 export default function Resorts() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -254,24 +270,67 @@ export default function Resorts() {
             "url('src/assets/images/large-pool-with-hammocks.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-black/40 flex items-start justify-center pt-16 px-6 text-center">
+        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
           <div data-aos="fade-down">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
               Resorts
             </h2>
-            <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto drop-shadow">
+            <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto drop-shadow mb-6">
               Discover the best handpicked resorts in Wayanad—choose from
               luxury, premium or budget experiences for your ideal getaway.
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                onClick={() => scrollToSection("luxury-resorts")}
+                className="bg-white/80 hover:bg-white text-gray-800 px-5 py-2 rounded-lg font-semibold transition"
+              >
+                Luxury Resorts
+              </button>
+              <button
+                onClick={() => scrollToSection("premium-resorts")}
+                className="bg-white/80 hover:bg-white text-gray-800 px-5 py-2 rounded-lg font-semibold transition"
+              >
+                Premium Resorts
+              </button>
+              <button
+                onClick={() => scrollToSection("budget-resorts")}
+                className="bg-white/80 hover:bg-white text-gray-800 px-5 py-2 rounded-lg font-semibold transition"
+              >
+                Budget-Friendly Resorts
+              </button>
+              <button
+                onClick={() => scrollToSection("private-pool")}
+                className="bg-white/80 hover:bg-white text-gray-800 px-5 py-2 rounded-lg font-semibold transition"
+              >
+                Private Pool Villas
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Resort Categories */}
-      <ResortSection title="Luxury Resorts" resorts={luxuryResorts} />
-      <ResortSection title="Premium Resorts" resorts={premiumResorts} />
-      <ResortSection title="Budget-Friendly Resorts" resorts={budgetResorts} />
-      <ResortSection title="Private Pool Villas" resorts={privatePoolVillas} />
+      {/* Resort Sections */}
+      <ResortSection
+        id="luxury-resorts"
+        title="Luxury Resorts"
+        resorts={luxuryResorts}
+      />
+      <ResortSection
+        id="premium-resorts"
+        title="Premium Resorts"
+        resorts={premiumResorts}
+      />
+      <ResortSection
+        id="budget-resorts"
+        title="Budget-Friendly Resorts"
+        resorts={budgetResorts}
+      />
+      <ResortSection
+        id="private-pool"
+        title="Private Pool Villas"
+        resorts={privatePoolVillas}
+      />
+      <Footer />
     </>
   );
 }

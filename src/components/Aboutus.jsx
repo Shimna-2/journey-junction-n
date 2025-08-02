@@ -1,42 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {
-  FaCheckCircle,
-  FaWhatsapp,
-  FaInstagram,
-  FaFacebook,
-} from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
-import abtbg9 from "../assets/images/abtbg9.jpeg";
 import AutoSliderSection from "./AutoSliderSection";
+import ContactUs from "./ContactUs"; // ⬅️ Import the new ContactUs component
 
 const AboutUs = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, phone, message } = formData;
-    const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
-    window.open(
-      `https://wa.me/917904281891?text=${encodeURIComponent(whatsappMessage)}`,
-      "_blank"
-    );
-    alert("Thank you! Your message has been sent via WhatsApp.");
-    setFormData({ name: "", phone: "", message: "" });
-  };
 
   const features = [
     {
@@ -112,145 +85,8 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section
-        className="relative py-14 px-4 rounded-2xl overflow-hidden"
-        data-aos="fade-up"
-        style={{
-          backgroundImage: `url(${abtbg9})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
-        <div className="relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-10">
-            Contact Us
-          </h2>
-          <div className="bg-gray-100 rounded-3xl shadow-xl border border-gray-300 px-5 sm:px-8 py-10 flex flex-col md:flex-row gap-10 max-w-6xl mx-auto">
-            {/* Contact Info */}
-            <div className="flex-1 space-y-6 text-sm">
-              <div className="flex items-start gap-3">
-                <div className="text-xl text-gray-700 mt-1">📍</div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">Address</h4>
-                  <p className="text-gray-600 leading-relaxed">
-                    #V1/458L-21, 1st Floor, Aishwarya Mall Sulthan Bathery,
-                    Wayanad-92, KL, IND.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="text-xl text-gray-700 mt-1">📞</div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">Phone</h4>
-                  <p className="text-gray-600">
-                    +919744161939 <br /> +919633763916
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="text-xl text-gray-700 mt-1">📧</div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">Email</h4>
-                  <p className="text-gray-600">journeyjunctionwyn@gmail.com</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="text-xl text-gray-700 mt-1">🌐</div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">
-                    Connect With Us
-                  </h4>
-                  <div className="flex gap-4 text-xl text-gray-600">
-                    <a
-                      href="https://wa.me/919633763916"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-green-600 transition"
-                    >
-                      <FaWhatsapp />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/journey_junction___?igsh=ODZieXo1NTlhNjhr"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-pink-500 transition"
-                    >
-                      <FaInstagram />
-                    </a>
-                    <a
-                      href="https://www.facebook.com/share/1F7BL9EXTb/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-blue-600 transition"
-                    >
-                      <FaFacebook />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="flex-1">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                    placeholder="Your Name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                    placeholder="Your Phone Number"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Message
-                  </label>
-                  <textarea
-                    name="message"
-                    rows="4"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                    placeholder="Tell us how we can help you..."
-                  ></textarea>
-                </div>
-                <div className="text-center md:text-left">
-                  <button
-                    type="submit"
-                    className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition duration-300 flex items-center gap-2 justify-center"
-                  >
-                    <FaWhatsapp />
-                    Send via WhatsApp
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Contact Section - Replaced */}
+      <ContactUs />
     </div>
   );
 };

@@ -1,52 +1,81 @@
-// Style 1: Modern Grid with Fade Animations
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import nature1 from "../assets/images/WhatsApp Image 2025-07-10 at 15.14.37.jpeg";
-import nature2 from "../assets/images/WhatsApp Image 2025-07-10 at 15.17.23.jpeg";
+import React from "react";
+import { motion } from "framer-motion";
+import morskieOko from "../assets/images/view-foggy-mountain-landscape.jpg";
 
-export default function NatureGallery() {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
-
+export default function NatureGalleryStyle3() {
   return (
-    <div className="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen p-6 text-gray-800 font-sans">
-      <h1 className="text-4xl font-bold text-center mb-10 text-green-900 animate-pulse">
-        🌿 Nature's Tranquility
-      </h1>
-      <div
-        className="grid md:grid-cols-2 gap-10 items-center mb-12"
-        data-aos="fade-up"
+    <section
+      role="region"
+      aria-labelledby="nature-gallery-heading"
+      className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center text-center px-4 sm:px-6 overflow-hidden"
+      style={{
+        backgroundImage: `url(${morskieOko})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Motion Card */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 50 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.8, 0.25, 1],
+        }}
+        viewport={{ once: true, amount: 0.4 }}
+        className="relative bg-gradient-to-br from-white to-gray-100 p-6 sm:p-8 shadow-xl max-w-lg sm:max-w-2xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+        style={{
+          clipPath: "polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)",
+        }}
       >
-        <img
-          src={nature1}
-          alt="Lush Green Landscape"
-          className="rounded-xl shadow-lg w-full h-auto object-cover"
-        />
-        <div>
-          <h2 className="text-2xl font-semibold mb-4 text-green-800">
-            Breathe in the Calm
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            Surrounded by towering trees and whispering winds, this landscape
-            invites you to pause and reconnect with the earth.
-          </p>
-        </div>
-      </div>
-      <div
-        className="grid md:grid-cols-2 gap-10 items-center"
-        data-aos="fade-up"
-      >
-        <div></div>
-      </div>
-    </div>
+        {/* Decorative top border */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800"></div>
+
+        {/* Heading */}
+        <motion.h2
+          id="nature-gallery-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-gray-900 text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight font-[Playfair Display]"
+        >
+          Reconnect with Nature
+        </motion.h2>
+
+        {/* Subtitle */}
+        <motion.h4
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 leading-relaxed font-[Poppins]"
+        >
+          Escape to Wayanad’s misty hills and handpicked stays — where nature
+          meets comfort
+        </motion.h4>
+
+        {/* Button */}
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="px-5 sm:px-6 py-2 bg-gray-600 text-white rounded-full shadow-md hover:bg-gray-700 transition-all text-sm sm:text-base"
+          aria-label="Book a stay in Wayanad"
+        >
+          Book Now
+        </motion.button>
+      </motion.div>
+
+      {/* Google Fonts */}
+      <style jsx>{`
+        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap");
+      `}</style>
+    </section>
   );
 }
-
-// Style 2: Fullscreen Hero and Side-by-Side Content
-// Style 3: Vertical Scroll Cards with Overlap
-// Style 4: Carousel Display
-// Style 5: Masonry Grid Style (Pinterest-like)
-
-// Due to length, each style will be continued in new components or exported separately if needed.

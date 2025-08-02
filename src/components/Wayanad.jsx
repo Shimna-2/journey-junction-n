@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Footer from "../components/Footer";
 
 export default function Wayanad() {
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   const distanceData = [
@@ -48,10 +49,11 @@ export default function Wayanad() {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-white-50 to-white-100 text-gray-800 font-sans">
-      {/* Header / Hero Section */}
+    <div className="bg-gray-50 text-gray-800 font-sans">
+      {/* Hero Section */}
       <section
-        className="relative h-[480px] md:h-[600px] w-full shadow-md mb-10 overflow-hidden"
+        className="relative h-[480px] md:h-[600px] w-full mb-10 overflow-hidden"
+        style={{ fontFamily: "'Playfair Display', serif" }}
         data-aos="fade-down"
       >
         <img
@@ -59,75 +61,90 @@ export default function Wayanad() {
           alt="Wayanad Scenic View"
           className="absolute inset-0 w-full h-full object-cover"
         />
-
-        {/* Glassmorphism Overview Section Overlay */}
-
-        {/* Glassmorphism Overview Section - Bottom of the image */}
-        <div className="absolute bottom-6 left-1/2 w-11/12 md:w-3/4 lg:w-2/3 transform -translate-x-1/2 bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-30 rounded-2xl shadow-xl p-6 text-white text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 drop-shadow">
-            🌄 Overview
-          </h2>
-          <p className="text-sm md:text-base leading-relaxed drop-shadow">
+        <div className="absolute bottom-8 left-1/2 w-11/12 md:w-3/4 lg:w-2/3 transform -translate-x-1/2 bg-black bg-opacity-60 backdrop-blur-md border border-gray-700 rounded-2xl shadow-lg p-6 text-white text-center">
+          <p className="text-sm md:text-base leading-relaxed font-light">
             Wayanad is one of the districts in Kerala that has been able to
             retain its pristine nature. Hidden away in the hills of this land
             are some of the oldest tribes, as yet untouched by civilization.
-            Wayanad is known for its picturesque mist-clad hill stations,
-            sprawling spice plantations, luxuriant forest and rich cultural
-            traditions.
           </p>
-          <p className="text-sm md:text-base font-medium mt-3 drop-shadow">
+          <p className="text-sm md:text-base font-semibold mt-3">
             <strong>Altitude:</strong> 700 – 2100 m above sea level <br />
             <strong>Area:</strong> 2132 sq.km
           </p>
         </div>
       </section>
 
-      {/* Tourist Map Section */}
+      {/* Tourist Map */}
       <section
-        className="max-w-6xl mx-auto px-6 py-10 bg-gray-100 rounded-2xl shadow-md mb-10"
-        data-aos="fade-up"
+        className="max-w-6xl mx-auto px-6 py-10 bg-white rounded-2xl shadow-md mb-10"
+        data-aos="zoom-in"
       >
-        <h2 className="text-xl font-bold mb-6 text-center text-green-800">
+        <h2
+          className="text-3xl font-bold text-center mb-6 tracking-wide"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            background: "linear-gradient(to right, #1f2937, #6b7280)",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+          }}
+        >
           🗺 Tourist Map
         </h2>
         <div className="flex justify-center">
           <img
             src="src/assets/images/wayanad.jpg"
             alt="Tourist Map"
-            className="w-full max-w-3xl rounded-xl shadow-lg border"
+            className="w-full max-w-3xl rounded-xl shadow-lg border border-gray-300 transform hover:scale-105 transition duration-500"
           />
         </div>
       </section>
 
-      {/* Distance Chart + Entry Timings */}
+      {/* Distance Chart & Entry Timings */}
       <section
-        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 py-12 bg-white rounded-2xl shadow-lg mb-10"
+        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 py-12 bg-white rounded-2xl shadow-md mb-10"
         data-aos="fade-up"
       >
         {/* Distance Chart */}
         <div>
-          <h2 className="text-xl font-bold text-center mb-2">
+          <h2
+            className="text-2xl font-bold text-center mb-4"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "#374151",
+            }}
+          >
             📏 Distance Chart
           </h2>
           <p className="text-xs text-center italic text-gray-500 mb-4">
             (KPA: Kalpetta, SBY: Sulthan Bathery, MDY: Mananthavady)
           </p>
-          <table className="w-full text-sm border border-gray-300 text-gray-800 bg-white shadow-sm">
-            <thead className="bg-green-100">
+          <table className="w-full text-sm border border-gray-300 text-gray-800">
+            <thead className="bg-gray-200">
               <tr>
-                <th className="border px-4 py-2">Tourist Places</th>
-                <th className="border px-4 py-2">KPA</th>
-                <th className="border px-4 py-2">SBY</th>
-                <th className="border px-4 py-2">MDY</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Tourist Places
+                </th>
+                <th className="border border-gray-300 px-4 py-2">KPA</th>
+                <th className="border border-gray-300 px-4 py-2">SBY</th>
+                <th className="border border-gray-300 px-4 py-2">MDY</th>
               </tr>
             </thead>
             <tbody>
-              {distanceData.map(([place, kpa, sby, mdy]) => (
-                <tr key={place}>
-                  <td className="border px-4 py-2">{place}</td>
-                  <td className="border px-4 py-2 text-center">{kpa} KM</td>
-                  <td className="border px-4 py-2 text-center">{sby} KM</td>
-                  <td className="border px-4 py-2 text-center">{mdy} KM</td>
+              {distanceData.map(([place, kpa, sby, mdy], idx) => (
+                <tr
+                  key={place}
+                  className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                >
+                  <td className="border border-gray-300 px-4 py-2">{place}</td>
+                  <td className="border border-gray-300 px-4 py-2 text-center">
+                    {kpa} KM
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2 text-center">
+                    {sby} KM
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2 text-center">
+                    {mdy} KM
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -135,128 +152,114 @@ export default function Wayanad() {
         </div>
 
         {/* Entry Timings */}
-        <div className="flex flex-col items-center justify-center">
-          <h2 className="text-xl font-bold text-center mb-4">
+        <div>
+          <h2
+            className="text-2xl font-bold text-center mb-4"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "#374151",
+            }}
+          >
             ⏰ Entry Timings
           </h2>
-          <ul className="text-sm text-gray-700 space-y-3 bg-gray-50 p-6 rounded-xl shadow-inner w-full max-w-md">
+          <ul className="text-sm space-y-3 bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm">
             {entryTimings.map((timing, idx) => (
-              <li key={idx}>• {timing}</li>
+              <li
+                key={idx}
+                className="hover:text-gray-900 transition duration-300"
+              >
+                {timing}
+              </li>
             ))}
           </ul>
         </div>
       </section>
 
       {/* Places to Visit */}
-      {/* Tourist Attractions */}
-      <section className="bg-gray-200 shadow-md rounded-2xl p-6 max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold text-rose-900 mb-6 text-center">
+      <section
+        className="bg-white shadow-md rounded-2xl p-6 max-w-6xl mx-auto mb-10"
+        data-aos="fade-up"
+      >
+        <h2
+          className="text-3xl font-bold text-center mb-6 tracking-wide"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            background: "linear-gradient(to right, #1f2937, #6b7280)",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+          }}
+        >
           🏞 Places to Visit in Wayanad
         </h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-800 text-sm">
-          {/* Block 1: Kalpetta & Sulthan Bathery */}
-          <div className="bg-white p-5 rounded-xl shadow-md">
-            <h3 className="font-bold text-green-800 mb-3 text-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm">
+          {/* Style 1 for first two */}
+          <div
+            className="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
+            data-aos="fade-right"
+          >
+            <h3 style={{ fontFamily: "'Playfair Display', serif" }}>
               📍 Kalpetta Region
             </h3>
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                <strong>Chembra Peak:</strong> Ideal for trekking (2100m)
-              </li>
-              <li>
-                <strong>Soochipara Waterfalls:</strong> 100–200 ft tall, great
-                for a dip
-              </li>
-              <li>
-                <strong>Meenmutty Waterfalls:</strong> 3-tiered 400m fall via
-                jungle trek
-              </li>
-              <li>
-                <strong>Kanthanpara Waterfalls:</strong> 30m high, serene and
-                picnic-friendly
-              </li>
-              <li>
-                <strong>Sunrise Valley:</strong> Panoramic sunrise/sunset views
-              </li>
+              <li>Chembra Peak: Ideal for trekking (2100m)</li>
+              <li>Soochipara Waterfalls: 100–200 ft tall</li>
+              <li>Meenmutty Waterfalls: 3-tiered fall</li>
+              <li>Kanthanpara Waterfalls: 30m high</li>
+              <li>Sunrise Valley: Scenic views</li>
             </ul>
+          </div>
 
-            <h3 className="font-bold text-green-800 mt-6 mb-3 text-lg">
+          <div
+            className="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
+            data-aos="fade-left"
+          >
+            <h3 style={{ fontFamily: "'Playfair Display', serif" }}>
               📍 Sulthan Bathery Region
             </h3>
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                <strong>Ambalavayal Museum:</strong> Tribal heritage &
-                archaeology
-              </li>
-              <li>
-                <strong>Edakkal Caves:</strong> Stone Age carvings, 1 km trek
-              </li>
-              <li>
-                <strong>Phantom Rock:</strong> Rock shaped like a human skull
-              </li>
-              <li>
-                <strong>Jain Temple:</strong> Historic site used by Tipu
-                Sultan’s army
-              </li>
-              <li>
-                <strong>Muthanga Sanctuary:</strong> Wildlife haven in Nilgiri
-                Biosphere
-              </li>
+              <li>Ambalavayal Museum: Tribal heritage</li>
+              <li>Edakkal Caves: Stone Age carvings</li>
+              <li>Phantom Rock: Skull-shaped rock</li>
+              <li>Jain Temple: Historic site</li>
+              <li>Muthanga Sanctuary: Wildlife</li>
             </ul>
-            <p className="text-red-600 text-xs mt-2">
-              🔒 Holidays: All Mondays, Jan 26, May 1, Aug 15, Thiruvonam, Oct 2
-            </p>
           </div>
 
-          {/* Block 2: Mananthavady & Vythiri */}
-          <div className="bg-white p-5 rounded-xl shadow-md">
-            <h3 className="font-bold text-green-800 mb-3 text-lg">
+          {/* Style 2 for next two */}
+          <div
+            className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
+            data-aos="zoom-in"
+          >
+            <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700 }}>
               📍 Mananthavady Region
             </h3>
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                <strong>Kuruva Dweep:</strong> 950-acre island for nature lovers
-              </li>
-              <li>
-                <strong>Thirunelly Temple:</strong> Historic temple with
-                riverside setting
-              </li>
-              <li>
-                <strong>Pakshipathalam:</strong> Trekking & birdwatching site
-              </li>
-              <li>
-                <strong>Pazhassi Tomb:</strong> Memorial of freedom fighter
-                Pazhassi Raja
-              </li>
-              <li>
-                <strong>Korome Mosque:</strong> 300-year-old wooden mosque
-              </li>
+              <li>Kuruva Dweep: Island for nature lovers</li>
+              <li>Thirunelly Temple: Riverside temple</li>
+              <li>Pakshipathalam: Trekking & birds</li>
+              <li>Pazhassi Tomb: Freedom fighter memorial</li>
+              <li>Korome Mosque: Wooden mosque</li>
             </ul>
+          </div>
 
-            <h3 className="font-bold text-green-800 mt-6 mb-3 text-lg">
+          <div
+            className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
+            data-aos="zoom-in-up"
+          >
+            <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700 }}>
               📍 Vythiri Region
             </h3>
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                <strong>Lakkidi:</strong> Misty hill station with lush forests
-              </li>
-              <li>
-                <strong>Pookode Lake:</strong> Freshwater lake with boating and
-                park
-              </li>
-              <li>
-                <strong>Banasura Sagar Dam:</strong> Largest earthen dam,
-                trekking spot
-              </li>
-              <li>
-                <strong>Karlad Lake:</strong> Adventure activities in a peaceful
-                setting
-              </li>
+              <li>Lakkidi: Misty hill station</li>
+              <li>Pookode Lake: Boating & park</li>
+              <li>Banasura Sagar Dam: Largest earthen dam</li>
+              <li>Karlad Lake: Adventure activities</li>
             </ul>
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
