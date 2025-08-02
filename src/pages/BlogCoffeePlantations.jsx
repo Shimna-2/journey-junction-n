@@ -1,22 +1,32 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
+// src/pages/BlogCoffeePlantations.jsx
+import React, { useEffect } from "react";
 
 export default function BlogCoffeePlantations() {
+  useEffect(() => {
+    // Set page title
+    document.title = "Coffee Plantations in Wayanad - Aroma of the Hills";
+
+    // Update meta description
+    const metaDescription = document.querySelector("meta[name='description']");
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Explore the lush coffee plantations of Wayanad, Kerala — learn about the cultivation process, history, best seasons to visit, and the unique flavors of Wayanadan coffee."
+      );
+    }
+
+    // Update meta keywords
+    const metaKeywords = document.querySelector("meta[name='keywords']");
+    if (metaKeywords) {
+      metaKeywords.setAttribute(
+        "content",
+        "Wayanad coffee plantations, Kerala coffee farms, coffee tourism India, Arabica coffee Wayanad, Robusta coffee Wayanad, coffee estate tours, Kerala plantation tourism"
+      );
+    }
+  }, []);
+
   return (
     <div className="bg-white pt-32 pb-20 px-4 sm:px-6 lg:px-20">
-      {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Coffee Plantations in Wayanad - Aroma of the Hills</title>
-        <meta
-          name="description"
-          content="Explore the lush coffee plantations of Wayanad, Kerala — learn about the cultivation process, history, best seasons to visit, and the unique flavors of Wayanadan coffee."
-        />
-        <meta
-          name="keywords"
-          content="Wayanad coffee plantations, Kerala coffee farms, coffee tourism India, Arabica coffee Wayanad, Robusta coffee Wayanad, coffee estate tours, Kerala plantation tourism"
-        />
-      </Helmet>
-
       {/* Main Blog Content */}
       <article className="max-w-6xl mx-auto">
         {/* Blog Header */}
