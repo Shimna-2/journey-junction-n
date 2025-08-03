@@ -1,4 +1,3 @@
-// src/components/WeatherPreview.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -30,20 +29,26 @@ const WeatherPreview = () => {
   if (error) return <div className="text-red-500">{error}</div>;
   if (!weather) return <div className="text-white">Loading...</div>;
 
-  const icon = weather.weather[0].icon;
-  const temp = Math.round(weather.main.temp);
+  const temp = Math.round(weather.main.temp) - 2; // reduce by 2°C
+  const condition = weather.weather[0].main.toLowerCase();
+
+  // Choose a standard icon based on condition
+  let iconUrl;
+  if (condition.includes("rain")) {
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163624.png"; // rain icon
+  } else if (condition.includes("cloud")) {
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163628.png"; // cloudy icon
+  } else {
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163661.png"; // sunny icon
+  }
 
   return (
     <Link
       to="/weather"
-      className="flex flex-col items-center cursor-pointer text-white hover:scale-105 transition-transform"
+      className="flex items-center gap-2 cursor-pointer text-black hover:scale-105 transition-transform"
     >
-      <p className="text-xl font-semibold mb-1">{temp}°C in Wayanad</p>
-      <img
-        src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt="weather icon"
-        className="w-20 h-20"
-      />
+      <p className="text-lg font-semibold">{temp}°C</p>
+      <img src={iconUrl} alt="weather icon" className="w-6 h-6" />
     </Link>
   );
 };

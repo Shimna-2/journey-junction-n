@@ -3,8 +3,8 @@ import React from "react";
 import Footer from "../components/Footer";
 
 import thirunelli from "../assets/images/thirunelli.jpg";
-import thirunelli1 from "../assets/images/thiruneli1.jpeg";
-import thiruneli2 from "../assets/images/thiruneli2.jpeg";
+import thirunelli1 from "../assets/images/thirunelli-temple-wayanad-tourism-entry-fee-timings-holidays-reviews-header.jpg";
+import thiruneli2 from "../assets/images/thirunelli4.jpg";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";

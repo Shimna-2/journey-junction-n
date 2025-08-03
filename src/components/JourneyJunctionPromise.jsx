@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import bgImage from "../assets/images/sunset.jpg";
+import bgImage from "../assets/images/road-beside-tree-golden-hour.jpg";
 
 const promises = [
   "Luxury resorts with valley views",
@@ -48,7 +48,7 @@ const JourneyJunctionPromise = () => {
           minHeight: "50vh",
         }}
       >
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/20" />
         <div
           className="relative z-10 text-center md:text-left"
           data-aos="fade-up"

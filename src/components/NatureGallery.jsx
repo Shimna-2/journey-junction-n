@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import morskieOko from "../assets/images/view-foggy-mountain-landscape.jpg";
+import morskieOko from "../assets/images/beautiful-tree-middle-field-covered-with-grass-with-tree-line-background.jpg";
 
 export default function NatureGalleryStyle3() {
   const [isDesktop, setIsDesktop] = useState(true);

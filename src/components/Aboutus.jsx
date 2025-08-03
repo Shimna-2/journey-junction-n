@@ -4,50 +4,12 @@ import "aos/dist/aos.css";
 import { FaCheckCircle } from "react-icons/fa";
 
 // Import images for sliders
-import stay1 from "../assets/images/stay1.jpg";
-import stay2 from "../assets/images/stay2.jpg";
-import stay3 from "../assets/images/stay3.jpg";
-import slider1 from "../assets/images/slider1.jpg";
-import slider2 from "../assets/images/slider2.jpg";
-import slider3 from "../assets/images/slider3.jpg";
 
 import ContactUs from "./ContactUs";
 
 // Updated ImageSlider inline (to ensure images work)
-const ImageSlider = () => {
-  const images = [stay1, stay2, stay3];
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {images.map((img, i) => (
-        <img
-          key={i}
-          src={img}
-          alt={`Stay ${i + 1}`}
-          className="rounded-lg shadow-md object-cover w-full h-64"
-        />
-      ))}
-    </div>
-  );
-};
 
 // Updated AutoSliderSection inline (with imports)
-const AutoSliderSection = () => {
-  const slides = [slider1, slider2, slider3];
-  return (
-    <section className="my-10">
-      <div className="overflow-hidden relative w-full rounded-xl shadow-lg">
-        {slides.map((slide, i) => (
-          <img
-            key={i}
-            src={slide}
-            alt={`Slide ${i + 1}`}
-            className="w-full h-96 object-cover"
-          />
-        ))}
-      </div>
-    </section>
-  );
-};
 
 const AboutUs = () => {
   useEffect(() => {

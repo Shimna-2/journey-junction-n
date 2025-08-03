@@ -1,4 +1,3 @@
-// src/components/WeatherCard.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -68,7 +67,7 @@ const WeatherCard = () => {
       <div className="text-white text-center mt-10">Loading weather...</div>
     );
 
-  const { main, weather, wind, sys, name } = currentWeather;
+  const { main, weather, wind, sys } = currentWeather;
   const weatherMain = weather[0].main.toLowerCase();
   const icon =
     weatherMain.includes("rain") || weatherMain.includes("drizzle")
@@ -94,13 +93,15 @@ const WeatherCard = () => {
               alt="weather-icon"
               className="w-24 h-24"
             />
-            <h2 className="text-5xl font-bold">{Math.round(main.temp)}°C</h2>
+            <h2 className="text-5xl font-bold">
+              {Math.round(main.temp) - 2}°C
+            </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-gray-100 w-full md:w-auto">
             <div className="bg-white/10 p-4 rounded-xl text-center">
               <p className="font-semibold">Feels Like</p>
-              <p>{Math.round(main.feels_like)}°C</p>
+              <p>{Math.round(main.feels_like) - 2}°C</p>
             </div>
             <div className="bg-white/10 p-4 rounded-xl text-center">
               <p className="font-semibold">Humidity</p>
@@ -110,10 +111,6 @@ const WeatherCard = () => {
               <p className="font-semibold">Wind</p>
               <p>{wind.speed} m/s</p>
             </div>
-            {/* <div className="bg-white/10 p-4 rounded-xl text-center col-span-2 sm:col-span-1">
-              <p className="font-semibold">Location</p>
-              <p>{name}</p>
-            </div> */}
             <div className="bg-white/10 p-4 rounded-xl text-center">
               <p className="font-semibold">Sunrise</p>
               <p>{formatTime(sys.sunrise)}</p>
@@ -143,7 +140,7 @@ const WeatherCard = () => {
                   className="w-10 h-10 mx-auto"
                 />
                 <p className="mt-1 font-medium text-sm">
-                  {Math.round(item.main.temp)}°C
+                  {Math.round(item.main.temp) - 2}°C
                 </p>
               </div>
             ))}
@@ -167,7 +164,9 @@ const WeatherCard = () => {
                   alt="icon"
                   className="w-10 h-10 my-1"
                 />
-                <p className="font-medium">{Math.round(item.main.temp)}°C</p>
+                <p className="font-medium">
+                  {Math.round(item.main.temp) - 2}°C
+                </p>
                 <p className="text-xs text-gray-300">{item.weather[0].main}</p>
               </div>
             ))}

@@ -42,7 +42,7 @@ const TopDestinationsSlider = () => {
   return (
     <section
       aria-labelledby="top-destinations-heading"
-      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-gray-50 to-white text-gray-800"
+      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-[whitesmoke] text-gray-800"
     >
       {/* Heading */}
       <h2
@@ -62,7 +62,7 @@ const TopDestinationsSlider = () => {
         {destinations.map((place, index) => (
           <article
             key={index}
-            className="destination-card relative bg-white shadow-lg overflow-hidden transition-transform duration-500 hover:scale-[1.03] group rounded-lg"
+            className="destination-card relative bg-white/90 backdrop-blur-sm shadow-lg overflow-hidden transition-transform duration-500 hover:scale-[1.03] group rounded-lg border border-gray-200"
             data-aos="fade-up"
             data-aos-delay={index * 150}
           >
@@ -88,20 +88,6 @@ const TopDestinationsSlider = () => {
             </div>
           </article>
         ))}
-      </div>
-
-      {/* Explore More Button */}
-      <div
-        className="flex justify-center mt-10 sm:mt-12"
-        data-aos="fade-up"
-        data-aos-delay="900"
-      >
-        <button
-          onClick={() => navigate("/wayanad")}
-          className="bg-gray-700 hover:bg-gray-800 transition-all text-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-lg font-semibold rounded-full shadow-md hover:scale-105"
-        >
-          Explore More
-        </button>
       </div>
 
       {/* Custom Styles */}

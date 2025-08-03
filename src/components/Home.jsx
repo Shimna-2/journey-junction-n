@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import bgImage from "../assets/images/cloud-forest-landscape.jpg";
 
 // Lazy-load heavy components for performance
@@ -31,7 +32,7 @@ const Home = () => {
         }}
       >
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40 z-0" />
+        <div className="absolute inset-0 z-0" />
 
         {/* Content */}
         <div
@@ -60,6 +61,27 @@ const Home = () => {
         <ContactUs />
         <Footer />
       </Suspense>
+
+      {/* Sticky WhatsApp & Call Buttons */}
+      {/* Sticky WhatsApp & Call Buttons */}
+      <div className="fixed bottom-5 left-5 flex flex-col gap-3 z-50">
+        {/* WhatsApp */}
+        <a
+          href="https://wa.me/917904281891"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-300 hover:bg-green-400 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+        >
+          <FaWhatsapp size={24} />
+        </a>
+        {/* Call */}
+        <a
+          href="tel:+917904281891"
+          className="bg-blue-300 hover:bg-blue-400 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+        >
+          <FaPhoneAlt size={24} />
+        </a>
+      </div>
     </>
   );
 };

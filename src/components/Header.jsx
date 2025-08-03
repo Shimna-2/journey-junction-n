@@ -7,7 +7,7 @@ import {
   FaChevronUp,
   FaArrowLeft,
 } from "react-icons/fa";
-import logo from "../assets/images/logojj.jpeg"; // ✅ Imported image for Vercel
+import logo from "../assets/images/logojj.jpeg";
 import WeatherPreview from "./WeatherPreview";
 
 export default function Header() {
@@ -31,47 +31,46 @@ export default function Header() {
     }));
   };
 
-  const navItemClass = isHome ? "text-white" : "text-black";
-  const navLinkHover = isHome
-    ? "hover:underline text-white"
-    : "hover:underline text-black";
+  // ✅ Circle hover effect behind black text
+  const navItemClass =
+    "relative px-4 py-2 overflow-hidden rounded-full transition-colors duration-300 " +
+    "before:absolute before:inset-0 before:rounded-full before:scale-0 before:opacity-0 " +
+    "before:bg-[#f5e6d3] before:transition-all before:duration-300 before:z-0 " +
+    "hover:before:scale-100 hover:before:opacity-100 text-black hover:text-black";
 
   return (
     <header
-      className={`fixed w-full z-50 ${
-        isHome || isWayanad ? "bg-transparent" : "bg-white shadow"
+      className={`w-full z-50 ${
+        isHome
+          ? "absolute top-0 left-0 bg-transparent"
+          : "relative bg-white shadow"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Left Section: Back Arrow + Logo */}
+        {/* Left Section */}
         <div className="flex items-center gap-3">
           {isWayanad && (
             <button
               onClick={() => navigate(-1)}
-              className="md:hidden text-2xl"
+              className={`md:hidden text-2xl text-black`}
               aria-label="Go back"
             >
               <FaArrowLeft />
             </button>
           )}
-
           <img
-            src={logo} // ✅ Imported image path ensures Vercel loads it
+            src={logo}
             alt="Journey Junction Logo"
             className="h-16 w-16 object-cover rounded-full"
           />
-
-          {/* Weather only on Desktop */}
-          <div className="hidden md:block">
-            <WeatherPreview />
-          </div>
         </div>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden">
+        {/* Mobile: WeatherPreview + Hamburger */}
+        <div className="md:hidden flex items-center gap-3">
+          <WeatherPreview />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`text-2xl ${navItemClass}`}
+            className={`text-2xl text-black`}
             aria-label="Toggle menu"
           >
             <FaBars />
@@ -80,8 +79,8 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-10 font-semibold items-center">
-          <Link to="/home" className={navLinkHover}>
-            HOME
+          <Link to="/home" className={navItemClass}>
+            <span className="relative z-10">HOME</span>
           </Link>
 
           {/* Destinations */}
@@ -90,8 +89,9 @@ export default function Header() {
             onMouseEnter={() => setDesktopDropdown("destinations")}
             onMouseLeave={() => setDesktopDropdown(null)}
           >
-            <button className={`flex items-center gap-1 ${navLinkHover}`}>
-              DESTINATIONS <FaChevronDown size={12} />
+            <button className={`flex items-center gap-1 ${navItemClass}`}>
+              <span className="relative z-10">DESTINATIONS</span>{" "}
+              <FaChevronDown size={12} className="z-10" />
             </button>
             {desktopDropdown === "destinations" && (
               <div className="absolute top-full left-0 bg-white text-black shadow-md rounded mt-1 z-50 w-40">
@@ -112,8 +112,9 @@ export default function Header() {
             onMouseLeave={() => setDesktopDropdown(null)}
           >
             <Link to="/resorts">
-              <button className={`flex items-center gap-1 ${navLinkHover}`}>
-                RESORTS <FaChevronDown size={12} />
+              <button className={`flex items-center gap-1 ${navItemClass}`}>
+                <span className="relative z-10">RESORTS</span>{" "}
+                <FaChevronDown size={12} className="z-10" />
               </button>
             </Link>
             {desktopDropdown === "resorts" && (
@@ -137,34 +138,42 @@ export default function Header() {
             )}
           </div>
 
-          <Link to="/blog" className={navLinkHover}>
-            BLOG
+          <Link to="/blog" className={navItemClass}>
+            <span className="relative z-10">BLOG</span>
           </Link>
-          <Link to="/aboutus" className={navLinkHover}>
-            ABOUT US
+          <Link to="/aboutus" className={navItemClass}>
+            <span className="relative z-10">ABOUT US</span>
           </Link>
-          <Link to="/booknow" className={`px-4 ${navLinkHover}`}>
-            BOOK NOW
-          </Link>
+
+          {/* Desktop: Book Now + Weather */}
+          <div className="flex items-center gap-4">
+            <Link to="/booknow" className={navItemClass}>
+              <span className="relative z-10">BOOK NOW</span>
+            </Link>
+            <WeatherPreview />
+          </div>
         </nav>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pb-4 space-y-2 font-semibold">
-          <Link
-            to="/home"
-            onClick={() => setMenuOpen(false)}
-            className="block px-4 py-2"
-          >
-            HOME
-          </Link>
+          {["HOME", "BLOG", "ABOUT US", "BOOK NOW"].map((item, i) => (
+            <Link
+              key={i}
+              to={`/${item.toLowerCase().replace(" ", "")}`}
+              onClick={() => setMenuOpen(false)}
+              className="relative px-4 py-2 rounded-full before:absolute before:inset-0 before:rounded-full before:scale-0 before:opacity-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:scale-100 hover:before:opacity-100 z-10 hover:text-white"
+            >
+              <span className="relative z-10">{item}</span>
+            </Link>
+          ))}
 
           {/* Destinations Mobile */}
           <div>
             <button
               onClick={() => toggleDropdown("destinations")}
-              className="w-full flex justify-between items-center px-4 py-2"
+              className="w-full flex justify-between items-center px-4 py-2 hover:bg-gray-700 rounded-full"
             >
               <span>DESTINATIONS</span>
               {dropdownOpen.destinations ? <FaChevronUp /> : <FaChevronDown />}
@@ -173,7 +182,7 @@ export default function Header() {
               <div className="ml-4 mt-1">
                 <Link
                   to="/wayanad"
-                  className="block px-4 py-2"
+                  className="block px-4 py-2 hover:bg-gray-700 rounded-full"
                   onClick={() => setMenuOpen(false)}
                 >
                   Wayanad
@@ -184,7 +193,7 @@ export default function Header() {
 
           {/* Resorts Mobile */}
           <div>
-            <div className="flex justify-between items-center px-4 py-2">
+            <div className="flex justify-between items-center px-4 py-2 hover:bg-gray-700 rounded-full">
               <Link to="/resorts" onClick={() => setMenuOpen(false)}>
                 RESORTS
               </Link>
@@ -206,7 +215,7 @@ export default function Header() {
                   <Link
                     key={index}
                     to={item.path}
-                    className="block px-4 py-2"
+                    className="block px-4 py-2 hover:bg-gray-700 rounded-full"
                     onClick={() => setMenuOpen(false)}
                   >
                     {item.name}
@@ -215,28 +224,6 @@ export default function Header() {
               </div>
             )}
           </div>
-
-          <Link
-            to="/blog"
-            onClick={() => setMenuOpen(false)}
-            className="block px-4 py-2"
-          >
-            BLOG
-          </Link>
-          <Link
-            to="/aboutus"
-            onClick={() => setMenuOpen(false)}
-            className="block px-4 py-2"
-          >
-            ABOUT US
-          </Link>
-          <Link
-            to="/booknow"
-            onClick={() => setMenuOpen(false)}
-            className="block px-4 py-2 hover:underline"
-          >
-            BOOK NOW
-          </Link>
         </div>
       )}
     </header>
