@@ -1,13 +1,7 @@
 // src/components/Header.jsx
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  FaBars,
-  FaChevronDown,
-  FaChevronUp,
-  FaArrowLeft,
-} from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
+import { FaBars, FaChevronDown, FaArrowLeft } from "react-icons/fa";
 import logo from "../assets/images/logojj.jpeg";
 import WeatherPreview from "./WeatherPreview";
 
@@ -73,7 +67,7 @@ export default function Header() {
           {isHome && <WeatherPreview />}
           <button
             onClick={() => setMenuOpen(true)}
-            className="text-2xl text-black"
+            className="text-xl text-black" // thinner hamburger
             aria-label="Open menu"
           >
             <FaBars />
@@ -201,12 +195,23 @@ export default function Header() {
             </Link>
 
             {/* Destinations */}
-            <button
-              onClick={() => toggleDropdown("destinations")}
-              className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition"
-            >
-              DESTINATIONS {dropdownOpen.destinations ? "▲" : "▼"}
-            </button>
+            <div className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition">
+              <span
+                onClick={() => {
+                  setMenuOpen(false);
+                  navigate("/wayanad");
+                }}
+                className="cursor-pointer"
+              >
+                DESTINATIONS
+              </span>
+              <span
+                onClick={() => toggleDropdown("destinations")}
+                className="cursor-pointer"
+              >
+                {dropdownOpen.destinations ? "▲" : "▼"}
+              </span>
+            </div>
             {dropdownOpen.destinations && (
               <div className="ml-4 space-y-2">
                 <Link
@@ -220,15 +225,23 @@ export default function Header() {
             )}
 
             {/* Resorts */}
-            <button
-              onClick={() => {
-                setMenuOpen(false); // close menu
-                navigate("/resorts"); // go to resorts page
-              }}
-              className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition"
-            >
-              RESORTS {dropdownOpen.resorts ? "▲" : "▼"}
-            </button>
+            <div className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition">
+              <span
+                onClick={() => {
+                  setMenuOpen(false);
+                  navigate("/resorts");
+                }}
+                className="cursor-pointer"
+              >
+                RESORTS
+              </span>
+              <span
+                onClick={() => toggleDropdown("resorts")}
+                className="cursor-pointer"
+              >
+                {dropdownOpen.resorts ? "▲" : "▼"}
+              </span>
+            </div>
             {dropdownOpen.resorts && (
               <div className="ml-4 space-y-2">
                 {[
