@@ -70,7 +70,7 @@ export default function Header() {
 
         {/* Mobile: Weather + Hamburger */}
         <div className="md:hidden flex items-center gap-3">
-          <WeatherPreview />
+          {isHome && <WeatherPreview />}
           <button
             onClick={() => setMenuOpen(true)}
             className="text-2xl text-black"
@@ -145,12 +145,11 @@ export default function Header() {
             <Link to="/booknow" className={navItemClass}>
               <span className="relative z-10">BOOK NOW</span>
             </Link>
-            <WeatherPreview />
+            {isHome && <WeatherPreview />}
           </div>
         </nav>
       </div>
 
-      {/* Mobile Side Menu */}
       {/* Mobile Side Menu */}
       {menuOpen && (
         <div
@@ -222,7 +221,10 @@ export default function Header() {
 
             {/* Resorts */}
             <button
-              onClick={() => toggleDropdown("resorts")}
+              onClick={() => {
+                setMenuOpen(false); // close menu
+                navigate("/resorts"); // go to resorts page
+              }}
               className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition"
             >
               RESORTS {dropdownOpen.resorts ? "▲" : "▼"}

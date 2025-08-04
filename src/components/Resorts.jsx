@@ -193,7 +193,7 @@ export default function Resorts() {
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
           <div data-aos="fade-down">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-              Resorts
+              A Glimpse of Our Finest Resorts
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto drop-shadow mb-6">
               Discover the best handpicked resorts in Wayanad—choose from

@@ -17,9 +17,9 @@ const Home = () => {
     try {
       AOS.init({
         duration: 1200,
-        easing: "ease-in-out", // Smooth easing
-        once: true, // Only animate once
-        offset: 100, // Start animation a bit earlier
+        easing: "ease-in-out",
+        once: true,
+        offset: 100,
       });
     } catch (error) {
       console.error("AOS initialization failed:", error);
@@ -55,7 +55,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sections with alternating smooth flow */}
+      {/* Sections */}
       <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
         <div data-aos="fade-right" data-aos-delay="200">
           <JourneyJunctionPromise />
@@ -69,6 +69,8 @@ const Home = () => {
         <div data-aos="fade-left" data-aos-delay="300">
           <TopResorts />
         </div>
+
+        {/* Keep your original good animations */}
         <div data-aos="fade-right" data-aos-delay="200">
           <ContactFormOnly />
         </div>

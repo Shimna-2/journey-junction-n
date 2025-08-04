@@ -126,7 +126,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                +91 97441 61939
+                +91 9633763916
               </a>
             </li>
             <li className="flex items-center space-x-2">

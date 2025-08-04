@@ -29,25 +29,26 @@ const WeatherPreview = () => {
   if (error) return <div className="text-red-500">{error}</div>;
   if (!weather) return <div className="text-white">Loading...</div>;
 
-  const temp = Math.min(Math.round(weather.main.temp) - 2, 21); // Always lower, max 21°C
+  const temp = Math.round(weather.main.temp) - 2; // reduce by 2°C
   const condition = weather.weather[0].main.toLowerCase();
 
+  // Choose a standard icon based on condition
   let iconUrl;
   if (condition.includes("rain")) {
-    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163624.png";
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163624.png"; // rain icon
   } else if (condition.includes("cloud")) {
-    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163628.png";
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163628.png"; // cloudy icon
   } else {
-    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163661.png";
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163661.png"; // sunny icon
   }
 
   return (
     <Link
       to="/weather"
-      className="flex items-center gap-2 cursor-pointer text-black hover:scale-105 transition-transform"
+      className="flex items-center gap-2 cursor-pointer text-black-900 hover:scale-105 transition-transform"
     >
-      <p className="text-lg font-semibold">{temp}°C</p>
-      <img src={iconUrl} alt="weather icon" className="w-6 h-6" />
+      <p className="text-xs font-semibold">{temp}°C</p>
+      <img src={iconUrl} alt="weather icon" className="w-5 h-5" />
     </Link>
   );
 };
