@@ -4,18 +4,23 @@ import "aos/dist/aos.css";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import bgImage from "../assets/images/cloud-forest-landscape.jpg";
 
-// Lazy-load heavy components for performance
+// Lazy-load heavy components
 const JourneyJunctionPromise = lazy(() => import("./JourneyJunctionPromise"));
 const TopDestinationsSlider = lazy(() => import("./TopDestinationsSlider"));
 const NatureGallery = lazy(() => import("./NatureGallery"));
 const TopResorts = lazy(() => import("./TopResorts"));
-const ContactUs = lazy(() => import("./ContactUs"));
+const ContactFormOnly = lazy(() => import("./ContactFormOnly"));
 const Footer = lazy(() => import("./Footer"));
 
 const Home = () => {
   useEffect(() => {
     try {
-      AOS.init({ duration: 1200, once: true });
+      AOS.init({
+        duration: 1200,
+        easing: "ease-in-out", // Smooth easing
+        once: true, // Only animate once
+        offset: 100, // Start animation a bit earlier
+      });
     } catch (error) {
       console.error("AOS initialization failed:", error);
     }
@@ -31,13 +36,11 @@ const Home = () => {
           backgroundColor: "#333",
         }}
       >
-        {/* Dark overlay */}
         <div className="absolute inset-0 z-0" />
-
-        {/* Content */}
         <div
           className="relative z-10 text-center text-white"
-          data-aos="fade-up"
+          data-aos="fade-down"
+          data-aos-delay="100"
         >
           <h1
             className="text-[36px] sm:text-[60px] md:text-[100px] lg:text-[120px] font-extrabold uppercase tracking-widest text-white/30 leading-none drop-shadow-xl break-words"
@@ -52,31 +55,40 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Lazy-loaded sections */}
+      {/* Sections with alternating smooth flow */}
       <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
-        <JourneyJunctionPromise />
-        <TopDestinationsSlider />
-        <NatureGallery />
-        <TopResorts />
-        <ContactUs />
-        <Footer />
+        <div data-aos="fade-right" data-aos-delay="200">
+          <JourneyJunctionPromise />
+        </div>
+        <div data-aos="fade-left" data-aos-delay="300">
+          <TopDestinationsSlider />
+        </div>
+        <div data-aos="fade-right" data-aos-delay="200">
+          <NatureGallery />
+        </div>
+        <div data-aos="fade-left" data-aos-delay="300">
+          <TopResorts />
+        </div>
+        <div data-aos="fade-right" data-aos-delay="200">
+          <ContactFormOnly />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <Footer />
+        </div>
       </Suspense>
 
-      {/* Sticky WhatsApp & Call Buttons */}
-      {/* Sticky WhatsApp & Call Buttons */}
+      {/* Sticky WhatsApp & Call */}
       <div className="fixed bottom-5 left-5 flex flex-col gap-3 z-50">
-        {/* WhatsApp */}
         <a
-          href="https://wa.me/917904281891"
+          href="https://wa.me/919633763916"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-300 hover:bg-green-400 text-white p-3 rounded-full shadow-lg transition-all duration-300"
         >
           <FaWhatsapp size={24} />
         </a>
-        {/* Call */}
         <a
-          href="tel:+917904281891"
+          href="tel:+919633763916"
           className="bg-blue-300 hover:bg-blue-400 text-white p-3 rounded-full shadow-lg transition-all duration-300"
         >
           <FaPhoneAlt size={24} />

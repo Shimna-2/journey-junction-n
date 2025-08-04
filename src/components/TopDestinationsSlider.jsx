@@ -10,7 +10,6 @@ import enooru from "../assets/images/enooru.jpeg";
 import edakkal from "../assets/images/edakkal caves.jpeg";
 import chembrapeak from "../assets/images/chembrapeak.jpeg";
 
-// Placeholder for missing images
 const placeholderImg =
   "https://via.placeholder.com/600x400?text=Image+Unavailable";
 
@@ -78,7 +77,6 @@ const TopDestinationsSlider = () => {
                 }
               }}
             />
-
             {/* Destination Name */}
             <div
               className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-base sm:text-lg font-semibold tracking-wide text-center px-2 place-name"
@@ -88,6 +86,16 @@ const TopDestinationsSlider = () => {
             </div>
           </article>
         ))}
+      </div>
+
+      {/* Explore More Button */}
+      <div className="text-center mt-10">
+        <button
+          onClick={() => navigate("/wayanad")}
+          className="bg-black text-white px-6 py-2 rounded-lg shadow-md hover:bg-gray-800 transition"
+        >
+          Explore More
+        </button>
       </div>
 
       {/* Custom Styles */}

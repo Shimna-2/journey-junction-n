@@ -196,12 +196,12 @@ export default function Wayanad() {
           🏞 Places to Visit in Wayanad
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm">
-          {/* Style 1 */}
+          {/* Kalpetta Region */}
           <div
-            className="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
-            data-aos="fade-right"
+            className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
+            data-aos="zoom-in"
           >
-            <h3 style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700 }}>
               📍 Kalpetta Region
             </h3>
             <ul className="list-disc list-inside space-y-2">
@@ -213,11 +213,12 @@ export default function Wayanad() {
             </ul>
           </div>
 
+          {/* Sulthan Bathery Region */}
           <div
-            className="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
-            data-aos="fade-left"
+            className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
+            data-aos="zoom-in"
           >
-            <h3 style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700 }}>
               📍 Sulthan Bathery Region
             </h3>
             <ul className="list-disc list-inside space-y-2">
@@ -229,7 +230,7 @@ export default function Wayanad() {
             </ul>
           </div>
 
-          {/* Style 2 */}
+          {/* Mananthavady Region */}
           <div
             className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
             data-aos="zoom-in"
@@ -246,6 +247,7 @@ export default function Wayanad() {
             </ul>
           </div>
 
+          {/* Vythiri Region */}
           <div
             className="bg-gradient-to-br from-gray-100 to-gray-200 p-5 rounded-xl shadow-lg border-l-4 border-gray-500 hover:scale-[1.01] transition"
             data-aos="zoom-in-up"

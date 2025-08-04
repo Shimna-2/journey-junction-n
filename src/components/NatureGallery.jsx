@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // ✅ Import navigation
 import morskieOko from "../assets/images/beautiful-tree-middle-field-covered-with-grass-with-tree-line-background.jpg";
 
 export default function NatureGalleryStyle3() {
   const [isDesktop, setIsDesktop] = useState(true);
+  const navigate = useNavigate(); // ✅ Initialize navigate
 
   // Detect screen size to toggle backgroundAttachment for mobile performance
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function NatureGalleryStyle3() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: isDesktop ? "fixed" : "scroll",
-        backgroundColor: "#333", // Fallback if image fails
+        backgroundColor: "#333",
       }}
     >
       {/* Dark overlay */}
@@ -72,8 +74,9 @@ export default function NatureGalleryStyle3() {
           meets comfort
         </motion.h4>
 
-        {/* Button */}
+        {/* Book Now Button */}
         <motion.button
+          onClick={() => navigate("/booknow")} // ✅ Navigation added
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}

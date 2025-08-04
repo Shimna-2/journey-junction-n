@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer.jsx";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // Import images so they work in production
 import tribalCultureImg from "../assets/images/WhatsApp Image 2025-07-10 at 15.14.37 (1).jpeg";
@@ -56,48 +58,69 @@ const blogs = [
 ];
 
 const Blog = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-in-out",
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   return (
-    <section className="bg-white pt-32 pb-20 px-4 sm:px-6 lg:px-20">
-      <div className="max-w-7xl mx-auto mb-12 text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-          Explore Wayanad: Culture, Climate, Cuisine & More
-        </h1>
-        <p className="text-gray-600 text-base sm:text-lg">
-          Your guide to the most captivating aspects of Wayanad — its indigenous
-          culture, scenic beauty, adventurous spirit, and flavorful food.
-        </p>
-      </div>
+    <>
+      <section className="bg-white pt-32 pb-20 px-4 sm:px-6 lg:px-20">
+        {/* Heading */}
+        <div className="max-w-7xl mx-auto mb-12 text-center" data-aos="fade-up">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+            Explore Wayanad: Culture, Climate, Cuisine & More
+          </h1>
+          <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
+            Your guide to the most captivating aspects of Wayanad — its
+            indigenous culture, scenic beauty, adventurous spirit, and flavorful
+            food.
+          </p>
+        </div>
 
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {blogs.map((post, index) => (
-          <article
-            key={index}
-            className="bg-gray-100 shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300"
-          >
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-56 object-cover"
-              loading="lazy"
-            />
-            <div className="p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                {post.title}
-              </h2>
-              <p className="text-gray-700 mb-4">{post.excerpt}</p>
-              <Link
-                to={post.link}
-                className="inline-block bg-gray-700 text-white px-5 py-2 rounded-full text-sm hover:bg-gray-900 transition"
-              >
-                Read More
-              </Link>
-            </div>
-          </article>
-        ))}
-      </div>
+        {/* Blog Cards */}
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+          {blogs.map((post, index) => (
+            <article
+              key={index}
+              className="bg-gray-100 shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300"
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 100}
+            >
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-56 object-cover"
+                loading="lazy"
+              />
+              <div className="p-6">
+                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                  {post.title}
+                </h2>
+                <p className="text-gray-700 mb-4">{post.excerpt}</p>
+                <Link
+                  to={post.link}
+                  className="inline-block bg-gray-700 text-white px-5 py-2 rounded-full text-sm hover:bg-gray-900 transition"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  Read More
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <Footer />
-    </section>
+      {/* Footer */}
+      <div className="mt-20 w-full">
+        <Footer />
+      </div>
+    </>
   );
 };
 

@@ -29,17 +29,16 @@ const WeatherPreview = () => {
   if (error) return <div className="text-red-500">{error}</div>;
   if (!weather) return <div className="text-white">Loading...</div>;
 
-  const temp = Math.round(weather.main.temp) - 2; // reduce by 2°C
+  const temp = Math.min(Math.round(weather.main.temp) - 2, 21); // Always lower, max 21°C
   const condition = weather.weather[0].main.toLowerCase();
 
-  // Choose a standard icon based on condition
   let iconUrl;
   if (condition.includes("rain")) {
-    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163624.png"; // rain icon
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163624.png";
   } else if (condition.includes("cloud")) {
-    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163628.png"; // cloudy icon
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163628.png";
   } else {
-    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163661.png"; // sunny icon
+    iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163661.png";
   }
 
   return (

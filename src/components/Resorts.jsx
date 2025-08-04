@@ -1,5 +1,6 @@
+// src/components/Resorts.jsx
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -56,135 +57,33 @@ import heroImage from "../assets/images/large-pool-with-hammocks.jpg";
 
 // ---------------- Resort Data ----------------
 const luxuryResorts = [
-  {
-    name: "Aramb Resorts",
-    images: [aramb1, aramb2, aramb3],
-    facilities: [
-      "🧖 Spa & Wellness Center",
-      "🌊 Ocean View Rooms",
-      "🍷 Fine Dining",
-      "🛥️ Yacht Access",
-    ],
-  },
-  {
-    name: "Mountain Shadows",
-    images: [msresort1, msresort2, msresort3],
-    facilities: [
-      "👑 Presidential Suites",
-      "🎯 Game Zone",
-      "🏊 Private Pools",
-      "🌇 Rooftop Bar",
-    ],
-  },
-  {
-    name: "Earthetics",
-    images: [vythiri1, vythiri2, vythiri4],
-    facilities: [
-      "🌄 Mountain View Cabins",
-      "🔥 Fire Pit Lounge",
-      "🎶 Acoustic Evenings",
-      "🛌 Cozy Interiors",
-    ],
-  },
+  { name: "Aramb Resorts", images: [aramb1, aramb2, aramb3] },
+  { name: "Mountain Shadows", images: [msresort1, msresort2, msresort3] },
+  { name: "Earthetics", images: [vythiri1, vythiri2, vythiri4] },
 ];
 
 const premiumResorts = [
-  {
-    name: "Lords83",
-    images: [lords83, lords831, lords834],
-    facilities: [
-      "🧖 Full-Service Spa",
-      "🍽️ Gourmet Restaurant",
-      "🏊 Infinity Pool",
-      "🚁 Private Helipad",
-    ],
-  },
-  {
-    name: "MountXanadu",
-    images: [mountx, mountx1, mountx3],
-    facilities: [
-      "👑 Royal Suites",
-      "🍷 Private Wine Cellar",
-      "🛎️ Butler Service",
-      "🌉 Scenic View Balconies",
-    ],
-  },
-  {
-    name: "Vythirimist",
-    images: [vythirimist, vythirimist2, vythirimit1],
-    facilities: [
-      "🪵 Premium Wooden Interiors",
-      "🌅 Sunset Lounge",
-      "🎻 Live Music Evenings",
-      "🛏️ Ultra-Luxury Bedding",
-    ],
-  },
+  { name: "Lords83", images: [lords83, lords831, lords834] },
+  { name: "MountXanadu", images: [mountx, mountx1, mountx3] },
+  { name: "Vythirimist", images: [vythirimist, vythirimist2, vythirimit1] },
 ];
 
 const budgetResorts = [
   {
     name: "Coffee Acres Resort",
     images: [coffeeacres1, coffeeacres1, imageslider3],
-    facilities: [
-      "🌿 Peaceful Environment",
-      "🛏️ Comfortable Rooms",
-      "🚿 Hot Water Facility",
-      "📶 Free Wi-Fi",
-    ],
   },
-  {
-    name: "Seagot Resort",
-    images: [seagot, seogot3, seogot2],
-    facilities: [
-      "⛰️ Hill View Balcony",
-      "🍳 In-House Dining",
-      "🚗 Parking Space",
-      "📺 TV in Every Room",
-    ],
-  },
-  {
-    name: "Safari Hills",
-    images: [safari, safari1, safari2],
-    facilities: [
-      "🧳 Budget Friendly Packages",
-      "🌾 Local Cultural Touch",
-      "🔥 Evening Campfire",
-      "🥘 Homemade Food",
-    ],
-  },
+  { name: "Seagot Resort", images: [seagot, seogot3, seogot2] },
+  { name: "Safari Hills", images: [safari, safari1, safari2] },
 ];
 
 const privatePoolVillas = [
   {
     name: "Peppertrail Resorts",
     images: [peppertrail, peppertrail1, peppertrail3],
-    facilities: [
-      "🏊 Private Infinity Pool",
-      "🌅 Sunset Deck View",
-      "🔥 Firepit + BBQ Grill",
-      "🛏️ 2BHK with Kitchenette",
-    ],
   },
-  {
-    name: "Theyila Resort",
-    images: [theyila, theyila2, theyila3],
-    facilities: [
-      "💦 Jacuzzi with Nature View",
-      "🧘 Yoga & Meditation Room",
-      "🌿 Herbal Garden Access",
-      "🍲 Chef-on-Call",
-    ],
-  },
-  {
-    name: "Lords83",
-    images: [lords83, lords831, lords834],
-    facilities: [
-      "🧖 Full-Service Spa",
-      "🍽️ Gourmet Restaurant",
-      "🏊 Infinity Pool",
-      "🚁 Private Helipad",
-    ],
-  },
+  { name: "Theyila Resort", images: [theyila, theyila2, theyila3] },
+  { name: "Lords83", images: [lords83, lords831, lords834] },
 ];
 
 // ---------------- Resort Section Component ----------------
@@ -196,14 +95,19 @@ const ResortSection = ({ id, title, resorts }) => {
       className="relative bg-gray-50 py-16 px-4 sm:px-6 lg:px-16 scroll-mt-24"
     >
       <div className="max-w-screen-xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">
+        <h2
+          className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12"
+          data-aos="fade-up"
+        >
           {title}
         </h2>
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-x-8 gap-y-12">
           {resorts.map((resort, index) => (
             <div
               key={index}
-              className="bg-white shadow-xl rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border border-gray-200"
+              className="flex flex-col h-full bg-white shadow-xl rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border border-gray-200"
+              data-aos="fade-left"
+              data-aos-delay={index * 150}
             >
               <Swiper
                 modules={[Autoplay, Pagination]}
@@ -222,26 +126,27 @@ const ResortSection = ({ id, title, resorts }) => {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <div className="p-6 flex flex-col justify-between h-full">
-                <div>
-                  <h4 className="text-xl font-semibold text-gray-800 mb-3">
-                    {resort.name}
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700 mb-4">
-                    {resort.facilities.map((facility, i) => (
-                      <li key={i}>{facility}</li>
-                    ))}
-                  </ul>
-                </div>
-                <button
-                  onClick={() => navigate("/booknow")}
-                  className="mt-auto w-full py-2 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition"
-                >
-                  Book Now
-                </button>
+              <div className="p-6">
+                <h4 className="text-xl font-semibold text-gray-800">
+                  {resort.name}
+                </h4>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Book Now Button */}
+        <div
+          className="flex justify-center mt-12"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <button
+            onClick={() => navigate("/booknow")}
+            className="px-6 py-3 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition"
+          >
+            Book Now
+          </button>
         </div>
       </div>
     </section>
@@ -250,9 +155,29 @@ const ResortSection = ({ id, title, resorts }) => {
 
 // ---------------- Main Resorts Component ----------------
 export default function Resorts() {
+  const location = useLocation();
+
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({
+      duration: 1000,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 120,
+    });
   }, []);
+
+  // Scroll to section when coming from another page with hash
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const section = document.getElementById(id);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 200); // slight delay for DOM load
+      }
+    }
+  }, [location.hash]);
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -263,9 +188,7 @@ export default function Resorts() {
       {/* Hero Section */}
       <section
         className="relative w-full h-[80vh] bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
+        style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
           <div data-aos="fade-down">
@@ -276,7 +199,10 @@ export default function Resorts() {
               Discover the best handpicked resorts in Wayanad—choose from
               luxury, premium or budget experiences for your ideal getaway.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div
+              className="flex flex-wrap justify-center gap-4"
+              data-aos="fade-up"
+            >
               <button
                 onClick={() => scrollToSection("luxury-resorts")}
                 className="bg-white/80 hover:bg-white text-gray-800 px-5 py-2 rounded-lg font-semibold transition"
@@ -327,6 +253,7 @@ export default function Resorts() {
         title="Private Pool Villas"
         resorts={privatePoolVillas}
       />
+
       <Footer />
     </>
   );

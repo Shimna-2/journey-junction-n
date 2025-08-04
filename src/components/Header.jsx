@@ -7,6 +7,7 @@ import {
   FaChevronUp,
   FaArrowLeft,
 } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import logo from "../assets/images/logojj.jpeg";
 import WeatherPreview from "./WeatherPreview";
 
@@ -16,7 +17,6 @@ export default function Header() {
     destinations: false,
     resorts: false,
   });
-  const [desktopDropdown, setDesktopDropdown] = useState(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,11 +31,14 @@ export default function Header() {
     }));
   };
 
-  // ✅ Circle hover effect behind black text
+  const goToResortSection = (id) => {
+    navigate(`/resorts#${id}`);
+  };
+
   const navItemClass =
     "relative px-4 py-2 overflow-hidden rounded-full transition-colors duration-300 " +
     "before:absolute before:inset-0 before:rounded-full before:scale-0 before:opacity-0 " +
-    "before:bg-[#f5e6d3] before:transition-all before:duration-300 before:z-0 " +
+    "before:bg-gray-200 before:transition-all before:duration-300 before:z-0 " +
     "hover:before:scale-100 hover:before:opacity-100 text-black hover:text-black";
 
   return (
@@ -52,7 +55,7 @@ export default function Header() {
           {isWayanad && (
             <button
               onClick={() => navigate(-1)}
-              className={`md:hidden text-2xl text-black`}
+              className="md:hidden text-2xl text-black"
               aria-label="Go back"
             >
               <FaArrowLeft />
@@ -65,13 +68,13 @@ export default function Header() {
           />
         </div>
 
-        {/* Mobile: WeatherPreview + Hamburger */}
+        {/* Mobile: Weather + Hamburger */}
         <div className="md:hidden flex items-center gap-3">
           <WeatherPreview />
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className={`text-2xl text-black`}
-            aria-label="Toggle menu"
+            onClick={() => setMenuOpen(true)}
+            className="text-2xl text-black"
+            aria-label="Open menu"
           >
             <FaBars />
           </button>
@@ -84,58 +87,51 @@ export default function Header() {
           </Link>
 
           {/* Destinations */}
-          <div
-            className="relative"
-            onMouseEnter={() => setDesktopDropdown("destinations")}
-            onMouseLeave={() => setDesktopDropdown(null)}
-          >
+          <div className="relative group">
             <button className={`flex items-center gap-1 ${navItemClass}`}>
-              <span className="relative z-10">DESTINATIONS</span>{" "}
+              <span className="relative z-10">DESTINATIONS</span>
               <FaChevronDown size={12} className="z-10" />
             </button>
-            {desktopDropdown === "destinations" && (
-              <div className="absolute top-full left-0 bg-white text-black shadow-md rounded mt-1 z-50 w-40">
-                <Link
-                  to="/wayanad"
-                  className="block px-4 py-2 hover:bg-gray-100"
-                >
-                  Wayanad
-                </Link>
-              </div>
-            )}
+            <div
+              className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-48 
+                opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
+                transition-all duration-200 pointer-events-none"
+            >
+              <Link
+                to="/wayanad"
+                className="block px-4 py-2 hover:bg-gray-200 transition"
+              >
+                Wayanad
+              </Link>
+            </div>
           </div>
 
           {/* Resorts */}
-          <div
-            className="relative"
-            onMouseEnter={() => setDesktopDropdown("resorts")}
-            onMouseLeave={() => setDesktopDropdown(null)}
-          >
-            <Link to="/resorts">
-              <button className={`flex items-center gap-1 ${navItemClass}`}>
-                <span className="relative z-10">RESORTS</span>{" "}
-                <FaChevronDown size={12} className="z-10" />
-              </button>
-            </Link>
-            {desktopDropdown === "resorts" && (
-              <div className="absolute top-full left-0 bg-white text-black shadow-md rounded mt-1 z-50 w-64">
-                {[
-                  { name: "Luxury Resorts", path: "#luxury-resorts" },
-                  { name: "Premium Resorts", path: "#premium-resorts" },
-                  { name: "Budget Friendly Resorts", path: "#budget-resorts" },
-                  { name: "Private Pool Villas", path: "#private-pool" },
-                ].map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.path}
-                    className="block px-4 py-2 hover:bg-gray-100 transition"
-                    onClick={() => setDesktopDropdown(null)}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            )}
+          <div className="relative group">
+            <button className={`flex items-center gap-1 ${navItemClass}`}>
+              <span className="relative z-10">RESORTS</span>
+              <FaChevronDown size={12} className="z-10" />
+            </button>
+            <div
+              className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-64 
+                opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
+                transition-all duration-200 pointer-events-none"
+            >
+              {[
+                { name: "Luxury Resorts", id: "luxury-resorts" },
+                { name: "Premium Resorts", id: "premium-resorts" },
+                { name: "Budget Friendly Resorts", id: "budget-resorts" },
+                { name: "Private Pool Villas", id: "private-pool" },
+              ].map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToResortSection(item.id)}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-200 transition"
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
           </div>
 
           <Link to="/blog" className={navItemClass}>
@@ -145,7 +141,6 @@ export default function Header() {
             <span className="relative z-10">ABOUT US</span>
           </Link>
 
-          {/* Desktop: Book Now + Weather */}
           <div className="flex items-center gap-4">
             <Link to="/booknow" className={navItemClass}>
               <span className="relative z-10">BOOK NOW</span>
@@ -155,71 +150,101 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Side Menu */}
+      {/* Mobile Side Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pb-4 space-y-2 font-semibold">
-          {["HOME", "BLOG", "ABOUT US", "BOOK NOW"].map((item, i) => (
-            <Link
-              key={i}
-              to={`/${item.toLowerCase().replace(" ", "")}`}
+        <div
+          className="fixed inset-0 z-50"
+          style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+          onClick={() => setMenuOpen(false)}
+        >
+          {/* Side Panel */}
+          <div
+            className="fixed top-0 right-0 w-72 h-full bg-black/50 backdrop-blur-lg border-l border-white/10 shadow-xl p-4 flex flex-col space-y-3 text-white"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
               onClick={() => setMenuOpen(false)}
-              className="relative px-4 py-2 rounded-full before:absolute before:inset-0 before:rounded-full before:scale-0 before:opacity-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:scale-100 hover:before:opacity-100 z-10 hover:text-white"
+              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-black rounded-full text-white hover:bg-gray-800 transition"
             >
-              <span className="relative z-10">{item}</span>
-            </Link>
-          ))}
+              ✕
+            </button>
 
-          {/* Destinations Mobile */}
-          <div>
+            {/* Menu Items */}
+            <Link
+              to="/home"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2 rounded-lg hover:bg-white/10 transition"
+            >
+              HOME
+            </Link>
+            <Link
+              to="/aboutus"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2 rounded-lg hover:bg-white/10 transition"
+            >
+              ABOUT US
+            </Link>
+            <Link
+              to="/booknow"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2 rounded-lg hover:bg-white/10 transition"
+            >
+              BOOK NOW
+            </Link>
+            <Link
+              to="/blog"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2 rounded-lg hover:bg-white/10 transition"
+            >
+              BLOG
+            </Link>
+
+            {/* Destinations */}
             <button
               onClick={() => toggleDropdown("destinations")}
-              className="w-full flex justify-between items-center px-4 py-2 hover:bg-gray-700 rounded-full"
+              className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition"
             >
-              <span>DESTINATIONS</span>
-              {dropdownOpen.destinations ? <FaChevronUp /> : <FaChevronDown />}
+              DESTINATIONS {dropdownOpen.destinations ? "▲" : "▼"}
             </button>
             {dropdownOpen.destinations && (
-              <div className="ml-4 mt-1">
+              <div className="ml-4 space-y-2">
                 <Link
                   to="/wayanad"
-                  className="block px-4 py-2 hover:bg-gray-700 rounded-full"
                   onClick={() => setMenuOpen(false)}
+                  className="block px-3 py-2 rounded-lg hover:bg-white/10 transition"
                 >
                   Wayanad
                 </Link>
               </div>
             )}
-          </div>
 
-          {/* Resorts Mobile */}
-          <div>
-            <div className="flex justify-between items-center px-4 py-2 hover:bg-gray-700 rounded-full">
-              <Link to="/resorts" onClick={() => setMenuOpen(false)}>
-                RESORTS
-              </Link>
-              <button onClick={() => toggleDropdown("resorts")}>
-                {dropdownOpen.resorts ? <FaChevronUp /> : <FaChevronDown />}
-              </button>
-            </div>
+            {/* Resorts */}
+            <button
+              onClick={() => toggleDropdown("resorts")}
+              className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-white/10 transition"
+            >
+              RESORTS {dropdownOpen.resorts ? "▲" : "▼"}
+            </button>
             {dropdownOpen.resorts && (
-              <div className="ml-4 mt-1">
+              <div className="ml-4 space-y-2">
                 {[
-                  { name: "Honeymoon Resorts", path: "/honeymoon-resorts" },
-                  { name: "Luxury Resorts", path: "/luxury-resorts" },
-                  { name: "Premium Resorts", path: "/premium-resorts" },
-                  {
-                    name: "Budget Friendly Resorts",
-                    path: "/budget-friendly-resorts",
-                  },
+                  { name: "Luxury Resorts", id: "luxury-resorts" },
+                  { name: "Premium Resorts", id: "premium-resorts" },
+                  { name: "Budget Friendly Resorts", id: "budget-resorts" },
+                  { name: "Private Pool Villas", id: "private-pool" },
                 ].map((item, index) => (
-                  <Link
+                  <button
                     key={index}
-                    to={item.path}
-                    className="block px-4 py-2 hover:bg-gray-700 rounded-full"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      goToResortSection(item.id);
+                    }}
+                    className="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10 transition"
                   >
                     {item.name}
-                  </Link>
+                  </button>
                 ))}
               </div>
             )}

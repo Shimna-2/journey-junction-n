@@ -74,6 +74,8 @@ const WeatherCard = () => {
       ? "10d"
       : weather[0].icon;
 
+  const adjustTemp = (temp) => Math.min(Math.round(temp) - 2, 21); // Always lower, max 21°C
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] flex items-center justify-center px-4 py-10">
       <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-6 w-full max-w-4xl text-white shadow-2xl relative">
@@ -93,15 +95,13 @@ const WeatherCard = () => {
               alt="weather-icon"
               className="w-24 h-24"
             />
-            <h2 className="text-5xl font-bold">
-              {Math.round(main.temp) - 2}°C
-            </h2>
+            <h2 className="text-5xl font-bold">{adjustTemp(main.temp)}°C</h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-gray-100 w-full md:w-auto">
             <div className="bg-white/10 p-4 rounded-xl text-center">
               <p className="font-semibold">Feels Like</p>
-              <p>{Math.round(main.feels_like) - 2}°C</p>
+              <p>{adjustTemp(main.feels_like)}°C</p>
             </div>
             <div className="bg-white/10 p-4 rounded-xl text-center">
               <p className="font-semibold">Humidity</p>
@@ -140,7 +140,7 @@ const WeatherCard = () => {
                   className="w-10 h-10 mx-auto"
                 />
                 <p className="mt-1 font-medium text-sm">
-                  {Math.round(item.main.temp) - 2}°C
+                  {adjustTemp(item.main.temp)}°C
                 </p>
               </div>
             ))}
@@ -164,9 +164,7 @@ const WeatherCard = () => {
                   alt="icon"
                   className="w-10 h-10 my-1"
                 />
-                <p className="font-medium">
-                  {Math.round(item.main.temp) - 2}°C
-                </p>
+                <p className="font-medium">{adjustTemp(item.main.temp)}°C</p>
                 <p className="text-xs text-gray-300">{item.weather[0].main}</p>
               </div>
             ))}

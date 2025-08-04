@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaInstagram,
+  FaFacebookF,
+} from "react-icons/fa";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +18,7 @@ const ContactUs = () => {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setError(""); // Clear error when user types
+    setError("");
   };
 
   const validateForm = () => {
@@ -37,7 +44,7 @@ const ContactUs = () => {
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/917904281891?text=${encodeURIComponent(whatsappMessage)}`,
+      `https://wa.me/919633763916?text=${encodeURIComponent(whatsappMessage)}`,
       "_blank"
     );
 
@@ -47,77 +54,132 @@ const ContactUs = () => {
 
   return (
     <section className="relative py-14 px-4 overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300">
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-10">
           Contact Us
         </h2>
 
-        <div className="bg-white rounded-3xl shadow-xl border border-gray-300 px-6 sm:px-10 py-10">
-          {error && (
-            <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                placeholder="Your Name"
-              />
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-300 px-6 sm:px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left Side - Address & Contact Info */}
+          <div className="space-y-6 text-gray-700">
+            <div className="flex items-start gap-3">
+              <FaMapMarkerAlt className="text-gray-800 mt-1" />
+              <p>
+                <strong>Address:</strong> <br />
+                #V1/458L-21, 1st Floor, Aishwarya Mall <br />
+                Sulthan Bathery, Wayanad-92, KL., IND.
+              </p>
             </div>
 
-            {/* Phone */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                pattern="\d{10}"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                placeholder="Your Phone Number"
-              />
+            <div className="flex items-center gap-3">
+              <FaEnvelope className="text-gray-800" />
+              <p>journeyjunctionwyn@gmail.com</p>
             </div>
 
-            {/* Message */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Your Message
-              </label>
-              <textarea
-                name="message"
-                rows="4"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                placeholder="Tell us how we can help you..."
-              ></textarea>
+            <div className="flex items-center gap-3">
+              <FaPhoneAlt className="text-gray-800" />
+              <p>
+                +91 9744161939 <br /> +91 9633763916 <br />
+              </p>
             </div>
 
-            {/* Submit Button */}
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition duration-300 flex items-center gap-2 justify-center mx-auto"
+            {/* Social Links */}
+            <div className="flex items-center gap-4 pt-2">
+              <a
+                href="https://wa.me/919164XXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full"
               >
-                <FaWhatsapp />
-                Send via WhatsApp
-              </button>
+                <FaWhatsapp size={18} />
+              </a>
+              <a
+                href="https://www.instagram.com/journey_junction___?igsh=ODZieXo1NTlhNjhr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-pink-700 hover:bg-pink-700 text-white p-3 rounded-full"
+              >
+                <FaInstagram size={18} />
+              </a>
+              <a
+                href="https://www.facebook.com/share/1F7BL9EXTb/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full"
+              >
+                <FaFacebookF size={18} />
+              </a>
             </div>
-          </form>
+          </div>
+
+          {/* Right Side - Contact Form */}
+          <div>
+            {error && (
+              <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  placeholder="Your Name"
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  pattern="\d{10}"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  placeholder="Your Phone Number"
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Message
+                </label>
+                <textarea
+                  name="message"
+                  rows="4"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  placeholder="Tell us how we can help you..."
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition duration-300 flex items-center gap-2 justify-center mx-auto"
+                >
+                  <FaWhatsapp />
+                  Send via WhatsApp
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

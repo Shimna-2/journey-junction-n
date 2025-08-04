@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import navigation
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -8,6 +9,8 @@ import coffeeCounty from "../assets/images/IMG_20250708_071350.jpg";
 import coffeeAcres from "../assets/images/IMG-20250701-WA0035.jpg";
 
 const TopResorts = () => {
+  const navigate = useNavigate(); // ✅ Initialize navigate
+
   const resorts = [
     {
       image: msresort1,
@@ -81,7 +84,10 @@ const TopResorts = () => {
 
         {/* Button */}
         <div className="flex justify-center mt-12">
-          <button className="bg-gray-800 text-white px-6 py-3 text-lg font-semibold rounded-full shadow-md hover:bg-gray-900 hover:shadow-xl transition-all duration-300">
+          <button
+            onClick={() => navigate("/resorts")} // ✅ Navigate to Resorts Page
+            className="bg-gray-800 text-white px-6 py-3 text-lg font-semibold rounded-full shadow-md hover:bg-gray-900 hover:shadow-xl transition-all duration-300"
+          >
             Explore More
           </button>
         </div>
