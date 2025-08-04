@@ -73,7 +73,11 @@ const ContactUs = () => {
 
             <div className="flex items-center gap-3">
               <FaEnvelope className="text-gray-800 flex-shrink-0" />
-              <p className="break-words">journeyjunctionwyn@gmail.com</p>
+              <p className="break-words">
+                journeyjunctionwyn
+                <br />
+                @gmail.com
+              </p>
             </div>
 
             <div className="flex items-center gap-3">
