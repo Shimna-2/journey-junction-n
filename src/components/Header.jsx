@@ -67,7 +67,7 @@ export default function Header() {
           {isHome && <WeatherPreview />}
           <button
             onClick={() => setMenuOpen(true)}
-            className="text-xl text-black" // thinner hamburger
+            className="text-xl text-black"
             aria-label="Open menu"
           >
             <FaBars />
@@ -81,15 +81,19 @@ export default function Header() {
           </Link>
 
           {/* Destinations */}
+          {/* Destinations */}
           <div className="relative group">
-            <button className={`flex items-center gap-1 ${navItemClass}`}>
+            <button
+              onClick={() => navigate("/wayanad")}
+              className={`flex items-center gap-1 ${navItemClass}`}
+            >
               <span className="relative z-10">DESTINATIONS</span>
               <FaChevronDown size={12} className="z-10" />
             </button>
             <div
               className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-48 
-                opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
-                transition-all duration-200 pointer-events-none"
+      opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
+      transition-all duration-200 pointer-events-none"
             >
               <Link
                 to="/wayanad"
@@ -102,14 +106,17 @@ export default function Header() {
 
           {/* Resorts */}
           <div className="relative group">
-            <button className={`flex items-center gap-1 ${navItemClass}`}>
+            <button
+              onClick={() => navigate("/resorts")}
+              className={`flex items-center gap-1 ${navItemClass}`}
+            >
               <span className="relative z-10">RESORTS</span>
               <FaChevronDown size={12} className="z-10" />
             </button>
             <div
               className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-64 
-                opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
-                transition-all duration-200 pointer-events-none"
+      opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
+      transition-all duration-200 pointer-events-none"
             >
               {[
                 { name: "Luxury Resorts", id: "luxury-resorts" },
@@ -134,7 +141,6 @@ export default function Header() {
           <Link to="/aboutus" className={navItemClass}>
             <span className="relative z-10">ABOUT US</span>
           </Link>
-
           <div className="flex items-center gap-4">
             <Link to="/booknow" className={navItemClass}>
               <span className="relative z-10">BOOK NOW</span>
@@ -151,12 +157,10 @@ export default function Header() {
           style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
           onClick={() => setMenuOpen(false)}
         >
-          {/* Side Panel */}
           <div
             className="fixed top-0 right-0 w-72 h-full bg-black/50 backdrop-blur-lg border-l border-white/10 shadow-xl p-4 flex flex-col space-y-3 text-white"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={() => setMenuOpen(false)}
               className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-black rounded-full text-white hover:bg-gray-800 transition"
@@ -164,7 +168,6 @@ export default function Header() {
               ✕
             </button>
 
-            {/* Menu Items */}
             <Link
               to="/home"
               onClick={() => setMenuOpen(false)}

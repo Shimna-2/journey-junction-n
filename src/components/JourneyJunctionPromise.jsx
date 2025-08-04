@@ -11,7 +11,7 @@ const promises = [
   "Camping beneath starry skies",
   "Instant WhatsApp bookings",
   "24/7 guest support",
-  "Local spice garden tours",
+  "Daily room cleaning service",
 ];
 
 const JourneyJunctionPromise = () => {

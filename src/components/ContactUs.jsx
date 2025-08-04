@@ -44,7 +44,7 @@ const ContactUs = () => {
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/919633763916?text=${encodeURIComponent(whatsappMessage)}`,
+      `https://wa.me/919744161939?text=${encodeURIComponent(whatsappMessage)}`, // ✅ Updated link from footer
       "_blank"
     );
 
@@ -53,17 +53,17 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="relative py-14 px-4 overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300">
+    <section className="relative py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-200 to-gray-300">
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 sm:mb-10">
           Contact Us
         </h2>
 
-        <div className="bg-white rounded-3xl shadow-xl border border-gray-300 px-6 sm:px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Side - Address & Contact Info */}
-          <div className="space-y-6 text-gray-700">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-300 p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {/* Left Side - Contact Info */}
+          <div className="space-y-5 text-gray-700 text-sm sm:text-base">
             <div className="flex items-start gap-3">
-              <FaMapMarkerAlt className="text-gray-800 mt-1" />
+              <FaMapMarkerAlt className="text-gray-800 mt-1 flex-shrink-0" />
               <p>
                 <strong>Address:</strong> <br />
                 #V1/458L-21, 1st Floor, Aishwarya Mall <br />
@@ -72,24 +72,24 @@ const ContactUs = () => {
             </div>
 
             <div className="flex items-center gap-3">
-              <FaEnvelope className="text-gray-800" />
-              <p>journeyjunctionwyn@gmail.com</p>
+              <FaEnvelope className="text-gray-800 flex-shrink-0" />
+              <p className="break-words">journeyjunctionwyn@gmail.com</p>
             </div>
 
             <div className="flex items-center gap-3">
-              <FaPhoneAlt className="text-gray-800" />
+              <FaPhoneAlt className="text-gray-800 flex-shrink-0" />
               <p>
-                +91 9744161939 <br /> +91 9633763916 <br />
+                +91 9744161939 <br /> +91 9633763916
               </p>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4 pt-2">
+            {/* Social Links - ✅ Updated from footer */}
+            <div className="flex items-center gap-4 pt-2 flex-wrap">
               <a
-                href="https://wa.me/919164XXXXXX"
+                href="https://wa.me/919744161939"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full"
+                className="bg-green-500 hover:bg-green-600 text-white p-2 sm:p-3 rounded-full transition"
               >
                 <FaWhatsapp size={18} />
               </a>
@@ -97,7 +97,7 @@ const ContactUs = () => {
                 href="https://www.instagram.com/journey_junction___?igsh=ODZieXo1NTlhNjhr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-pink-700 hover:bg-pink-700 text-white p-3 rounded-full"
+                className="bg-pink-700 hover:bg-pink-700 text-white p-2 sm:p-3 rounded-full transition"
               >
                 <FaInstagram size={18} />
               </a>
@@ -105,7 +105,7 @@ const ContactUs = () => {
                 href="https://www.facebook.com/share/1F7BL9EXTb/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full"
+                className="bg-blue-600 hover:bg-blue-700 text-white p-2 sm:p-3 rounded-full transition"
               >
                 <FaFacebookF size={18} />
               </a>
@@ -130,7 +130,7 @@ const ContactUs = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
                   placeholder="Your Name"
                 />
               </div>
@@ -147,7 +147,7 @@ const ContactUs = () => {
                   onChange={handleChange}
                   required
                   pattern="\d{10}"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
                   placeholder="Your Phone Number"
                 />
               </div>
@@ -163,7 +163,7 @@ const ContactUs = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
                   placeholder="Tell us how we can help you..."
                 ></textarea>
               </div>
@@ -172,7 +172,7 @@ const ContactUs = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition duration-300 flex items-center gap-2 justify-center mx-auto"
+                  className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 sm:px-6 sm:py-2 rounded-lg font-medium transition duration-300 flex items-center gap-2 justify-center mx-auto text-sm sm:text-base"
                 >
                   <FaWhatsapp />
                   Send via WhatsApp
