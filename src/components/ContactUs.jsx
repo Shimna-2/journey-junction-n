@@ -44,7 +44,7 @@ const ContactUs = () => {
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/919744161939?text=${encodeURIComponent(whatsappMessage)}`, // ✅ Updated link from footer
+      `https://wa.me/919744161939?text=${encodeURIComponent(whatsappMessage)}`,
       "_blank"
     );
 
@@ -54,12 +54,12 @@ const ContactUs = () => {
 
   return (
     <section className="relative py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-200 to-gray-300">
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 sm:mb-10">
           Contact Us
         </h2>
 
-        <div className="bg-white rounded-3xl shadow-xl border border-gray-300 p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-300 p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Side - Contact Info */}
           <div className="space-y-5 text-gray-700 text-sm sm:text-base">
             <div className="flex items-start gap-3">
@@ -83,8 +83,8 @@ const ContactUs = () => {
               </p>
             </div>
 
-            {/* Social Links - ✅ Updated from footer */}
-            <div className="flex items-center gap-4 pt-2 flex-wrap">
+            {/* Social Links */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <a
                 href="https://wa.me/919744161939"
                 target="_blank"
@@ -130,7 +130,7 @@ const ContactUs = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-gray-700"
                   placeholder="Your Name"
                 />
               </div>
@@ -147,7 +147,7 @@ const ContactUs = () => {
                   onChange={handleChange}
                   required
                   pattern="\d{10}"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-gray-700"
                   placeholder="Your Phone Number"
                 />
               </div>
@@ -163,7 +163,7 @@ const ContactUs = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-gray-700"
                   placeholder="Tell us how we can help you..."
                 ></textarea>
               </div>
