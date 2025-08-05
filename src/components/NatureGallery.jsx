@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigation
-import morskieOko from "../assets/images/beautiful-tree-middle-field-covered-with-grass-with-tree-line-background.jpg";
+import { useNavigate } from "react-router-dom";
+import morskieOko from "../assets/images/naturegallerybg.webp";
 
 export default function NatureGalleryStyle3() {
   const [isDesktop, setIsDesktop] = useState(true);
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate();
 
-  // Detect screen size to toggle backgroundAttachment for mobile performance
+  // ✅ Detect screen size for backgroundAttachment performance
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth > 768);
@@ -21,7 +21,7 @@ export default function NatureGalleryStyle3() {
     <section
       role="region"
       aria-labelledby="nature-gallery-heading"
-      className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center text-center px-4 sm:px-6 overflow-hidden"
+      className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center text-center px-4 sm:px-6 overflow-hidden font-[Poppins]"
       style={{
         backgroundImage: `url(${morskieOko})`,
         backgroundSize: "cover",
@@ -30,16 +30,19 @@ export default function NatureGalleryStyle3() {
         backgroundColor: "#333",
       }}
     >
+      {/* ✅ Preload background image */}
+      <link rel="preload" as="image" href={morskieOko} />
+
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Motion Card */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 50 }}
+        initial={{ opacity: 0, scale: 0.95, y: 40 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         transition={{
-          duration: 0.8,
-          ease: [0.25, 0.8, 0.25, 1],
+          duration: 0.6,
+          ease: "easeOut",
         }}
         viewport={{ once: true, amount: 0.4 }}
         className="relative bg-gradient-to-br from-white to-gray-100 p-6 sm:p-8 shadow-xl max-w-lg sm:max-w-2xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
@@ -53,22 +56,22 @@ export default function NatureGalleryStyle3() {
         {/* Heading */}
         <motion.h2
           id="nature-gallery-heading"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-gray-900 text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight font-[Playfair Display]"
+          className="text-gray-900 text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight"
         >
           Reconnect with Nature
         </motion.h2>
 
         {/* Subtitle */}
         <motion.h4
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 leading-relaxed font-[Poppins]"
+          className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 leading-relaxed"
         >
           Escape to Wayanad’s misty hills and handpicked stays — where nature
           meets comfort
@@ -76,10 +79,10 @@ export default function NatureGalleryStyle3() {
 
         {/* Book Now Button */}
         <motion.button
-          onClick={() => navigate("/booknow")} // ✅ Navigation added
-          initial={{ opacity: 0, y: 20 }}
+          onClick={() => navigate("/booknow")}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
           viewport={{ once: true }}
           className="px-5 sm:px-6 py-2 bg-gray-600 text-white rounded-full shadow-md hover:bg-gray-700 transition-all text-sm sm:text-base"
           aria-label="Book a stay in Wayanad"
@@ -87,11 +90,6 @@ export default function NatureGalleryStyle3() {
           Book Now
         </motion.button>
       </motion.div>
-
-      {/* Google Fonts */}
-      <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap");
-      `}</style>
     </section>
   );
 }

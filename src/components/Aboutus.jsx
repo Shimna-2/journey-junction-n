@@ -1,61 +1,82 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaCheckCircle, FaUsers, FaGlobe, FaLightbulb } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaUsers, FaGlobe, FaLightbulb } from "react-icons/fa6"; // smaller import
 import ContactUs from "./ContactUs";
 import Footer from "./Footer";
 
 const AboutUs = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 800, easing: "ease-out", once: true });
   }, []);
 
-  const features = [
-    {
-      title: "Verified Resorts & Villas",
-      desc: "We handpick every property for safety, comfort, and exceptional experiences. Enjoy a vacation you can trust.",
-    },
-    {
-      title: "Custom Packages",
-      desc: "Flexible, curated travel plans for families, friends, and couples to make your trip truly yours.",
-    },
-    {
-      title: "Unique Stays",
-      desc: "Discover breathtaking stays like luxury domes, private treehouses, poolside cottages, and hidden gems.",
-    },
-    {
-      title: "Local Support",
-      desc: "Our 24/7 dedicated support ensures you're never alone—assistance is just a call away.",
-    },
-    {
-      title: "Best Rates Guaranteed",
-      desc: "No hidden fees, only the best value. We promise great prices without sacrificing quality or comfort.",
-    },
-    {
-      title: "Eco‑Friendly Practices",
-      desc: "We care about nature. Our partners follow sustainable practices to protect the environment while offering comfort.",
-    },
-  ];
+  // ✅ Memoized to avoid recreation
+  const features = useMemo(
+    () => [
+      {
+        title: "Verified Resorts & Villas",
+        desc: "We handpick every property for safety, comfort, and exceptional experiences. Enjoy a vacation you can trust.",
+      },
+      {
+        title: "Custom Packages",
+        desc: "Flexible, curated travel plans for families, friends, and couples to make your trip truly yours.",
+      },
+      {
+        title: "Unique Stays",
+        desc: "Discover breathtaking stays like luxury domes, private treehouses, poolside cottages, and hidden gems.",
+      },
+      {
+        title: "Local Support",
+        desc: "Our 24/7 dedicated support ensures you're never alone—assistance is just a call away.",
+      },
+      {
+        title: "Best Rates Guaranteed",
+        desc: "No hidden fees, only the best value. We promise great prices without sacrificing quality or comfort.",
+      },
+      {
+        title: "Eco‑Friendly Practices",
+        desc: "We care about nature. Our partners follow sustainable practices to protect the environment while offering comfort.",
+      },
+    ],
+    []
+  );
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 text-gray-800">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 text-gray-800 font-[Poppins]">
+      {/* ✅ Preconnect Fonts */}
+      <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+
       <main className="flex-1 px-4 sm:px-6 md:px-20 py-8 sm:py-16">
         {/* Mission, Vision, Story */}
         <section
           className="bg-white shadow-xl rounded-3xl p-6 sm:p-10 lg:p-12 mb-12"
           data-aos="fade-up"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-8 sm:mb-10">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-8 sm:mb-10">
             Our Mission, Vision & Story
-          </h2>
+          </h1>
 
           <div className="grid gap-8 sm:gap-10 md:grid-cols-3">
             {/* Vision */}
             <div className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-600 shadow-sm hover:shadow-md transition">
               <FaGlobe className="text-gray-700 text-3xl sm:text-4xl mb-3 sm:mb-4" />
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
                 Vision 🌍
-              </h3>
+              </h2>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 To become the most trusted{" "}
                 <strong>travel and tourism brand</strong>, inspiring explorers
@@ -75,9 +96,9 @@ const AboutUs = () => {
             {/* Mission */}
             <div className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-600 shadow-sm hover:shadow-md transition">
               <FaLightbulb className="text-gray-700 text-3xl sm:text-4xl mb-3 sm:mb-4" />
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
                 Mission 🚀
-              </h3>
+              </h2>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 At <strong>Journey Junction</strong>, our mission is to craft
                 meaningful, personalized travel experiences — from romantic
@@ -89,9 +110,9 @@ const AboutUs = () => {
             {/* Story */}
             <div className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-600 shadow-sm hover:shadow-md transition">
               <FaUsers className="text-gray-700 text-3xl sm:text-4xl mb-3 sm:mb-4" />
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
                 Our Story 📖
-              </h3>
+              </h2>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 Back in <strong>2019</strong>, <strong>Arjun ET</strong> started
                 Journey Junction with a small idea — to help people discover
@@ -149,7 +170,6 @@ const AboutUs = () => {
         </section>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

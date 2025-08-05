@@ -1,7 +1,8 @@
+// src/components/JourneyJunctionPromise.jsx
 import React, { useEffect, useState, memo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import bgImage from "../assets/images/road-beside-tree-golden-hour.jpg";
+import bgImage from "../assets/images/home-banner-2.webp";
 
 const promises = [
   "Luxury resorts with valley views",
@@ -11,7 +12,6 @@ const promises = [
   "Camping beneath starry skies",
   "Instant WhatsApp bookings",
   "24/7 guest support",
-  "Daily room cleaning service",
 ];
 
 const JourneyJunctionPromise = () => {
@@ -20,7 +20,7 @@ const JourneyJunctionPromise = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 900,
+      duration: 800,
       easing: "ease-out-cubic",
       once: true,
       offset: 100,
@@ -28,23 +28,21 @@ const JourneyJunctionPromise = () => {
 
     let i = 0;
     const typingInterval = setInterval(() => {
-      setDisplayedText(fullText.slice(0, i + 1));
+      setDisplayedText((prev) => fullText.slice(0, i + 1));
       i++;
       if (i === fullText.length) clearInterval(typingInterval);
-    }, 80);
+    }, 60);
 
     return () => clearInterval(typingInterval);
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row">
+    <section className="min-h-screen flex flex-col md:flex-row font-[Poppins]">
       {/* Left Side */}
       <div
-        className="w-full md:w-1/2 flex items-center justify-center bg-center bg-cover relative p-6 sm:p-10"
+        className="w-full md:w-1/2 flex items-center justify-center bg-center bg-cover relative p-6 sm:p-10 bg-fixed"
         style={{
           backgroundImage: `url(${bgImage})`,
-          backgroundColor: bgImage ? "transparent" : "#444",
-          backgroundAttachment: window.innerWidth > 768 ? "fixed" : "scroll",
           minHeight: "50vh",
         }}
       >
@@ -61,17 +59,12 @@ const JourneyJunctionPromise = () => {
       </div>
 
       {/* Right Side */}
-      <div
-        className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col justify-center gap-4 sm:gap-6"
-        style={{
-          background: "linear-gradient(135deg, #e8e8e8, #cfcfcf)",
-        }}
-      >
+      <div className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col justify-center gap-4 sm:gap-6 bg-gradient-to-br from-gray-200 to-gray-300">
         {promises.map((item, index) => (
           <div
             key={index}
             data-aos="fade-up"
-            data-aos-delay={index * 150}
+            data-aos-delay={index * 120}
             className="promise-card relative rounded-xl px-5 py-3 flex items-center gap-4 shadow-lg hover:shadow-xl transition-transform hover:scale-[1.02] bg-white/90 backdrop-blur-md border border-gray-200"
           >
             <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-white font-bold shadow">
@@ -84,9 +77,10 @@ const JourneyJunctionPromise = () => {
         ))}
       </div>
 
+      {/* Typing Effect Styles */}
       <style jsx>{`
         .typing-heading {
-          font-family: "Playfair Display", serif;
+          font-family: "Poppins", sans-serif;
         }
         .cursor {
           display: inline-block;

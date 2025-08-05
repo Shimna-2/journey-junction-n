@@ -1,14 +1,16 @@
+// src/components/TopDestinationsSlider.jsx
 import React, { useEffect, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import soochipara from "../assets/images/soochipara.jpeg";
-import pookodelake from "../assets/images/pookodelake.jpeg";
-import karapuuzha from "../assets/images/karapuuzha.jpeg";
-import enooru from "../assets/images/enooru.jpeg";
-import edakkal from "../assets/images/edakkal caves.jpeg";
-import chembrapeak from "../assets/images/chembrapeak.jpeg";
+// Destination images
+import soochipara from "../assets/images/soochipara.webp";
+import pookodelake from "../assets/images/pookodelake.webp";
+import karapuuzha from "../assets/images/karapuuzha.webp";
+import enooru from "../assets/images/enooru.webp";
+import edakkal from "../assets/images/edakkalcaves.webp"; // renamed to remove space
+import chembrapeak from "../assets/images/chembrapeak.webp";
 
 const placeholderImg =
   "https://via.placeholder.com/600x400?text=Image+Unavailable";
@@ -41,16 +43,18 @@ const TopDestinationsSlider = () => {
   return (
     <section
       aria-labelledby="top-destinations-heading"
-      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-[whitesmoke] text-gray-800"
+      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-[whitesmoke] text-gray-800 font-[Poppins]"
     >
+      {/* Preload first 3 images */}
+      {destinations.slice(0, 3).map((dest, idx) => (
+        <link key={idx} rel="preload" as="image" href={dest.image} />
+      ))}
+
       {/* Heading */}
       <h2
         id="top-destinations-heading"
         data-aos="fade-up"
         className="relative text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mb-10 sm:mb-12 tracking-wide"
-        style={{
-          fontFamily: "'Playfair Display', serif",
-        }}
       >
         Top Destinations in Wayanad
         <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-2 w-16 h-1 bg-gradient-to-r from-gray-700 via-black to-gray-700 rounded-full animate-pulse"></span>
@@ -68,7 +72,7 @@ const TopDestinationsSlider = () => {
             <img
               src={place.image || placeholderImg}
               alt={place.name || "Destination image"}
-              loading="lazy"
+              loading={index < 3 ? "eager" : "lazy"} // first 3 load eagerly
               decoding="async"
               className="w-full h-56 sm:h-72 object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform"
               onError={(e) => {
@@ -104,7 +108,6 @@ const TopDestinationsSlider = () => {
           clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
         }
         .place-name {
-          font-family: "Playfair Display", serif;
           background: linear-gradient(to right, #ffffff, #dcdcdc);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;

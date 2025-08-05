@@ -102,7 +102,7 @@ Message: ${message}`;
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your Name"
-                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                   required
                 />
                 <input
@@ -110,7 +110,7 @@ Message: ${message}`;
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone Number"
-                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                   required
                 />
 
@@ -122,7 +122,7 @@ Message: ${message}`;
                     value={formData.adults}
                     onChange={handleChange}
                     placeholder="No. of Adults"
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                     required
                   />
                   <input
@@ -132,7 +132,7 @@ Message: ${message}`;
                     value={formData.kids}
                     onChange={handleChange}
                     placeholder="No. of Kids"
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                   />
                 </div>
 
@@ -142,7 +142,7 @@ Message: ${message}`;
                     type="date"
                     value={formData.checkIn}
                     onChange={handleChange}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                     required
                   />
                   <input
@@ -150,7 +150,7 @@ Message: ${message}`;
                     type="date"
                     value={formData.checkOut}
                     onChange={handleChange}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                     required
                   />
                 </div>
@@ -163,7 +163,7 @@ Message: ${message}`;
                     name="groupType"
                     value={formData.groupType}
                     onChange={handleChange}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                     required
                   >
                     <option value="Family">Family</option>
@@ -177,7 +177,7 @@ Message: ${message}`;
                   value={formData.rooms}
                   onChange={handleChange}
                   placeholder="No. of Rooms"
-                  className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                   required
                 />
 
@@ -186,7 +186,7 @@ Message: ${message}`;
                   value={formData.budget}
                   onChange={handleChange}
                   placeholder="Your Budget (₹)"
-                  className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                   required
                 />
 
@@ -196,7 +196,7 @@ Message: ${message}`;
                   onChange={handleChange}
                   placeholder="Your Message"
                   rows="4"
-                  className="w-full border border-gray-300 px-4 py-2 rounded-lg"
+                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                 />
 
                 <button

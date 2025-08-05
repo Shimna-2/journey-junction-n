@@ -1,132 +1,164 @@
 // src/pages/BlogCoffeePlantations.jsx
-import React, { useEffect } from "react";
+import React from "react";
+import Footer from "../components/Footer";
+
+// Import images
+import coffeeHarvest from "../assets/images/blgcoff1ee.webp";
+import coffeeProcessing from "../assets/images/blgcoffee2.webp";
+import coffeeEstate from "../assets/images/blogcoffee3.webp";
+
+const fallbackImage =
+  "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogCoffeePlantations() {
-  useEffect(() => {
-    // Set page title
-    document.title = "Coffee Plantations in Wayanad - Aroma of the Hills";
-
-    // Update meta description
-    const metaDescription = document.querySelector("meta[name='description']");
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "Explore the lush coffee plantations of Wayanad, Kerala — learn about the cultivation process, history, best seasons to visit, and the unique flavors of Wayanadan coffee."
-      );
-    }
-
-    // Update meta keywords
-    const metaKeywords = document.querySelector("meta[name='keywords']");
-    if (metaKeywords) {
-      metaKeywords.setAttribute(
-        "content",
-        "Wayanad coffee plantations, Kerala coffee farms, coffee tourism India, Arabica coffee Wayanad, Robusta coffee Wayanad, coffee estate tours, Kerala plantation tourism"
-      );
-    }
-  }, []);
-
   return (
-    <div className="bg-white pt-32 pb-20 px-4 sm:px-6 lg:px-20">
-      {/* Main Blog Content */}
-      <article className="max-w-6xl mx-auto">
-        {/* Blog Header */}
-        <header className="mb-10 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-snug">
-            Coffee Plantations in Wayanad - Aroma of the Hills
+    <div className="bg-[#fdfaf8] w-full font-serif">
+      <article className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8">
+        {/* Header */}
+        <header className="mb-8 sm:mb-10 text-center max-w-prose mx-auto">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3">
+            Coffee Plantations in Wayanad – Aroma of the Hills
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600">
             Wander through the sprawling coffee estates of Wayanad, where lush
             green hills meet the rich aroma of freshly brewed beans. Experience
             the charm, history, and taste of Kerala’s finest coffee.
           </p>
         </header>
 
-        {/* Images Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        {/* Main Image */}
+        <div className="mb-8">
           <img
-            src="src/assets/images/adult-harvesting-coffee.jpg"
-            alt="Coffee harvesting in Wayanad"
-            className="rounded-lg shadow-md object-cover w-full h-64"
-          />
-          <img
-            src="src/assets/images/coffee-beans-processing.jpg"
-            alt="Processing coffee beans in Wayanad"
-            className="rounded-lg shadow-md object-cover w-full h-64"
-          />
-          <img
-            src="src/assets/images/coffee-estate-view.jpg"
-            alt="View of coffee estate in Wayanad"
-            className="rounded-lg shadow-md object-cover w-full h-64"
+            src={coffeeEstate}
+            loading="lazy"
+            decoding="async"
+            onError={(e) => (e.target.src = fallbackImage)}
+            alt="Scenic coffee estate in Wayanad"
+            className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
 
-        {/* Blog Content */}
-        <section className="prose lg:prose-lg max-w-none text-gray-800 leading-relaxed">
+        {/* Intro */}
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-10 space-y-3 max-w-prose mx-auto">
           <p>
-            Wayanad, situated in the serene Western Ghats of Kerala, is famous
-            for its sprawling coffee plantations. These estates produce some of
-            the finest Arabica and Robusta coffee varieties in India, making
-            Wayanad a paradise for coffee lovers and nature enthusiasts alike.
+            Nestled in the serene <strong>Western Ghats of Kerala</strong>,
+            Wayanad is celebrated for its sprawling coffee plantations producing
+            world-class Arabica and Robusta beans. The cool climate, fertile
+            soil, and traditional cultivation methods make Wayanad a paradise
+            for coffee lovers and nature enthusiasts alike.
+          </p>
+        </section>
+
+        {/* History & Origins */}
+        <section className="grid md:grid-cols-2 gap-6 mb-10 items-center max-w-6xl mx-auto">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold">
+              History of Coffee in Wayanad
+            </h2>
+            <p className="mt-3 text-base sm:text-lg">
+              Coffee cultivation here dates back to the 18th century, when
+              British planters introduced the crop. Over time, local farmers
+              adopted and perfected the art of coffee farming, making Wayanad a
+              renowned hub for premium coffee production.
+            </p>
+            <p className="mt-3 text-base sm:text-lg">
+              Today, the region blends age-old traditions with modern
+              techniques, ensuring every cup is infused with heritage and
+              flavor.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img
+              src={coffeeHarvest}
+              loading="lazy"
+              decoding="async"
+              onError={(e) => (e.target.src = fallbackImage)}
+              alt="Coffee harvesting in Wayanad"
+              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
+            />
+          </div>
+        </section>
+
+        {/* Types & Cultivation */}
+        <section className="mb-10 max-w-prose mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold">
+            Types of Coffee Grown
+          </h2>
+          <p className="mt-3 text-base sm:text-lg">
+            Wayanad’s estates cultivate two major varieties:{" "}
+            <strong>Arabica</strong>, known for its mild flavor and aroma, and{" "}
+            <strong>Robusta</strong>, valued for its strong taste and high
+            caffeine content. Many estates also grow pepper, cardamom, and
+            vanilla alongside coffee, creating a rich intercropping ecosystem.
           </p>
 
-          <h2>History of Coffee in Wayanad</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mt-6">
+            The Cultivation Process
+          </h2>
+          <p className="mt-3 text-base sm:text-lg">
+            From planting seedlings to harvesting ripe cherries, every step is
+            handled with care. After harvesting, beans undergo pulping,
+            fermenting, drying, and roasting — a process that preserves their
+            unique flavor profile.
+          </p>
+        </section>
+
+        {/* Best Time & Tours */}
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-4 max-w-prose mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold">Best Time to Visit</h2>
           <p>
-            Coffee cultivation in Wayanad dates back to the 18th century, when
-            British planters introduced coffee as a commercial crop. Over time,
-            local farmers adopted and perfected the art of coffee farming,
-            making the region a renowned hub for premium coffee production.
+            The ideal season is between <strong>November and March</strong>,
+            when the weather is pleasant and harvesting activities are in full
+            swing. Visitors can witness the coffee-making process firsthand.
           </p>
 
-          <h2>Types of Coffee Grown</h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Coffee Estate Tours</h2>
           <p>
-            The two major varieties cultivated here are <strong>Arabica</strong>
-            , known for its mild flavor and aroma, and <strong>Robusta</strong>,
-            valued for its strong taste and high caffeine content. Many estates
-            also grow pepper, cardamom, and vanilla alongside coffee.
+            Many estates offer guided tours, where visitors can learn about
+            farming, participate in coffee picking, and enjoy fresh brews amidst
+            breathtaking landscapes. Some even provide charming homestay
+            options.
+          </p>
+          <div className="flex justify-center">
+            <img
+              src={coffeeProcessing}
+              loading="lazy"
+              decoding="async"
+              onError={(e) => (e.target.src = fallbackImage)}
+              alt="Processing coffee beans in Wayanad"
+              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
+            />
+          </div>
+
+          <h2 className="text-xl sm:text-2xl font-bold">
+            Best Places to Experience
+          </h2>
+          <p>
+            Visit estates in Meppadi, Kalpetta, and Sulthan Bathery for
+            immersive coffee tours. Small family-owned farms often serve the
+            most authentic experiences, paired with traditional Kerala snacks.
           </p>
 
-          <h2>The Cultivation Process</h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Nutritional Value</h2>
           <p>
-            Coffee cultivation in Wayanad is a meticulous process — from
-            planting seedlings to harvesting ripe cherries, every step is
-            handled with care. Post-harvest, the beans undergo pulping,
-            fermenting, drying, and roasting before they are ready for brewing.
+            Freshly brewed coffee is rich in antioxidants and can boost energy
+            and focus. When enjoyed without excessive sugar or cream, it can be
+            a healthy indulgence.
           </p>
 
-          <h2>Best Time to Visit</h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Cultural Importance</h2>
           <p>
-            The ideal season to visit coffee plantations is between November and
-            March, when the weather is pleasant and harvesting activities are in
-            full swing. Visitors can witness the entire coffee-making process
-            during this period.
-          </p>
-
-          <h2>Coffee Estate Tours</h2>
-          <p>
-            Many estates in Wayanad offer guided tours where visitors can learn
-            about coffee farming, participate in coffee picking, and enjoy fresh
-            brews amidst breathtaking landscapes. Some estates also provide
-            accommodation for an immersive experience.
-          </p>
-
-          <h2>Cultural Significance</h2>
-          <p>
-            Coffee is more than just a crop here; it’s an integral part of
-            Wayanad’s identity and economy. The plantations provide livelihoods
-            to thousands of local families and contribute to Kerala’s
-            agricultural heritage.
-          </p>
-
-          <h2>Conclusion</h2>
-          <p>
-            A visit to Wayanad’s coffee plantations is not just about tasting
-            coffee; it’s about connecting with the land, the people, and the
-            rich history that makes every cup special. Whether you’re a coffee
-            connoisseur or simply a traveler seeking serene landscapes, Wayanad
-            offers an unforgettable experience.
+            Coffee is more than just a beverage here — it’s an integral part of
+            Wayanad’s cultural identity, supporting thousands of local families
+            and preserving Kerala’s agricultural heritage.
           </p>
         </section>
       </article>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 mt-10">
+        <Footer />
+      </footer>
     </div>
   );
 }

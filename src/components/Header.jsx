@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaChevronDown, FaArrowLeft } from "react-icons/fa";
 import logo from "../assets/images/logojj.jpeg";
@@ -14,26 +14,27 @@ export default function Header() {
 
   const location = useLocation();
   const navigate = useNavigate();
-
   const isHome = location.pathname === "/home";
-  const isWayanad = location.pathname === "/wayanad";
 
-  const toggleDropdown = (menu) => {
-    setDropdownOpen((prev) => ({
-      ...prev,
-      [menu]: !prev[menu],
-    }));
-  };
+  const toggleDropdown = useCallback((menu) => {
+    setDropdownOpen((prev) => ({ ...prev, [menu]: !prev[menu] }));
+  }, []);
 
-  const goToResortSection = (id) => {
-    navigate(`/resorts#${id}`);
-  };
+  const goToResortSection = useCallback(
+    (id) => {
+      navigate(`/resorts#${id}`);
+    },
+    [navigate]
+  );
 
-  const navItemClass =
-    "relative px-4 py-2 overflow-hidden rounded-full transition-colors duration-300 " +
-    "before:absolute before:inset-0 before:rounded-full before:scale-0 before:opacity-0 " +
-    "before:bg-gray-200 before:transition-all before:duration-300 before:z-0 " +
-    "hover:before:scale-100 hover:before:opacity-100 text-black hover:text-black";
+  const navItemClass = useMemo(
+    () =>
+      "relative px-4 py-2 overflow-hidden rounded-full transition-colors duration-300 " +
+      "before:absolute before:inset-0 before:rounded-full before:scale-0 before:opacity-0 " +
+      "before:bg-gray-200 before:transition-all before:duration-300 before:z-0 " +
+      "hover:before:scale-100 hover:before:opacity-100 text-black hover:text-black",
+    []
+  );
 
   return (
     <header
@@ -46,20 +47,24 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Left Section */}
         <div className="flex items-center gap-3">
-          {isWayanad && (
+          {!isHome && (
             <button
               onClick={() => navigate(-1)}
-              className="md:hidden text-2xl text-black"
+              className="md:hidden text-xl text-black"
               aria-label="Go back"
             >
               <FaArrowLeft />
             </button>
           )}
-          <img
-            src={logo}
-            alt="Journey Junction Logo"
-            className="h-16 w-16 object-cover rounded-full"
-          />
+          <Link to="/home" aria-label="Journey Junction Home">
+            <img
+              src={logo}
+              alt="Journey Junction Logo"
+              className="h-16 w-16 object-cover rounded-full"
+              loading="lazy"
+              decoding="async"
+            />
+          </Link>
         </div>
 
         {/* Mobile: Weather + Hamburger */}
@@ -76,25 +81,21 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-10 font-semibold items-center">
-          <Link to="/home" className={navItemClass}>
+          <Link to="/home" className={navItemClass} aria-label="Home">
             <span className="relative z-10">HOME</span>
           </Link>
 
-          {/* Destinations */}
           {/* Destinations */}
           <div className="relative group">
             <button
               onClick={() => navigate("/wayanad")}
               className={`flex items-center gap-1 ${navItemClass}`}
+              aria-label="Destinations"
             >
               <span className="relative z-10">DESTINATIONS</span>
               <FaChevronDown size={12} className="z-10" />
             </button>
-            <div
-              className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-48 
-      opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
-      transition-all duration-200 pointer-events-none"
-            >
+            <div className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-48 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 pointer-events-none">
               <Link
                 to="/wayanad"
                 className="block px-4 py-2 hover:bg-gray-200 transition"
@@ -109,15 +110,12 @@ export default function Header() {
             <button
               onClick={() => navigate("/resorts")}
               className={`flex items-center gap-1 ${navItemClass}`}
+              aria-label="Resorts"
             >
               <span className="relative z-10">RESORTS</span>
               <FaChevronDown size={12} className="z-10" />
             </button>
-            <div
-              className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-64 
-      opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto 
-      transition-all duration-200 pointer-events-none"
-            >
+            <div className="absolute left-0 top-full bg-white text-black shadow-md rounded-b z-50 w-64 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 pointer-events-none">
               {[
                 { name: "Luxury Resorts", id: "luxury-resorts" },
                 { name: "Premium Resorts", id: "premium-resorts" },
@@ -135,26 +133,29 @@ export default function Header() {
             </div>
           </div>
 
-          <Link to="/blog" className={navItemClass}>
+          {/* Blog */}
+          <Link to="/blog" className={navItemClass} aria-label="Blog">
             <span className="relative z-10">BLOG</span>
           </Link>
-          <Link to="/aboutus" className={navItemClass}>
+
+          {/* About Us */}
+          <Link to="/aboutus" className={navItemClass} aria-label="About Us">
             <span className="relative z-10">ABOUT US</span>
           </Link>
-          <div className="flex items-center gap-4">
-            <Link to="/booknow" className={navItemClass}>
-              <span className="relative z-10">BOOK NOW</span>
-            </Link>
-            {isHome && <WeatherPreview />}
-          </div>
+
+          {/* Book Now */}
+          <Link to="/booknow" className={navItemClass} aria-label="Book Now">
+            <span className="relative z-10">BOOK NOW</span>
+          </Link>
+
+          {isHome && <WeatherPreview />}
         </nav>
       </div>
 
       {/* Mobile Side Menu */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-50"
-          style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+          className="fixed inset-0 z-50 bg-black/30"
           onClick={() => setMenuOpen(false)}
         >
           <div
@@ -164,6 +165,7 @@ export default function Header() {
             <button
               onClick={() => setMenuOpen(false)}
               className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-black rounded-full text-white hover:bg-gray-800 transition"
+              aria-label="Close menu"
             >
               ✕
             </button>

@@ -1,145 +1,157 @@
-// src/pages/BlogWayanadClimate.jsx
+// src/pages/BlogWayanadanPothumkaal.jsx
 import React from "react";
 import Footer from "../components/Footer";
-
-import monsoonImage from "../assets/images/weather-effects-composition.jpg";
-import winterImage from "../assets/images/vertical-shot-smoke-covering-mountain-medvednica-zagreb-croatia.jpg";
-import climateMain from "../assets/images/beautiful-vertical-shot-long-mountain-peak-covered-green-grass-perfect-wallpaper.jpg";
+import pothumkaal2 from "../assets/images/blgpothumkaalimg1.webp";
+import pothumkaal5 from "../assets/images/blogpothumkaal2.webp";
+import pothumkaal6 from "../assets/images/blgpothumkaal1.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
-export default function BlogWayanadClimate() {
-  const handleImageError = (e) => {
-    e.target.src = fallbackImage;
-  };
-
+export default function BlogWayanadanPothumkaal() {
   return (
-    <div className="bg-[#fdfaf8] w-full font-serif">
-      <article className="max-w-7xl mx-auto pt-32 px-6 lg:px-12 bg-white shadow-xl rounded-xl p-8">
-        {/* Blog Header */}
-        <header className="mb-12 text-center" data-aos="fade-up">
-          <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Wayanad Climate: Seasons & Best Time to Visit
+    <div className="bg-[#fdfaf8] w-full font-sans">
+      <article className="max-w-7xl mx-auto pt-20 sm:pt-28 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8">
+        {/* Header */}
+        <header className="mb-8 text-center max-w-prose mx-auto">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">
+            Wayanadan Pothumkaal: Kerala's Spicy Beef Curry from the Highlands
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Wayanad, the green paradise of Kerala, enjoys a pleasant climate
-            year-round. From misty winters to lush monsoons and sunny summers,
-            every season offers a unique charm for travelers.
+          <p className="text-base sm:text-lg text-gray-600">
+            Wayanadan Pothumkaal is a traditional beef delicacy slow-cooked with
+            coconut and spices in Kerala’s Wayanad region. A must-try for food
+            lovers exploring authentic Kerala cuisine and{" "}
+            <strong>spicy meat recipes</strong>.
           </p>
         </header>
 
         {/* Main Image */}
-        <div className="mb-14" data-aos="zoom-in">
+        <div className="mb-8">
           <img
-            src={climateMain}
-            onError={handleImageError}
-            alt="Scenic view of Wayanad hills with clouds"
-            className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] transition-transform duration-500 hover:scale-[1.02]"
+            src={pothumkaal2}
+            width="1280"
+            height="720"
+            loading="lazy"
+            decoding="async"
+            onError={(e) => (e.target.src = fallbackImage)}
+            alt="Authentic Wayanadan Pothumkaal beef curry served hot"
+            className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
 
-        {/* Introduction */}
-        <section className="text-gray-800 leading-relaxed mb-16 text-lg space-y-4">
+        {/* Intro */}
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-10 space-y-3 max-w-prose mx-auto">
           <p>
-            Located in Kerala’s Western Ghats, Wayanad’s altitude of 700–2100
-            meters gives it a cool and refreshing climate. With an average
-            temperature ranging from 18°C to 29°C, it’s a year-round
-            destination, though each season paints the landscape in its own
-            colors.
+            Originating in the lush highlands of{" "}
+            <strong>Wayanad, Kerala</strong>, Wayanadan Pothumkaal is more than
+            just a dish — it is a celebration of community, tradition, and bold
+            flavors. This spicy beef curry combines locally sourced beef,
+            roasted coconut, fresh curry leaves, and Kerala’s signature spice
+            blend to create a rich and unforgettable taste.
           </p>
           <p>
-            Understanding Wayanad’s climate will help you plan your trip to
-            enjoy trekking, wildlife spotting, sightseeing, or simply relaxing
-            amidst nature at the right time.
+            This dish is deeply embedded in{" "}
+            <strong>Wayanad food tourism</strong>, attracting culinary travelers
+            eager to explore authentic <em>Kerala non-vegetarian dishes</em>.
+            Often cooked in <em>urulis</em> (bronze vessels) over firewood, it
+            gains a distinct smoky aroma that modern kitchen appliances can
+            rarely replicate.
           </p>
         </section>
 
-        {/* Monsoon Season */}
-        <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
-          <div className="md:w-1/2">
+        {/* History & Origins with image */}
+        <section className="grid md:grid-cols-2 gap-6 mb-10 items-center">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold">History & Origins</h2>
+            <p className="mt-3">
+              The history of <strong>Wayanadan Pothumkaal</strong> traces back
+              to the tribal and farming communities of Kerala’s Western Ghats.
+              Communities such as the <em>Paniya</em> and <em>Kurichiya</em>{" "}
+              perfected this recipe over centuries, using homegrown spices like
+              black pepper, cardamom, and cinnamon to enhance the flavor.
+            </p>
+            <p className="mt-3">
+              The dish gained popularity during the spice trade era, when
+              Portuguese and British influences introduced new ingredients. Even
+              today, the best versions are made in small villages where the
+              tradition remains untouched.
+            </p>
+          </div>
+          <div className="flex justify-center">
             <img
-              src={monsoonImage}
-              onError={handleImageError}
-              alt="Wayanad monsoon rains over tea plantations"
-              className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] transition-transform duration-500 hover:scale-[1.03]"
+              src={pothumkaal6}
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              onError={(e) => (e.target.src = fallbackImage)}
+              alt="Cooking Wayanadan Pothumkaal in traditional uruli"
+              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
-          <div className="md:w-1/2 text-lg text-gray-800 leading-relaxed space-y-3">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Monsoon Season (June – September)
-            </h2>
-            <p>
-              The southwest monsoon drenches Wayanad in lush greenery, filling
-              waterfalls like Meenmutty and Soochipara to their brim. Rain
-              lovers and photographers find this season magical.
-            </p>
-            <p>
-              However, heavy rains can cause landslides, so trekking routes
-              might be restricted. This is an ideal time for Ayurvedic
-              treatments as the cool, moist weather helps therapies work
-              effectively.
-            </p>
-          </div>
-        </div>
+        </section>
 
-        {/* Winter Season */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-10 mb-16">
-          <div className="md:w-1/2">
+        {/* Cooking Process */}
+        <section className="mb-10 max-w-prose mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold">Cooking Process</h2>
+          <p className="mt-3">
+            Authentic preparation starts by marinating tender beef cuts with
+            crushed black pepper, coriander, turmeric, chili powder, and
+            ginger-garlic paste. Fresh curry leaves and coconut oil are
+            essential for the signature aroma.
+          </p>
+          <p className="mt-3">
+            After slow cooking until tender, the beef is roasted with
+            firewood-smoked spices and coconut slices, creating a deeply
+            flavored <em>Kerala beef curry</em> that is spicy, rich, and
+            aromatic.
+          </p>
+        </section>
+
+        {/* Best Places to Taste */}
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-4 max-w-prose mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold">
+            Best Places to Taste
+          </h2>
+          <p>
+            For the best <strong>Wayanadan Pothumkaal</strong>, visit local
+            eateries and homestays in Kalpetta, Meppadi, and Sulthan Bathery.
+            Many <em>toddy shops</em> also serve this dish, pairing it with
+            tapioca or Kerala parotta.
+          </p>
+          <div className="flex justify-center">
             <img
-              src={winterImage}
-              onError={handleImageError}
-              alt="Mist over Wayanad hills in winter"
-              className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] transition-transform duration-500 hover:scale-[1.03]"
+              src={pothumkaal5}
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              onError={(e) => (e.target.src = fallbackImage)}
+              alt="Serving Wayanadan Pothumkaal on banana leaf"
+              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
-          <div className="md:w-1/2 text-lg text-gray-800 leading-relaxed space-y-3">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Winter Season (October – February)
-            </h2>
-            <p>
-              Winter is considered the best season to visit Wayanad. With
-              temperatures dropping to 10°C in higher altitudes, mornings are
-              misty and evenings are cool.
-            </p>
-            <p>
-              Perfect for trekking to Chembra Peak, exploring Edakkal Caves, and
-              enjoying campfires, this season offers clear skies and pleasant
-              days.
-            </p>
-          </div>
-        </div>
 
-        {/* Summer Season */}
-        <section className="text-lg text-gray-800 leading-relaxed space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Summer Season (March – May)
-          </h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Nutritional Value</h2>
           <p>
-            Summers in Wayanad are warm but not harsh, with temperatures ranging
-            between 23°C and 35°C. This is the ideal time for wildlife safaris
-            in Muthanga and Tholpetty, as animals gather near water sources.
-          </p>
-          <p>
-            Evenings remain pleasant, making it suitable for sightseeing and
-            short treks. Light cotton clothes and hydration are recommended.
+            Pothumkaal is rich in protein and iron, while spices like turmeric
+            and ginger provide anti-inflammatory benefits.
           </p>
 
-          <h2 className="text-2xl font-bold text-gray-900">
-            Best Time to Visit Wayanad
-          </h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Cultural Importance</h2>
           <p>
-            October to February is widely considered the best time to visit due
-            to cool weather and clear skies. Adventure seekers may also enjoy
-            the monsoon’s raw beauty between June and September.
+            Beyond taste, Pothumkaal represents{" "}
+            <strong>Kerala’s culinary heritage</strong>. Its preparation is
+            often a community event, bringing people together during weddings,
+            harvest festivals, and religious gatherings.
           </p>
         </section>
       </article>
 
       {/* Footer */}
-      <div className="bg-gray-900 text-gray-300 mt-10">
+      <footer className="bg-gray-900 text-gray-300 mt-10">
         <Footer />
-      </div>
+      </footer>
     </div>
   );
 }
