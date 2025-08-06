@@ -1,26 +1,7 @@
-import React, { Suspense, lazy } from "react";
+// src/pages/Home.jsx
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
-
-// Hero image
 import bgImage from "../assets/images/home-banner.webp";
-
-// Destination images for preloading
-import soochipara from "../assets/images/soochipara.webp";
-import pookodelake from "../assets/images/pookodelake.webp";
-import karapuuzha from "../assets/images/karapuuzha.webp";
-import enooru from "../assets/images/enooru.webp";
-import edakkal from "../assets/images/edakkalcaves.webp";
-import chembrapeak from "../assets/images/chembrapeak.webp";
-
-const preloadImages = [
-  bgImage,
-  soochipara,
-  pookodelake,
-  karapuuzha,
-  enooru,
-  edakkal,
-  chembrapeak,
-];
 
 // Lazy-load heavy components
 const JourneyJunctionPromise = lazy(() =>
@@ -35,6 +16,38 @@ const ContactFormOnly = lazy(() => import("../components/ContactFormOnly"));
 const Footer = lazy(() => import("../components/Footer"));
 
 const Home = () => {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  // Preload hero image with high priority
+  useEffect(() => {
+    const img = new Image();
+    img.src = bgImage;
+    img.fetchPriority = "high";
+    img.loading = "eager";
+    img.onload = () => setHeroLoaded(true);
+  }, []);
+
+  // Show loading screen until hero image loads
+  if (!heroLoaded) {
+    return (
+      <div
+        className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-[Poppins]"
+        role="status"
+        aria-label="Loading Journey Junction website content"
+      >
+        {/* Spinner */}
+        <div className="w-20 h-20 border-4 border-white/30 border-t-green-400 rounded-full animate-spin"></div>
+
+        {/* Brand name */}
+        <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-wide animate-pulse">
+          Journey Junction
+        </h1>
+
+        <span className="sr-only">Loading content, please wait</span>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Preconnect Fonts */}
@@ -53,10 +66,8 @@ const Home = () => {
         rel="stylesheet"
       />
 
-      {/* Preload All Images */}
-      {preloadImages.map((src, i) => (
-        <link key={i} rel="preload" as="image" href={src} />
-      ))}
+      {/* Preload only the hero image */}
+      <link rel="preload" as="image" href={bgImage} fetchPriority="high" />
 
       {/* Hero Section */}
       <div
@@ -86,26 +97,8 @@ const Home = () => {
       {/* Sections */}
       <Suspense
         fallback={
-          <div
-            className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-green-900 via-gray-900 to-black text-white font-[Poppins] transition-opacity duration-700"
-            role="status"
-            aria-label="Loading Journey Junction website content"
-          >
-            {/* Animated spinner */}
-            <div className="w-16 h-16 border-4 border-white/30 border-t-green-400 rounded-full animate-spin"></div>
-
-            {/* Brand name fade-in */}
-            <h1 className="mt-6 text-3xl sm:text-4xl font-extrabold animate-pulse tracking-wider">
-              Journey Junction
-            </h1>
-
-            {/* Tagline */}
-            <p className="mt-2 text-sm sm:text-base text-gray-300 opacity-80">
-              Exploring Wayanad...
-            </p>
-
-            {/* Screen reader text */}
-            <span className="sr-only">Loading content, please wait</span>
+          <div className="flex justify-center items-center min-h-screen bg-black text-white">
+            Loading content...
           </div>
         }
       >
