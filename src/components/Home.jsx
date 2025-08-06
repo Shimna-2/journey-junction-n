@@ -86,11 +86,26 @@ const Home = () => {
       {/* Sections */}
       <Suspense
         fallback={
-          <div className="flex flex-col items-center justify-center py-20 bg-black font-[Poppins]">
-            <div className="w-16 h-16 border-6 border-white/30 border-t-white rounded-full animate-spin"></div>
-            <h1 className="mt-6 text-3xl font-extrabold text-white">
+          <div
+            className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-green-900 via-gray-900 to-black text-white font-[Poppins] transition-opacity duration-700"
+            role="status"
+            aria-label="Loading Journey Junction website content"
+          >
+            {/* Animated spinner */}
+            <div className="w-16 h-16 border-4 border-white/30 border-t-green-400 rounded-full animate-spin"></div>
+
+            {/* Brand name fade-in */}
+            <h1 className="mt-6 text-3xl sm:text-4xl font-extrabold animate-pulse tracking-wider">
               Journey Junction
             </h1>
+
+            {/* Tagline */}
+            <p className="mt-2 text-sm sm:text-base text-gray-300 opacity-80">
+              Exploring Wayanad...
+            </p>
+
+            {/* Screen reader text */}
+            <span className="sr-only">Loading content, please wait</span>
           </div>
         }
       >

@@ -11,18 +11,22 @@ const fallbackImage =
 export default function BlogWayanadanPothumkaal() {
   return (
     <div className="bg-[#fdfaf8] w-full font-[Poppins]">
-      <article className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8">
+      <article
+        className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8"
+        role="article"
+        aria-label="Wayanadan Pothumkaal Kerala beef curry blog"
+      >
         {/* Header */}
         <header className="mb-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">
-            Wayanadan Pothumkaal: Kerala's Spicy Beef Curry from the Highlands
+            Wayanadan Pothumkaal – Spicy Kerala Beef Curry from the Wayanad
+            Highlands
           </h1>
           <p className="text-sm sm:text-base text-gray-600">
-            Wayanadan Pothumkaal is a traditional beef delicacy slow-cooked with
-            coconut, curry leaves, and aromatic spices in Kerala’s Wayanad
-            region. A must-try for food lovers exploring{" "}
-            <strong>authentic Kerala cuisine</strong> and{" "}
-            <strong>spicy meat recipes</strong>.
+            <strong>Wayanadan Pothumkaal</strong> is a slow-cooked beef delicacy
+            from Kerala’s Wayanad region, prepared with roasted coconut, curry
+            leaves, and aromatic spices. A must-try for food lovers exploring{" "}
+            <em>authentic Kerala cuisine</em> and <em>spicy meat recipes</em>.
           </p>
         </header>
 
@@ -30,31 +34,30 @@ export default function BlogWayanadanPothumkaal() {
         <div className="mb-8">
           <img
             src={pothumkaal2}
+            width="1280"
+            height="720"
             loading="lazy"
             decoding="async"
             onError={(e) => (e.target.src = fallbackImage)}
-            alt="Authentic Wayanadan Pothumkaal beef curry served hot"
+            alt="Authentic Wayanadan Pothumkaal beef curry served with Kerala parotta"
             className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
 
-        {/* Intro */}
+        {/* Introduction */}
         <section className="text-sm sm:text-base text-gray-800 leading-relaxed mb-10 space-y-3">
           <p>
             Originating in the lush highlands of{" "}
             <strong>Wayanad, Kerala</strong>, Wayanadan Pothumkaal is more than
-            just a dish — it is a celebration of community, tradition, and bold
-            flavors. This spicy beef curry combines locally sourced beef,
-            roasted coconut, fresh curry leaves, and Kerala’s signature spice
-            blend to create a rich and unforgettable taste.
+            just a dish — it’s a celebration of tradition and bold flavors. This
+            spicy Kerala beef curry combines locally sourced beef, roasted
+            coconut, fresh curry leaves, and Kerala’s signature spice blend to
+            create a rich and unforgettable taste.
           </p>
           <p>
-            This dish is deeply embedded in{" "}
-            <strong>Wayanad food tourism</strong>, attracting culinary travelers
-            eager to explore authentic <em>Kerala non-vegetarian dishes</em>.
-            Often cooked in <em>urulis</em> (bronze vessels) over firewood, it
-            gains a distinct smoky aroma that modern kitchen appliances can
-            rarely replicate.
+            This dish is a highlight of <strong>Wayanad food tourism</strong>,
+            often cooked in <em>urulis</em> (bronze vessels) over firewood,
+            creating a smoky aroma rarely replicated in modern kitchens.
           </p>
         </section>
 
@@ -62,27 +65,29 @@ export default function BlogWayanadanPothumkaal() {
         <section className="grid md:grid-cols-2 gap-6 mb-10 items-center">
           <div>
             <h2 className="text-lg sm:text-xl font-bold">History & Origins</h2>
-            <p className="mt-3 text-sm sm:text-base">
-              The history of <strong>Wayanadan Pothumkaal</strong> traces back
-              to the tribal and farming communities of Kerala’s Western Ghats.
-              Communities such as the <em>Paniya</em> and <em>Kurichiya</em>{" "}
-              perfected this recipe over centuries, using homegrown spices like
-              black pepper, cardamom, and cinnamon to enhance the flavor.
+            <p className="mt-3">
+              The origins of Wayanadan Pothumkaal trace back to the tribal and
+              farming communities of Kerala’s Western Ghats, particularly the{" "}
+              <em>Paniya</em> and <em>Kurichiya</em> tribes. They perfected this
+              recipe over centuries, using spices like black pepper, cardamom,
+              and cinnamon.
             </p>
-            <p className="mt-3 text-sm sm:text-base">
-              The dish gained prominence during Kerala’s spice trade era, when
-              Portuguese and British traders influenced cooking methods. Today,
-              it is still prepared in rural kitchens with minimal alterations,
-              preserving its authenticity.
+            <p className="mt-3">
+              The dish rose to fame during Kerala’s spice trade era, when
+              Portuguese and British influences refined cooking techniques.
+              Today, it remains a rural kitchen favorite, cooked with minimal
+              alterations to preserve authenticity.
             </p>
           </div>
           <div className="flex justify-center">
             <img
               src={pothumkaal6}
+              width="800"
+              height="600"
               loading="lazy"
               decoding="async"
               onError={(e) => (e.target.src = fallbackImage)}
-              alt="Cooking Wayanadan Pothumkaal in traditional uruli"
+              alt="Cooking Wayanadan Pothumkaal beef curry in a traditional uruli vessel"
               className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
@@ -90,89 +95,83 @@ export default function BlogWayanadanPothumkaal() {
 
         {/* Cooking Process */}
         <section className="mb-10">
-          <h2 className="text-lg sm:text-xl font-bold">Cooking Process</h2>
-          <p className="mt-3 text-sm sm:text-base">
-            The authentic preparation begins by marinating beef with freshly
-            ground black pepper, coriander, turmeric, Kashmiri chili powder,
-            rock salt, and ginger-garlic paste. This step allows the flavors to
-            penetrate deep into the meat.
+          <h2 className="text-lg sm:text-xl font-bold">
+            Traditional Cooking Process
+          </h2>
+          <p className="mt-3">
+            The preparation begins by marinating beef with freshly ground black
+            pepper, coriander, turmeric, Kashmiri chili powder, rock salt, and
+            ginger-garlic paste to ensure deep flavor infusion.
           </p>
-          <p className="mt-3 text-sm sm:text-base">
-            Fresh curry leaves, roasted coconut slices, and coconut oil are
-            essential for the dish’s signature aroma. The slow-cooking process,
-            often on a wood-fired stove, enhances the smoky, earthy undertones
-            that define traditional <em>Kerala beef curry</em>.
+          <p className="mt-3">
+            Curry leaves, roasted coconut slices, and coconut oil are key for
+            the dish’s aroma. Slow-cooking over a wood-fired stove enhances the
+            smoky, earthy undertones that define authentic{" "}
+            <em>Kerala beef curry</em>.
           </p>
-          <p className="mt-3 text-sm sm:text-base">
-            Once cooked to perfection, the curry develops a thick, dark gravy
-            that pairs beautifully with Kerala parotta, boiled tapioca, or
-            steaming hot rice.
+          <p className="mt-3">
+            The thick, rich gravy pairs perfectly with Kerala parotta, boiled
+            tapioca, or steaming hot rice.
           </p>
         </section>
 
         {/* Best Places to Taste */}
-        <section className="text-sm sm:text-base text-gray-800 leading-relaxed space-y-4">
-          <h2 className="text-lg sm:text-xl font-bold">Best Places to Taste</h2>
+        <section className="space-y-4">
+          <h2 className="text-lg sm:text-xl font-bold">Best Places to Try</h2>
           <p>
-            For the most authentic <strong>Wayanadan Pothumkaal</strong>,
-            explore local eateries and homestays in Kalpetta, Meppadi, and
-            Sulthan Bathery. Traditional toddy shops often serve this dish with
-            freshly made tapioca and spicy chutneys.
+            The most authentic Pothumkaal can be found in local eateries and
+            homestays in Kalpetta, Meppadi, and Sulthan Bathery. Traditional
+            toddy shops also serve it with tapioca and spicy chutneys.
           </p>
           <div className="flex justify-center">
             <img
               src={pothumkaal5}
+              width="800"
+              height="600"
               loading="lazy"
               decoding="async"
               onError={(e) => (e.target.src = fallbackImage)}
-              alt="Serving Wayanadan Pothumkaal on banana leaf"
+              alt="Serving Wayanadan Pothumkaal beef curry on a banana leaf"
               className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
 
           <h2 className="text-lg sm:text-xl font-bold">Nutritional Value</h2>
           <p>
-            High in protein and iron, Pothumkaal also offers health benefits
-            from spices like turmeric, which has anti-inflammatory properties,
-            and black pepper, known to aid digestion.
+            High in protein and iron, Pothumkaal also provides anti-inflammatory
+            benefits from turmeric and digestion-boosting properties from black
+            pepper.
           </p>
 
           <h2 className="text-lg sm:text-xl font-bold">Cultural Importance</h2>
           <p>
-            More than just a dish, Pothumkaal plays a role in{" "}
-            <strong>Kerala’s food heritage</strong>. It is a staple at wedding
-            feasts, harvest festivals like Onam, and local fairs. Cooking it is
-            often a collective effort involving family and neighbors, making it
-            a symbol of community bonding.
+            More than a dish, Pothumkaal is part of Kerala’s food heritage,
+            featured in wedding feasts, Onam celebrations, and local fairs.
           </p>
         </section>
 
-        {/* Extra SEO Section */}
-        <section className="mt-8 text-sm sm:text-base text-gray-700 leading-relaxed space-y-3">
+        {/* Pairing & Travel Recommendations */}
+        <section className="mt-8 space-y-3">
           <h2 className="text-lg sm:text-xl font-bold">
-            Pairing & Travel Recommendations
+            Pairing & Travel Tips
           </h2>
           <p>
-            The dish pairs wonderfully with Kerala-style accompaniments such as
-            <em> appam</em>, <em>puttu</em>, or fluffy ghee rice. Food lovers
-            visiting Wayanad can join local cooking classes to learn the
-            traditional preparation method.
+            Enjoy Pothumkaal with <em>appam</em>, <em>puttu</em>, or ghee rice.
+            Cooking classes in Wayanad offer tourists a chance to learn this
+            traditional recipe.
           </p>
           <p>
-            Including Pothumkaal in your <strong>Kerala food tour</strong> is a
-            must for an authentic cultural experience. Its preparation reflects
-            centuries of culinary wisdom passed down through generations.
+            Adding Pothumkaal to your Kerala food tour offers an authentic taste
+            of the region’s culinary history.
           </p>
         </section>
 
-        {/* Closing SEO Paragraph */}
-        <section className="mt-6 text-sm sm:text-base text-gray-700 leading-relaxed">
+        {/* Conclusion */}
+        <section className="mt-6">
           <p>
-            Whether you are a curious traveler or a passionate foodie, tasting
-            Wayanadan Pothumkaal is like savoring a piece of{" "}
-            <strong>Kerala’s culinary history</strong>. Rich, aromatic, and full
-            of tradition, it is a dish that captures the soul of Wayanad’s
-            spice-rich culture.
+            Whether you’re a foodie or traveler, tasting Wayanadan Pothumkaal is
+            like savoring a piece of Kerala’s spice-rich culture—aromatic, rich,
+            and steeped in tradition.
           </p>
         </section>
       </article>

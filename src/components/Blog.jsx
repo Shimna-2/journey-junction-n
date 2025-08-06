@@ -6,11 +6,11 @@ import "aos/dist/aos.css";
 
 // Import images
 import tribalCultureImg from "../assets/images/blgtribalhm.webp";
-import climateImg from "../assets/images/blgthirunelli-banner.webp";
+import climateImg from "../assets/images/blgclimate2.webp";
 import pothumkaalImg from "../assets/images/blgpothumkaalimg1.webp";
-import adventureImg from "../assets/images/blgthirunelli-banner.webp";
+import adventureImg from "../assets/images/blgadventureimg1.webp";
 import thiruneliImg from "../assets/images/blgthirunelli-banner.webp";
-import coffeeImg from "../assets/images/blgthirunelli-banner.webp";
+import coffeeImg from "../assets/images/blgcoffee1.webp";
 
 // Blog data (shortened excerpts)
 const blogs = [

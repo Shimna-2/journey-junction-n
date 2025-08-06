@@ -1,107 +1,109 @@
 // src/pages/PrivacyPolicy.jsx
 import React from "react";
+import { Link } from "react-router-dom";
+import { FaHome, FaChevronRight } from "react-icons/fa";
 
 const PrivacyPolicy = () => {
   return (
-    <section className="bg-gray-50 text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-white text-gray-800 py-10 px-4 sm:px-6 lg:px-8 font-[Poppins]">
+      <div className="max-w-4xl mx-auto border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center text-sm text-gray-500 mb-5">
+          <Link
+            to="/"
+            className="flex items-center hover:text-blue-600 transition-colors duration-200"
+          >
+            <FaHome className="mr-1" />
+            Home
+          </Link>
+          <FaChevronRight className="mx-2 text-gray-400" size={12} />
+          <span className="text-gray-700 font-medium">Privacy Policy</span>
+        </nav>
+
         {/* Page Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-4">
           Privacy Policy
         </h1>
-        <p className="text-center text-sm text-gray-500 mb-10">
-          Last Updated: {new Date().toLocaleDateString()}
-        </p>
 
         {/* Introduction */}
-        <p className="mb-6">
-          At <strong>Journey Junction</strong>, we value your privacy and are
-          committed to protecting your personal information. This Privacy Policy
-          outlines how we collect, use, and safeguard your information when you
-          use our website or services.
+        <p className="mb-5 text-sm leading-relaxed text-gray-700">
+          At <strong>Journey Junction</strong>, we respect your privacy and are
+          committed to safeguarding your personal information. This Privacy
+          Policy explains how we collect, use, and protect your information when
+          you interact with our website or services.
         </p>
 
         {/* Information Collection */}
-        <h2 className="text-xl font-semibold mb-3">
+        <h2 className="text-lg font-semibold mb-2">
           1. Information We Collect
         </h2>
-        <ul className="list-disc pl-6 mb-6 space-y-1">
-          <li>
-            Personal details such as name, phone number, and email address.
-          </li>
+        <ul className="list-disc pl-5 mb-5 text-sm leading-relaxed space-y-1 text-gray-700">
+          <li>Personal details like name, phone number, and email address.</li>
           <li>
             Booking details including resort preferences and travel dates.
           </li>
+          <li>Information provided via forms, WhatsApp, or phone calls.</li>
           <li>
-            Information provided through forms, WhatsApp messages, or phone
-            calls.
-          </li>
-          <li>
-            Non-personal data like browser type, device information, and IP
-            address.
+            Non-personal data such as browser type, device info, and IP address.
           </li>
         </ul>
 
         {/* How We Use Your Information */}
-        <h2 className="text-xl font-semibold mb-3">
+        <h2 className="text-lg font-semibold mb-2">
           2. How We Use Your Information
         </h2>
-        <ul className="list-disc pl-6 mb-6 space-y-1">
+        <ul className="list-disc pl-5 mb-5 text-sm leading-relaxed space-y-1 text-gray-700">
           <li>To process bookings and provide requested services.</li>
-          <li>
-            To communicate with you about offers, updates, and promotions.
-          </li>
-          <li>To improve our website and customer experience.</li>
+          <li>To communicate offers, updates, and promotions.</li>
+          <li>To enhance our website and customer experience.</li>
           <li>To comply with legal obligations.</li>
         </ul>
 
         {/* Sharing of Information */}
-        <h2 className="text-xl font-semibold mb-3">
+        <h2 className="text-lg font-semibold mb-2">
           3. Sharing Your Information
         </h2>
-        <p className="mb-6">
-          We do not sell or rent your personal information. We may share it with
-          trusted partners such as resort operators, payment processors, or
-          service providers strictly for fulfilling your bookings or improving
-          our services.
+        <p className="mb-5 text-sm leading-relaxed text-gray-700">
+          We never sell or rent your personal data. We may share it with trusted
+          partners such as resort operators, payment processors, or service
+          providers solely for fulfilling your bookings or improving our
+          services.
         </p>
 
         {/* Data Security */}
-        <h2 className="text-xl font-semibold mb-3">4. Data Security</h2>
-        <p className="mb-6">
-          We implement strict security measures to protect your information.
-          However, please note that no method of transmission over the Internet
-          is completely secure.
+        <h2 className="text-lg font-semibold mb-2">4. Data Security</h2>
+        <p className="mb-5 text-sm leading-relaxed text-gray-700">
+          We apply strong security measures to protect your data. However, no
+          method of online transmission is entirely secure, so please share
+          information at your own discretion.
         </p>
 
         {/* Cookies */}
-        <h2 className="text-xl font-semibold mb-3">5. Cookies</h2>
-        <p className="mb-6">
-          We use cookies to enhance your browsing experience, analyze website
-          traffic, and personalize content. You may disable cookies in your
-          browser settings.
+        <h2 className="text-lg font-semibold mb-2">5. Cookies</h2>
+        <p className="mb-5 text-sm leading-relaxed text-gray-700">
+          We use cookies to improve your browsing experience, analyze traffic,
+          and personalize content. You may disable cookies in your browser
+          settings.
         </p>
 
         {/* Your Rights */}
-        <h2 className="text-xl font-semibold mb-3">6. Your Rights</h2>
-        <p className="mb-6">
-          You have the right to request access, correction, or deletion of your
-          personal data. To exercise these rights, please contact us using the
-          details below.
+        <h2 className="text-lg font-semibold mb-2">6. Your Rights</h2>
+        <p className="mb-5 text-sm leading-relaxed text-gray-700">
+          You can request access, correction, or deletion of your personal data.
+          Contact us using the details below to exercise your rights.
         </p>
 
         {/* Contact */}
-        <h2 className="text-xl font-semibold mb-3">7. Contact Us</h2>
-        <p className="mb-6">
-          If you have any questions about this Privacy Policy, please contact
-          us:
+        <h2 className="text-lg font-semibold mb-2">7. Contact Us</h2>
+        <p className="mb-3 text-sm leading-relaxed text-gray-700">
+          For questions about this Privacy Policy, reach us at:
         </p>
-        <ul className="pl-6 space-y-1">
+        <ul className="pl-5 text-sm space-y-1 text-gray-700">
           <li>Email: journeyjunctionwyn@gmail.com</li>
           <li>Phone: +91 9744161939 / +91 9633763916</li>
           <li>
             Address: #V1/458L-21, 1st Floor, Aishwarya Mall, Sulthan Bathery,
-            Wayanad-92, KL., IND.
+            Wayanad-92, KL, India.
           </li>
         </ul>
       </div>

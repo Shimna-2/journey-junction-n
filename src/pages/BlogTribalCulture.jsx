@@ -12,16 +12,22 @@ const fallbackImage =
 export default function BlogTribalCulture() {
   return (
     <div className="bg-[#fdfaf8] w-full font-[Poppins]">
-      <article className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-8 bg-white shadow-xl rounded-xl p-6 sm:p-8">
+      <article
+        className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-8 bg-white shadow-xl rounded-xl p-6 sm:p-8"
+        role="article"
+        aria-label="Wayanad Tribal Culture travel and heritage guide"
+      >
         {/* Blog Header */}
         <header className="mb-10" data-aos="fade-up">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Wayanadan Tribal Culture: Immersing in Kerala's Indigenous Heritage
+            Wayanad Tribal Culture – Kerala's Indigenous Heritage in the Western
+            Ghats
           </h1>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-            Journey into the cultural heart of Kerala — Wayanad’s tribal
-            communities, where ancient traditions, sustainable living, and deep
-            respect for nature thrive amidst the serene Western Ghats.
+            Explore the vibrant <strong>tribal culture of Wayanad</strong>, home
+            to the <em>Paniyas</em>, <em>Kurichiyas</em>, <em>Adiyas</em>, and{" "}
+            <em>Kattunaikkans</em>. Discover their sustainable lifestyles,
+            unique traditions, and deep connection to the forests of Kerala.
           </p>
         </header>
 
@@ -29,182 +35,150 @@ export default function BlogTribalCulture() {
         <div className="mb-10" data-aos="zoom-in">
           <img
             src={triimg1}
+            width="1280"
+            height="720"
             loading="lazy"
             decoding="async"
             onError={(e) => (e.target.src = fallbackImage)}
-            alt="Tribal elders in Wayanad"
+            alt="Wayanad tribal elders in traditional attire"
             className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
 
-        {/* Section: Introduction */}
+        {/* Introduction */}
         <section className="text-gray-800 leading-relaxed mb-10 text-sm sm:text-base space-y-4">
           <p>
-            Nestled in the lush embrace of Kerala’s Western Ghats, Wayanad is
-            celebrated for its emerald valleys, mist-kissed mountains, and
-            thriving wildlife. Beyond its natural beauty lies a lesser-known
-            treasure — the living heritage of its tribal communities. Wayanad is
-            home to several indigenous tribes who have called these forests
-            their home for centuries, including the <strong>Paniyas</strong>,{" "}
-            <strong>Kurichiyas</strong>, <strong>Adiyas</strong>, and{" "}
-            <strong>Kattunaikkans</strong>.
+            Nestled in Kerala’s <strong>Western Ghats</strong>, Wayanad is
+            celebrated not just for its scenic landscapes but also for its{" "}
+            <strong>indigenous tribal heritage</strong>. These communities have
+            preserved ancient traditions, languages, and social structures for
+            centuries, living in harmony with nature.
           </p>
           <p>
-            These communities, bound by traditions and a deep spiritual
-            connection to the land, have preserved their languages, art forms,
-            agricultural techniques, and social structures through generations.
-            Wayanad tribal tourism offers visitors a rare opportunity to engage
-            with this culture authentically.
+            The region’s <strong>tribal tourism</strong> offers authentic
+            cultural experiences—folk dances, traditional crafts, and
+            sustainable farming practices—making Wayanad a living museum of
+            heritage.
           </p>
         </section>
 
-        {/* Image Left Section */}
+        {/* Major Tribes */}
         <div className="flex flex-col md:flex-row items-center gap-8 mb-10">
           <div className="md:w-1/2">
             <img
               src={triimg7}
+              width="800"
+              height="600"
               loading="lazy"
               decoding="async"
               onError={(e) => (e.target.src = fallbackImage)}
-              alt="Traditional tribal dance in Wayanad"
+              alt="Traditional tribal dance in Wayanad Kerala"
               className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
           <div className="md:w-1/2 text-sm sm:text-base text-gray-800 leading-relaxed space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              The Major Tribal Communities of Wayanad
+              Major Tribal Communities of Wayanad
             </h2>
-            <p>
-              Wayanad’s cultural landscape is enriched by its diverse tribes:
-            </p>
             <ul className="list-disc list-inside space-y-1">
               <li>
-                <strong>Paniyas:</strong> Once agricultural laborers, known for
-                folk songs and dances.
+                <strong>Paniyas:</strong> Known for folk songs, agricultural
+                skills, and vibrant dance performances.
               </li>
               <li>
-                <strong>Kurichiyas:</strong> Skilled farmers, martial artists,
-                and archers.
+                <strong>Kurichiyas:</strong> Skilled farmers, warriors, and
+                archers with a history of martial traditions.
               </li>
               <li>
-                <strong>Adiyas:</strong> Herbal medicine experts and bamboo
-                handicraft artisans.
+                <strong>Adiyas:</strong> Experts in herbal medicine and bamboo
+                handicrafts.
               </li>
               <li>
                 <strong>Kattunaikkans:</strong> Forest gatherers skilled in
-                hunting and honey collection.
+                honey collection and wildlife tracking.
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Image Right Section - Updated with more content */}
+        {/* Daily Life & Festivals */}
         <div className="flex flex-col md:flex-row-reverse items-center gap-8 mb-10">
           <div className="md:w-1/2">
             <img
               src={triimg6}
+              width="800"
+              height="600"
               loading="lazy"
               decoding="async"
               onError={(e) => (e.target.src = fallbackImage)}
-              alt="Traditional tribal home in Wayanad"
+              alt="Traditional tribal home in Wayanad Kerala"
               className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
           <div className="md:w-1/2 text-sm sm:text-base lg:text-lg text-gray-800 leading-relaxed space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              Daily Life & Festivals
+              Daily Life & Vibrant Festivals
             </h2>
             <p>
-              Life in Wayanad’s tribal villages is deeply connected to the
-              rhythms of nature. At sunrise, families begin their day with
-              chores like fetching water, tending to paddy fields, and preparing
-              traditional meals. Men often work in agriculture, forest
-              gathering, or handicrafts, while women manage households, weave
-              baskets, and prepare herbal remedies.
+              Tribal life in Wayanad revolves around agriculture, forest
+              gathering, and handicrafts. Evenings are spent sharing folk tales,
+              songs, and dances around a communal fire.
             </p>
-            <p>
-              Evenings are a time for community bonding — people gather around a
-              fire to share stories, sing folk songs, and practice traditional
-              dances. The sense of unity is strong, and respect for elders is a
-              deeply rooted value in tribal life.
-            </p>
-
-            <p>Festivals are vibrant celebrations of culture and nature:</p>
             <ul className="list-disc list-inside space-y-1">
               <li>
-                <strong>Kurumkali:</strong> Sacred dance performed during
-                harvest to thank deities for prosperity and good yields.
+                <strong>Kurumkali:</strong> Sacred harvest dance to honor
+                deities.
               </li>
               <li>
-                <strong>Thira:</strong> Ritual inspired by Theyyam, featuring
-                colorful costumes, elaborate masks, and rhythmic drumming.
+                <strong>Thira:</strong> Ritual performance with colorful masks
+                and drums.
               </li>
               <li>
-                <strong>Harvest Festivals:</strong> Mark the end of the
-                agricultural season with feasts, music, and tribal games such as
-                archery competitions and boat races.
+                <strong>Harvest Festivals:</strong> Feasts, archery
+                competitions, and boat races mark the season.
               </li>
               <li>
-                <strong>Honey Festival:</strong> Celebrates honey-collecting
-                season with fresh forest honey tasting and community sharing.
+                <strong>Honey Festival:</strong> Celebration of honey collection
+                with community sharing.
               </li>
             </ul>
-            <p>
-              These festivals preserve oral traditions, pass down stories, and
-              strengthen community bonds. Visitors to Wayanad can witness these
-              celebrations through guided cultural tours, offering an authentic
-              glimpse into Kerala’s living tribal heritage.
-            </p>
           </div>
         </div>
 
-        {/* Extra SEO-rich sections */}
+        {/* Additional Cultural Insights */}
         <section className="text-sm sm:text-base text-gray-800 leading-relaxed space-y-6">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">
             History of Wayanad's Tribes
           </h2>
           <p>
-            Anthropological evidence suggests that the tribes of Wayanad have
-            inhabited this region for thousands of years. The <em>Paniya</em>{" "}
-            tribe’s oral histories trace back to ancient forest settlements,
-            while the <em>Kurichiyas</em> are believed to be descendants of
-            early warrior clans.
+            Archaeological findings suggest that Wayanad’s tribal communities
+            have existed for thousands of years, maintaining unique languages,
+            rituals, and social systems.
           </p>
 
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-            Role of Nature in Tribal Life
+            Nature & Sustainable Living
           </h2>
           <p>
-            Forests are not just resources but sacred spaces. Medicinal plants,
-            bamboo, and honey are collected sustainably, ensuring nature is
-            preserved for future generations.
+            Forests are sacred in tribal culture, providing medicinal plants,
+            bamboo, and food. Sustainable harvesting ensures ecological balance.
           </p>
 
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-            Sustainable Living Practices
+            Cuisine of Wayanad Tribes
           </h2>
           <p>
-            Tribes practice organic farming, use natural building materials, and
-            recycle waste into compost. These methods align with global
-            sustainable development goals.
+            Meals feature millets, wild greens, smoked meat, bamboo rice
+            payasam, and forest honey, reflecting seasonal availability.
           </p>
 
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-            Tribal Food & Cuisine
+            Challenges & Preservation
           </h2>
           <p>
-            Meals often include millets, wild greens, smoked meat, and honey.
-            Popular dishes include bamboo rice payasam and tapioca with spicy
-            chutneys.
-          </p>
-
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-            Modern Challenges & Opportunities
-          </h2>
-          <p>
-            While modernization has brought education and healthcare, it also
-            threatens indigenous languages and traditions. Eco-tourism and
-            government programs are key to preserving their identity.
+            While education and healthcare have improved lives, modernization
+            threatens traditional practices. Eco-tourism and cultural festivals
+            help preserve heritage.
           </p>
         </section>
       </article>
