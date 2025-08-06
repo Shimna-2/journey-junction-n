@@ -1,5 +1,4 @@
-// src/App.jsx
-import React, { useEffect, lazy, Suspense, useMemo } from "react";
+import React, { useEffect, lazy, Suspense, useMemo, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,10 +9,10 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Core Components
-import Header from "./components/Header.jsx";
+// Core Components (lazy for performance)
+const Header = lazy(() => import("./components/Header.jsx"));
 
-// Lazy-loaded Pages (improves initial load speed)
+// Lazy-loaded Pages
 const Home = lazy(() => import("./components/Home.jsx"));
 const Wayanad = lazy(() => import("./components/Wayanad.jsx"));
 const WeatherCard = lazy(() => import("./components/WeatherCard.jsx"));
@@ -39,17 +38,40 @@ const BlogCoffeePlantations = lazy(() =>
   import("./pages/BlogCoffeePlantations.jsx")
 );
 
-function AppLayout() {
+function AppLayout({ loading }) {
   const location = useLocation();
+
+  // Hide header only on weather page
   const hideHeader = useMemo(
     () => location.pathname === "/weather",
     [location]
   );
 
+  if (loading) {
+    // Full-screen loader before showing anything
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
+        <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
+          Journey Junction
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <>
       {!hideHeader && <Header />}
-      <Suspense fallback={<div className="p-6 text-center">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
+            <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
+              Journey Junction
+            </h1>
+          </div>
+        }
+      >
         <Routes>
           {/* Redirect root to /home */}
           <Route path="/" element={<Navigate to="/home" replace />} />
@@ -101,13 +123,31 @@ function AppLayout() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
+    try {
+      AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
+    } catch (error) {
+      console.error("AOS init failed:", error);
+    }
+
+    // Show loader only on first visit of session
+    const hasVisited = sessionStorage.getItem("hasVisited");
+    if (!hasVisited) {
+      const timer = setTimeout(() => {
+        setLoading(false);
+        sessionStorage.setItem("hasVisited", "true");
+      }, 1500);
+      return () => clearTimeout(timer);
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return (
     <Router>
-      <AppLayout />
+      <AppLayout loading={loading} />
     </Router>
   );
 }

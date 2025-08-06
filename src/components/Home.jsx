@@ -1,6 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { Suspense, lazy } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 // Hero image
@@ -37,47 +35,6 @@ const ContactFormOnly = lazy(() => import("../components/ContactFormOnly"));
 const Footer = lazy(() => import("../components/Footer"));
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    try {
-      AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: true,
-        offset: 80,
-      });
-    } catch (error) {
-      console.error("AOS initialization failed:", error);
-    }
-
-    // Show loader only if session not marked as visited
-    const hasVisited = sessionStorage.getItem("hasVisited");
-
-    if (!hasVisited) {
-      setLoading(true);
-      const timer = setTimeout(() => {
-        setLoading(false);
-        sessionStorage.setItem("hasVisited", "true"); // mark session as visited
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
-        {/* Big Spinner */}
-        <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
-
-        {/* Big Branding */}
-        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
-          Journey Junction
-        </h1>
-      </div>
-    );
-  }
-
   return (
     <>
       {/* Preconnect Fonts */}
@@ -134,7 +91,6 @@ const Home = () => {
             <h1 className="mt-6 text-3xl font-extrabold text-white">
               Journey Junction
             </h1>
-            {/* <p className="text-white/70 mt-2">Loading...</p> */}
           </div>
         }
       >
