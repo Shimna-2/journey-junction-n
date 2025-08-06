@@ -1,4 +1,11 @@
-import React, { useEffect, lazy, Suspense, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  lazy,
+  Suspense,
+  useMemo,
+  useState,
+  memo,
+} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,7 +16,7 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Core Components (lazy for performance)
+// Core Components
 const Header = lazy(() => import("./components/Header.jsx"));
 
 // Lazy-loaded Pages
@@ -38,52 +45,37 @@ const BlogCoffeePlantations = lazy(() =>
   import("./pages/BlogCoffeePlantations.jsx")
 );
 
-function AppLayout({ loading }) {
-  const location = useLocation();
+// Loader Component
+const Loader = () => (
+  <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
+    <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
+    <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
+      Journey Junction
+    </h1>
+  </div>
+);
 
-  // Hide header only on weather page
+const AppLayout = memo(({ loading }) => {
+  const location = useLocation();
   const hideHeader = useMemo(
     () => location.pathname === "/weather",
     [location]
   );
 
-  if (loading) {
-    // Full-screen loader before showing anything
-    return (
-      <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
-        <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
-        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
-          Journey Junction
-        </h1>
-      </div>
-    );
-  }
+  if (loading) return <Loader />;
 
   return (
     <>
       {!hideHeader && <Header />}
-      <Suspense
-        fallback={
-          <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
-            <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
-              Journey Junction
-            </h1>
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <Routes>
-          {/* Redirect root to /home */}
           <Route path="/" element={<Navigate to="/home" replace />} />
-
-          {/* Main Pages */}
           <Route path="/home" element={<Home />} />
           <Route path="/wayanad" element={<Wayanad />} />
           <Route path="/weather" element={<WeatherCard />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/resorts" element={<Resorts />} />
 
-          {/* Resorts with Scroll Targets */}
           {[
             { path: "/luxury-resorts", id: "luxury-resorts" },
             { path: "/premium-resorts", id: "premium-resorts" },
@@ -93,14 +85,10 @@ function AppLayout({ loading }) {
             <Route key={path} path={path} element={<Resorts scrollTo={id} />} />
           ))}
 
-          {/* About & Booking */}
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/booknow" element={<Booknow />} />
-
-          {/* Privacy Policy */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-          {/* Blog Detail Pages */}
           <Route path="/blogs/tribal-culture" element={<BlogTribalCulture />} />
           <Route path="/blogs/climate" element={<BlogWayanadClimate />} />
           <Route
@@ -120,29 +108,19 @@ function AppLayout({ loading }) {
       </Suspense>
     </>
   );
-}
+});
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
-    } catch (error) {
-      console.error("AOS init failed:", error);
-    }
+    AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
 
-    // Show loader only on first visit of session
-    const hasVisited = sessionStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      const timer = setTimeout(() => {
-        setLoading(false);
-        sessionStorage.setItem("hasVisited", "true");
-      }, 1500);
-      return () => clearTimeout(timer);
-    } else {
+    // Always show loader for 1.5 seconds
+    const timer = setTimeout(() => {
       setLoading(false);
-    }
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

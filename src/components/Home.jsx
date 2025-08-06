@@ -20,6 +20,7 @@ const Home = () => {
   const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
+    // Preload hero image in JS as backup
     const img = new Image();
     img.src = bgImage;
     img.loading = "eager";
@@ -28,15 +29,6 @@ const Home = () => {
 
   return (
     <>
-      {/* Smooth scroll globally */}
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      />
-
-      {/* Preload hero */}
-      <link rel="preload" as="image" href={bgImage} />
-
       {/* Hero Section */}
       <div
         className={`w-full h-[90vh] sm:h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] transition-opacity duration-700 ${
