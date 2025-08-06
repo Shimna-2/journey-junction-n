@@ -1,6 +1,8 @@
 // src/components/ContactFormOnly.jsx
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ContactFormOnly = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,15 @@ const ContactFormOnly = () => {
     message: "",
   });
   const [error, setError] = useState("");
+
+  // ✅ Initialize AOS on mount
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+    });
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -67,7 +78,11 @@ const ContactFormOnly = () => {
         rel="stylesheet"
       />
 
-      <div className="max-w-lg mx-auto bg-white rounded-3xl shadow-xl border border-gray-300 px-6 sm:px-10 py-10">
+      {/* Contact Form Wrapper with AOS */}
+      <div
+        className="max-w-lg mx-auto bg-white rounded-3xl shadow-xl border border-gray-300 px-6 sm:px-10 py-10"
+        data-aos="fade-left" // ✅ Animate from left
+      >
         <h2
           id="contact-form-heading"
           className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-6"

@@ -26,13 +26,16 @@ const WeatherPreview = () => {
     fetchData();
   }, []);
 
-  if (error) return <div className="text-red-500">{error}</div>;
-  if (!weather) return <div className="text-white">Loading...</div>;
+  // ❌ Don't show "Loading..." — just return null until we have data or an error
+  if (!weather && !error) return null;
+
+  if (error) {
+    return <div className="text-red-500 text-xs">{error}</div>;
+  }
 
   const temp = Math.round(weather.main.temp) - 2; // reduce by 2°C
   const condition = weather.weather[0].main.toLowerCase();
 
-  // Choose a standard icon based on condition
   let iconUrl;
   if (condition.includes("rain")) {
     iconUrl = "https://cdn-icons-png.flaticon.com/512/1163/1163624.png"; // rain icon

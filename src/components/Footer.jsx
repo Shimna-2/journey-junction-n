@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -8,10 +8,24 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import logoJJ from "../assets/images/logojj.jpeg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Footer = () => {
+  // ✅ Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+    });
+  }, []);
+
   return (
-    <footer className="bg-[#0e1e1c] text-gray-300 pt-12 pb-6 font-[Poppins]">
+    <footer
+      className="bg-[#0e1e1c] text-gray-300 pt-12 pb-6 font-[Poppins]"
+      data-aos="fade-up" // ✅ bottom-to-top animation
+    >
       {/* ✅ Preload font */}
       <link
         rel="preconnect"
