@@ -1,7 +1,27 @@
-// src/pages/Home.jsx
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+
+// Hero image & tiny base64 placeholder
 import bgImage from "../assets/images/home-banner.webp";
+const bgPlaceholder =
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IDAAAABQAgCdASoEAAQAAVAfJZgCdADdAAA/v+..."; // <-- shortened example, you'll replace with real base64
+
+// Section images
+import soochipara from "../assets/images/soochipara.webp";
+import pookodelake from "../assets/images/pookodelake.webp";
+import karapuuzha from "../assets/images/karapuuzha.webp";
+import enooru from "../assets/images/enooru.webp";
+import edakkal from "../assets/images/edakkalcaves.webp";
+import chembrapeak from "../assets/images/chembrapeak.webp";
+
+const preloadImages = [
+  soochipara,
+  pookodelake,
+  karapuuzha,
+  enooru,
+  edakkal,
+  chembrapeak,
+];
 
 // Lazy-load heavy components
 const JourneyJunctionPromise = lazy(() =>
@@ -17,36 +37,27 @@ const Footer = lazy(() => import("../components/Footer"));
 
 const Home = () => {
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const [heroSrc, setHeroSrc] = useState(bgPlaceholder);
 
-  // Preload hero image with high priority
+  // Load hero first with high priority
   useEffect(() => {
     const img = new Image();
     img.src = bgImage;
     img.fetchPriority = "high";
     img.loading = "eager";
-    img.onload = () => setHeroLoaded(true);
+    img.onload = () => {
+      setHeroSrc(bgImage);
+      setHeroLoaded(true);
+    };
   }, []);
 
-  // Show loading screen until hero image loads
-  if (!heroLoaded) {
-    return (
-      <div
-        className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-[Poppins]"
-        role="status"
-        aria-label="Loading Journey Junction website content"
-      >
-        {/* Spinner */}
-        <div className="w-20 h-20 border-4 border-white/30 border-t-green-400 rounded-full animate-spin"></div>
-
-        {/* Brand name */}
-        <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-wide animate-pulse">
-          Journey Junction
-        </h1>
-
-        <span className="sr-only">Loading content, please wait</span>
-      </div>
-    );
-  }
+  // Preload other section images
+  useEffect(() => {
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <>
@@ -66,14 +77,16 @@ const Home = () => {
         rel="stylesheet"
       />
 
-      {/* Preload only the hero image */}
+      {/* Preload hero */}
       <link rel="preload" as="image" href={bgImage} fetchPriority="high" />
 
       {/* Hero Section */}
       <div
-        className="w-full h-[90vh] sm:h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 relative font-[Poppins]"
+        className={`w-full h-[90vh] sm:h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 relative font-[Poppins] transition-opacity duration-700 ${
+          heroLoaded ? "opacity-100" : "opacity-80 blur-sm"
+        }`}
         style={{
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: `url(${heroSrc})`,
           backgroundColor: "#333",
         }}
         role="img"
@@ -97,8 +110,15 @@ const Home = () => {
       {/* Sections */}
       <Suspense
         fallback={
-          <div className="flex justify-center items-center min-h-screen bg-black text-white">
-            Loading content...
+          <div
+            className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-[Poppins]"
+            role="status"
+            aria-label="Loading Journey Junction website content"
+          >
+            <div className="w-16 h-16 border-4 border-white/30 border-t-green-400 rounded-full animate-spin"></div>
+            <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold animate-pulse tracking-wider">
+              Journey Junction
+            </h1>
           </div>
         }
       >
