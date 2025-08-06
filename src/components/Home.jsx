@@ -1,10 +1,10 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState, useRef } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
-// Hero image & tiny base64 placeholder
+// Hero image & placeholder
 import bgImage from "../assets/images/home-banner.webp";
 const bgPlaceholder =
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IDAAAABQAgCdASoEAAQAAVAfJZgCdADdAAA/v+..."; // <-- shortened example, you'll replace with real base64
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IDAAAABQAgCdASoEAAQAAVAfJZgCdADdAAA/v+...";
 
 // Section images
 import soochipara from "../assets/images/soochipara.webp";
@@ -23,7 +23,7 @@ const preloadImages = [
   chembrapeak,
 ];
 
-// Lazy-load heavy components
+// Lazy-load sections
 const JourneyJunctionPromise = lazy(() =>
   import("../components/JourneyJunctionPromise")
 );
@@ -38,8 +38,9 @@ const Footer = lazy(() => import("../components/Footer"));
 const Home = () => {
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [heroSrc, setHeroSrc] = useState(bgPlaceholder);
+  const imagesLoadedRef = useRef(false);
 
-  // Load hero first with high priority
+  // Load hero first
   useEffect(() => {
     const img = new Image();
     img.src = bgImage;
@@ -51,12 +52,23 @@ const Home = () => {
     };
   }, []);
 
-  // Preload other section images
+  // Smooth preload section images AFTER page is interactive
   useEffect(() => {
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+    if (!imagesLoadedRef.current) {
+      const loadImages = () => {
+        preloadImages.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+        imagesLoadedRef.current = true;
+      };
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadImages);
+      } else {
+        setTimeout(loadImages, 200); // Fallback for browsers without requestIdleCallback
+      }
+    }
   }, []);
 
   return (
@@ -89,18 +101,15 @@ const Home = () => {
           backgroundImage: `url(${heroSrc})`,
           backgroundColor: "#333",
         }}
-        role="img"
-        aria-label="Scenic Wayanad landscape view"
       >
         <div
           className="relative z-10 text-center text-white"
           data-aos="fade-down"
-          data-aos-delay="100"
         >
-          <h1 className="text-[36px] sm:text-[60px] md:text-[100px] lg:text-[120px] font-extrabold uppercase tracking-widest text-white/30 leading-none drop-shadow-xl break-words">
+          <h1 className="text-[36px] sm:text-[60px] md:text-[100px] lg:text-[120px] font-extrabold uppercase tracking-widest text-white/30">
             Wayanad
           </h1>
-          <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg lg:text-xl font-medium drop-shadow-sm max-w-xl mx-auto px-4">
+          <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg lg:text-xl">
             Explore the top resorts in <strong>Wayanad</strong> with{" "}
             <span className="font-semibold">Journey Junction</span>
           </p>
@@ -110,11 +119,7 @@ const Home = () => {
       {/* Sections */}
       <Suspense
         fallback={
-          <div
-            className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-[Poppins]"
-            role="status"
-            aria-label="Loading Journey Junction website content"
-          >
+          <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
             <div className="w-16 h-16 border-4 border-white/30 border-t-green-400 rounded-full animate-spin"></div>
             <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold animate-pulse tracking-wider">
               Journey Junction
@@ -122,22 +127,22 @@ const Home = () => {
           </div>
         }
       >
-        <div data-aos="fade-right" data-aos-delay="200">
+        <div data-aos="fade-right">
           <JourneyJunctionPromise />
         </div>
-        <div data-aos="fade-left" data-aos-delay="300">
+        <div data-aos="fade-left">
           <TopDestinationsSlider />
         </div>
-        <div data-aos="fade-right" data-aos-delay="200">
+        <div data-aos="fade-right">
           <NatureGallery />
         </div>
-        <div data-aos="fade-left" data-aos-delay="300">
+        <div data-aos="fade-left">
           <TopResorts />
         </div>
-        <div data-aos="fade-right" data-aos-delay="200">
+        <div data-aos="fade-right">
           <ContactFormOnly />
         </div>
-        <div data-aos="fade-up" data-aos-delay="200">
+        <div data-aos="fade-up">
           <Footer />
         </div>
       </Suspense>
@@ -148,16 +153,11 @@ const Home = () => {
           href="https://wa.me/919633763916"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300"
-          aria-label="Chat with us on WhatsApp"
+          className="bg-green-500 p-3 rounded-full"
         >
           <FaWhatsapp size={24} />
         </a>
-        <a
-          href="tel:+919633763916"
-          className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300"
-          aria-label="Call us directly"
-        >
+        <a href="tel:+919633763916" className="bg-blue-500 p-3 rounded-full">
           <FaPhoneAlt size={24} />
         </a>
       </div>

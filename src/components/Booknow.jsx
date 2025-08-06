@@ -136,23 +136,34 @@ Message: ${message}`;
                   />
                 </div>
 
+                {/* Moved check-in/out dates here with labels */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <input
-                    name="checkIn"
-                    type="date"
-                    value={formData.checkIn}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
-                    required
-                  />
-                  <input
-                    name="checkOut"
-                    type="date"
-                    value={formData.checkOut}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
-                    required
-                  />
+                  <div className="w-full">
+                    <label className="block text-gray-700 mb-1 font-medium">
+                      Check-in Date
+                    </label>
+                    <input
+                      name="checkIn"
+                      type="date"
+                      value={formData.checkIn}
+                      onChange={handleChange}
+                      className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
+                      required
+                    />
+                  </div>
+                  <div className="w-full">
+                    <label className="block text-gray-700 mb-1 font-medium">
+                      Check-out Date
+                    </label>
+                    <input
+                      name="checkOut"
+                      type="date"
+                      value={formData.checkOut}
+                      onChange={handleChange}
+                      className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div>
