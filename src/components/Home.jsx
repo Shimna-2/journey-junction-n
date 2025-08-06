@@ -1,7 +1,5 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
-
-// Hero image
 import bgImage from "../assets/images/home-banner.webp";
 
 // Lazy load sections
@@ -16,16 +14,24 @@ const TopResorts = lazy(() => import("../components/TopResorts"));
 const ContactFormOnly = lazy(() => import("../components/ContactFormOnly"));
 const Footer = lazy(() => import("../components/Footer"));
 
+// Keep a global flag so the hero image stays "loaded" for the whole app session
+let heroImageAlreadyLoaded = false;
+
 const Home = () => {
-  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(heroImageAlreadyLoaded);
+  const imgRef = useRef(null);
 
   useEffect(() => {
-    // Preload hero image
-    const img = new Image();
-    img.src = bgImage;
-    img.loading = "eager";
-    img.decoding = "sync"; // force immediate decode
-    img.onload = () => setHeroLoaded(true);
+    if (!heroImageAlreadyLoaded) {
+      const img = new Image();
+      img.src = bgImage;
+      img.loading = "eager";
+      img.decoding = "sync";
+      img.onload = () => {
+        heroImageAlreadyLoaded = true; // mark as globally loaded
+        setHeroLoaded(true);
+      };
+    }
   }, []);
 
   return (
@@ -40,10 +46,11 @@ const Home = () => {
           backgroundColor: "#333",
         }}
       >
-        {/* Hidden eager-loading image for faster display */}
+        {/* Hidden image for eager preload */}
         <img
+          ref={imgRef}
           src={bgImage}
-          alt=""
+          alt="Wayanad Banner"
           loading="eager"
           decoding="sync"
           className="hidden"
