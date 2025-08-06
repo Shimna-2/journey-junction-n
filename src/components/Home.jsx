@@ -20,10 +20,11 @@ const Home = () => {
   const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
-    // Preload hero image in JS as backup
+    // Preload hero image
     const img = new Image();
     img.src = bgImage;
     img.loading = "eager";
+    img.decoding = "sync"; // force immediate decode
     img.onload = () => setHeroLoaded(true);
   }, []);
 
@@ -31,7 +32,7 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div
-        className={`w-full h-[90vh] sm:h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] transition-opacity duration-700 ${
+        className={`w-full h-[90vh] sm:h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] transition-opacity duration-300 ${
           heroLoaded ? "opacity-100" : "opacity-0"
         }`}
         style={{
@@ -39,6 +40,15 @@ const Home = () => {
           backgroundColor: "#333",
         }}
       >
+        {/* Hidden eager-loading image for faster display */}
+        <img
+          src={bgImage}
+          alt=""
+          loading="eager"
+          decoding="sync"
+          className="hidden"
+        />
+
         <div className="text-center text-white">
           <h1 className="text-[36px] sm:text-[60px] md:text-[100px] lg:text-[120px] font-extrabold uppercase tracking-widest text-white/30">
             Wayanad
