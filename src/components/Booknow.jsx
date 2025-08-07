@@ -136,13 +136,16 @@ Message: ${message}`;
                   />
                 </div>
 
-                {/* Moved check-in/out dates here with labels */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="w-full">
-                    <label className="block text-gray-700 mb-1 font-medium">
+                    <label
+                      htmlFor="checkIn"
+                      className="block text-gray-700 mb-1 font-medium"
+                    >
                       Check-in Date
                     </label>
                     <input
+                      id="checkIn"
                       name="checkIn"
                       type="date"
                       value={formData.checkIn}
@@ -152,10 +155,14 @@ Message: ${message}`;
                     />
                   </div>
                   <div className="w-full">
-                    <label className="block text-gray-700 mb-1 font-medium">
+                    <label
+                      htmlFor="checkOut"
+                      className="block text-gray-700 mb-1 font-medium"
+                    >
                       Check-out Date
                     </label>
                     <input
+                      id="checkOut"
                       name="checkOut"
                       type="date"
                       value={formData.checkOut}
