@@ -3,9 +3,9 @@ import React from "react";
 import Footer from "../components/Footer";
 
 // Import WebP images (optimized format)
-import adventure1 from "../assets/images/blgadventure1.webp";
-import adventure2 from "../assets/images/blgadventure2.webp";
-import adventure3 from "../assets/images/blgadventure3.webp";
+import adventure1 from "../assets/images/blogadventure1.webp";
+import adventure2 from "../assets/images/blogadventure2.webp";
+import adventure3 from "../assets/images/blogadventure2.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";

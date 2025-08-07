@@ -3,8 +3,8 @@ import React from "react";
 import Footer from "../components/Footer";
 
 import thirunelli from "../assets/images/blgthirunelli-banner.webp";
-import thirunelli1 from "../assets/images/blgthirunelli2.webp";
-import thiruneli2 from "../assets/images/blgthirunelli3.webp";
+import thirunelli1 from "../assets/images/blgthirunelli-banner.webp";
+import thiruneli2 from "../assets/images/blgthirunelli-banner.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";

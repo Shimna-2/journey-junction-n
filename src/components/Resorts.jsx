@@ -34,7 +34,7 @@ import seogot3 from "../assets/images/seogot2.webp";
 import seogot2 from "../assets/images/seogot3.webp";
 import safari from "../assets/images/safari.webp";
 import safari1 from "../assets/images/safari1.webp";
-import safari2 from "../assets/images/safari2.webp";
+
 import peppertrail from "../assets/images/peppertrail.webp";
 import peppertrail1 from "../assets/images/peppertrail1.webp";
 import peppertrail3 from "../assets/images/peppertrail3.webp";
@@ -60,7 +60,7 @@ const budgetResorts = [
     images: [coffeeacres1, coffeeacres1, imageslider3],
   },
   { name: "Seagot Resort", images: [seagot, seogot3, seogot2] },
-  { name: "Safari Hills", images: [safari, safari1, safari2] },
+  { name: "Safari Hills", images: [safari, safari1] },
 ];
 const privatePoolVillas = [
   {

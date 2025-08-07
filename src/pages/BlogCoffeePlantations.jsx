@@ -3,9 +3,10 @@ import React from "react";
 import Footer from "../components/Footer";
 
 // Optimized WebP images
-import coffeeHarvest from "../assets/images/blgcoffee2.webp";
+import coffeeHarvest from "../assets/images/blgcoffee1.webp";
+
 import coffeeProcessing from "../assets/images/blgcoffee1.webp";
-import coffeeEstate from "../assets/images/blogcoffee3.webp";
+import coffeeEstate from "../assets/images/blgcoffee1.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
