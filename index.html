@@ -2,34 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts with display=swap -->
     <link
-      rel="preload"
-      href="/assets/images/home-banner.webp"
-      as="image"
-      type="image/webp"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      href="/assets/images/home-banner-mobile.webp"
-      as="image"
-      type="image/webp"
-      fetchpriority="high"
-    />
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Preload hero banner image for highest priority -->
-    <link rel="preload" as="image" href="/src/assets/images/home-banner.webp" />
+    <!-- Preload hero banner with responsive variants -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/home-banner.webp"
+      imagesrcset="/assets/images/home-banner-mobile.webp 768w, /assets/images/home-banner.webp 1920w"
+      sizes="(max-width: 768px) 100vw, 1920px"
+      type="image/webp"
+      fetchpriority="high"
+    />
 
     <title>Journey Junction</title>
   </head>

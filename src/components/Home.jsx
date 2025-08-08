@@ -1,10 +1,8 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import bgDesktop from "../assets/images/home-banner.webp";
+import bgMobile from "../assets/images/home-banner-mobile.webp";
 
-// Hero images (WebP)
-import bgImageDesktop from "../assets/images/home-banner.webp";
-import bgImageMobile from "../assets/images/home-banner-mobile.webp";
-
-// Lazy sections
+/* Lazy components - non-critical below the fold */
 const JourneyJunctionPromise = lazy(() =>
   import("../components/JourneyJunctionPromise")
 );
@@ -16,79 +14,121 @@ const TopResorts = lazy(() => import("../components/TopResorts"));
 const ContactFormOnly = lazy(() => import("../components/ContactFormOnly"));
 const Footer = lazy(() => import("../components/Footer"));
 
-// Global cache flag so hero doesn't reload on back navigation
 let heroImageAlreadyLoaded = false;
 
-const Home = () => {
+export default function Home() {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 768 : true
+  );
   const [heroLoaded, setHeroLoaded] = useState(heroImageAlreadyLoaded);
   const [contentReady, setContentReady] = useState(false);
+  const sentinelRef = useRef(null);
 
+  /* Debounced resize for less layout thrash */
   useEffect(() => {
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setIsMobile(window.innerWidth <= 768);
+      }, 150);
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  /* Preload & prioritize hero image */
+  useEffect(() => {
+    const heroSrc = isMobile ? bgMobile : bgDesktop;
+
+    // Preload hero image
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "image";
+    preloadLink.href = heroSrc;
+    preloadLink.fetchPriority = "high"; // Chrome LCP optimization
+    document.head.appendChild(preloadLink);
+
     if (!heroImageAlreadyLoaded) {
       const img = new Image();
-      img.src = window.innerWidth <= 768 ? bgImageMobile : bgImageDesktop;
+      img.src = heroSrc;
+      img.decoding = "async";
       img.loading = "eager";
-      img.decoding = "sync";
       img.onload = () => {
         heroImageAlreadyLoaded = true;
         setHeroLoaded(true);
-
-        if (window.innerWidth > 768) {
-          setContentReady(true); // Desktop → load immediately
-        }
+        if (!isMobile) setContentReady(true);
+      };
+      img.onerror = () => {
+        heroImageAlreadyLoaded = true;
+        setHeroLoaded(true);
+        if (!isMobile) setContentReady(true);
       };
     } else {
       setHeroLoaded(true);
-      if (window.innerWidth > 768) {
-        setContentReady(true);
-      }
+      if (!isMobile) setContentReady(true);
     }
 
-    // Mobile → lazy load sections on scroll
-    if (window.innerWidth <= 768) {
-      const onScroll = () => {
-        setContentReady(true);
-        window.removeEventListener("scroll", onScroll);
-      };
-      window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      if (preloadLink.parentNode) {
+        preloadLink.parentNode.removeChild(preloadLink);
+      }
+    };
+  }, [isMobile]);
+
+  /* Mobile: load sections only when visible */
+  useEffect(() => {
+    if (isMobile && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            setContentReady(true);
+            io.disconnect();
+          }
+        },
+        { rootMargin: "200px" }
+      );
+      if (sentinelRef.current) io.observe(sentinelRef.current);
+      return () => io.disconnect();
     }
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
       {/* Hero Section */}
-      <div
-        className={`w-full h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] transition-opacity duration-300 ${
-          heroLoaded ? "opacity-100" : "opacity-0"
-        }`}
-        style={{
-          backgroundImage: `url(${
-            window.innerWidth <= 768 ? bgImageMobile : bgImageDesktop
-          })`,
-          backgroundColor: "#222", // Dark placeholder
-        }}
+      <section
+        className="w-full h-screen relative flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] bg-[#222] overflow-hidden"
+        aria-label="Hero — Wayanad"
       >
-        {/* Responsive preload image (hidden but ensures srcset works) */}
-        <img
-          src={bgImageDesktop}
-          srcSet={`${bgImageMobile} 768w, ${bgImageDesktop} 1920w`}
-          sizes="(max-width: 768px) 100vw, 1920px"
-          alt="Wayanad Banner"
-          loading="eager"
-          decoding="sync"
-          className="hidden"
-        />
+        <picture className="absolute inset-0 w-full h-full">
+          <source
+            srcSet={`${bgMobile} 768w, ${bgDesktop} 1920w`}
+            type="image/webp"
+            sizes="(max-width: 768px) 100vw, 1920px"
+          />
+          <img
+            src={isMobile ? bgMobile : bgDesktop}
+            alt="Wayanad scenic landscape banner"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+              heroLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            width="1920"
+            height="1080"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
 
         {/* Hero Text */}
-        <div className="text-center text-white">
+        <div className="relative z-10 text-center text-white px-4">
           <h1
             className="hero-title text-[36px] sm:text-[60px] md:text-[100px] lg:text-[120px] font-extrabold uppercase tracking-widest text-white/30"
             style={{
-              textShadow:
-                window.innerWidth > 768
-                  ? "0px 2px 8px rgba(0,0,0,0.5)"
-                  : "none",
+              textShadow: !isMobile ? "0px 2px 8px rgba(0,0,0,0.5)" : "none",
             }}
           >
             Wayanad
@@ -98,11 +138,24 @@ const Home = () => {
             <span className="font-semibold">Journey Junction</span>
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Lazy load sections */}
+      {/* Sentinel for mobile lazy loading */}
+      <div ref={sentinelRef} />
+
+      {/* Lazy Sections */}
       {contentReady && (
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <div
+              className="p-8 text-center text-white"
+              role="status"
+              aria-live="polite"
+            >
+              Loading content...
+            </div>
+          }
+        >
           <JourneyJunctionPromise />
           <TopDestinationsSlider />
           <NatureGallery />
@@ -113,6 +166,4 @@ const Home = () => {
       )}
     </>
   );
-};
-
-export default Home;
+}
