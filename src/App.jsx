@@ -55,6 +55,9 @@ const Loader = () => (
   </div>
 );
 
+// Global persistent Home state
+let homeInstance = null;
+
 const AppLayout = memo(({ loading }) => {
   const location = useLocation();
   const hideHeader = useMemo(
@@ -70,7 +73,12 @@ const AppLayout = memo(({ loading }) => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<Home />} />
+          <Route
+            path="/home"
+            element={
+              homeInstance || (homeInstance = <Home key="persistent-home" />)
+            }
+          />
           <Route path="/wayanad" element={<Wayanad />} />
           <Route path="/weather" element={<WeatherCard />} />
           <Route path="/blog" element={<Blog />} />
@@ -114,12 +122,18 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // ✅ Preload optimized hero images for mobile & desktop
+    const mobileHero = new Image();
+    mobileHero.src = "/assets/images/home-banner-mobile-compressed.webp"; // compressed mobile
+    const desktopHero = new Image();
+    desktopHero.src = "/assets/images/home-banner.webp"; // full-size desktop
+
     AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
 
-    // Always show loader for 1.5 seconds
+    // Always show loader for 1.2s for smoothness
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1200);
     return () => clearTimeout(timer);
   }, []);
 
