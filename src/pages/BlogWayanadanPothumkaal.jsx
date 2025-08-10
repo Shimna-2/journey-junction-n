@@ -1,5 +1,7 @@
 // src/pages/BlogWayanadanPothumkaal.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
 import pothumkaal2 from "../assets/images/blgpothumkaalimg1.webp";
 
@@ -7,6 +9,8 @@ const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogWayanadanPothumkaal() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-[#fdfaf8] w-full font-[Poppins]">
       <article
@@ -14,6 +18,17 @@ export default function BlogWayanadanPothumkaal() {
         role="article"
         aria-label="Wayanadan Pothumkaal Kerala beef curry blog"
       >
+        {/* Back arrow button */}
+        <button
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
+          type="button"
+        >
+          <FaArrowLeft className="w-5 h-5" />
+          <span className="text-sm sm:text-base font-medium">Back</span>
+        </button>
+
         {/* Header */}
         <header className="mb-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">

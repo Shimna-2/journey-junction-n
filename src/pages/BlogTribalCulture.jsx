@@ -1,5 +1,7 @@
 // src/pages/BlogTribalCulture.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
 
 import triimg1 from "../assets/images/blgtribal.webp";
@@ -8,6 +10,8 @@ const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogTribalCulture() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-[#fdfaf8] w-full font-[Poppins]">
       <article
@@ -15,6 +19,17 @@ export default function BlogTribalCulture() {
         role="article"
         aria-label="Wayanad Tribal Culture travel and heritage guide"
       >
+        {/* Back arrow button */}
+        <button
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
+          type="button"
+        >
+          <FaArrowLeft className="w-5 h-5" />
+          <span className="text-sm sm:text-base font-medium">Back</span>
+        </button>
+
         {/* Blog Header */}
         <header className="mb-10" data-aos="fade-up">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">

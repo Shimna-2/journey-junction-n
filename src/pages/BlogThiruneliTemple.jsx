@@ -1,5 +1,7 @@
 // src/pages/BlogThiruneliTemple.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
 
 import thirunelli from "../assets/images/blgthirunelli-banner.webp";
@@ -8,6 +10,8 @@ const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogThiruneliTemple() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-[#fdfaf8] w-full font-serif">
       <article
@@ -15,6 +19,17 @@ export default function BlogThiruneliTemple() {
         role="article"
         aria-label="Thirunelli Temple travel guide"
       >
+        {/* Back arrow button */}
+        <button
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
+          type="button"
+        >
+          <FaArrowLeft className="w-5 h-5" />
+          <span className="text-sm sm:text-base font-medium">Back</span>
+        </button>
+
         {/* Header */}
         <header className="mb-6 sm:mb-8 text-left">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3">

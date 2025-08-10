@@ -1,15 +1,18 @@
 // src/pages/BlogWayanadClimate.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
 
 // Import images
-
-import climateImg2 from "../assets/images/blgcoffee1.webp";
+import climateImg2 from "../assets/images/blgclimate.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogWayanadClimate() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-[#fdfaf8] w-full font-sans">
       <article
@@ -17,6 +20,17 @@ export default function BlogWayanadClimate() {
         role="article"
         aria-label="Detailed guide on Wayanad's climate and best travel seasons"
       >
+        {/* Back arrow button */}
+        <button
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
+          type="button"
+        >
+          <FaArrowLeft className="w-5 h-5" />
+          <span className="text-sm sm:text-base font-medium">Back</span>
+        </button>
+
         {/* Header */}
         <header className="mb-8 text-left">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">
