@@ -1,8 +1,7 @@
 // src/components/JourneyJunctionPromise.jsx
-import React, { useEffect, useState, memo } from "react";
+import React, { memo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import bgImage from "../assets/images/home-banner-2.webp";
 
 const promises = [
   "Luxury resorts with valley views",
@@ -15,51 +14,18 @@ const promises = [
 ];
 
 const JourneyJunctionPromise = () => {
-  const [displayedText, setDisplayedText] = useState("");
-  const fullText = "Why Choose Journey Junction?";
-
-  useEffect(() => {
+  React.useEffect(() => {
     AOS.init({
       duration: 800,
       easing: "ease-out-cubic",
       once: true,
       offset: 100,
     });
-
-    let i = 0;
-    const typingInterval = setInterval(() => {
-      setDisplayedText((prev) => fullText.slice(0, i + 1));
-      i++;
-      if (i === fullText.length) clearInterval(typingInterval);
-    }, 60);
-
-    return () => clearInterval(typingInterval);
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row font-[Poppins]">
-      {/* Left Side */}
-      <div
-        className="w-full md:w-1/2 flex items-center justify-center bg-center bg-cover relative p-6 sm:p-10 bg-fixed"
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          minHeight: "50vh",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/20" />
-        <div
-          className="relative z-10 text-center md:text-left"
-          data-aos="fade-up"
-        >
-          <h2 className="typing-heading text-white text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-wide leading-tight">
-            {displayedText}
-            <span className="cursor">|</span>
-          </h2>
-        </div>
-      </div>
-
-      {/* Right Side */}
-      <div className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col justify-center gap-4 sm:gap-6 bg-gradient-to-br from-gray-200 to-gray-300">
+    <section className="w-full font-[Poppins] bg-gradient-to-br from-gray-200 to-gray-300 py-10 px-6 sm:px-10">
+      <div className="max-w-5xl mx-auto flex flex-col gap-4 sm:gap-6">
         {promises.map((item, index) => (
           <div
             key={index}
@@ -76,30 +42,6 @@ const JourneyJunctionPromise = () => {
           </div>
         ))}
       </div>
-
-      {/* Typing Effect Styles */}
-      <style jsx>{`
-        .typing-heading {
-          font-family: "Poppins", sans-serif;
-        }
-        .cursor {
-          display: inline-block;
-          width: 2px;
-          background: white;
-          animation: blink 0.8s infinite;
-        }
-        @keyframes blink {
-          0%,
-          50%,
-          100% {
-            opacity: 1;
-          }
-          25%,
-          75% {
-            opacity: 0;
-          }
-        }
-      `}</style>
     </section>
   );
 };

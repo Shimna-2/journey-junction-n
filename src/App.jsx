@@ -45,32 +45,20 @@ const BlogCoffeePlantations = lazy(() =>
   import("./pages/BlogCoffeePlantations.jsx")
 );
 
-// Loader Component
-const Loader = () => (
-  <div className="flex flex-col items-center justify-center h-screen bg-black font-[Poppins]">
-    <div className="w-20 h-20 border-8 border-white/30 border-t-white rounded-full animate-spin"></div>
-    <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wide text-center">
-      Journey Junction
-    </h1>
-  </div>
-);
-
 // Global persistent Home state
 let homeInstance = null;
 
-const AppLayout = memo(({ loading }) => {
+const AppLayout = memo(() => {
   const location = useLocation();
   const hideHeader = useMemo(
     () => location.pathname === "/weather",
     [location]
   );
 
-  if (loading) return <Loader />;
-
   return (
     <>
       {!hideHeader && <Header />}
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route
@@ -119,27 +107,19 @@ const AppLayout = memo(({ loading }) => {
 });
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     // ✅ Preload optimized hero images for mobile & desktop
     const mobileHero = new Image();
-    mobileHero.src = "/assets/images/home-banner-mobile-compressed.webp"; // compressed mobile
+    mobileHero.src = "/assets/images/home-banner-mobile-compressed.webp";
     const desktopHero = new Image();
-    desktopHero.src = "/assets/images/home-banner.webp"; // full-size desktop
+    desktopHero.src = "/assets/images/home-banner.webp";
 
     AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
-
-    // Always show loader for 1.2s for smoothness
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-    return () => clearTimeout(timer);
   }, []);
 
   return (
     <Router>
-      <AppLayout loading={loading} />
+      <AppLayout />
     </Router>
   );
 }

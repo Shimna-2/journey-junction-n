@@ -1,6 +1,8 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import bgDesktop from "../assets/images/home-banner.webp";
 import bgMobile from "../assets/images/home-banner-mobile.webp";
+import placeholderDesktop from "../assets/images/home-banner-placeholder.webp";
+import placeholderMobile from "../assets/images/home-banner-placeholder-mobile.webp";
 
 /* Lazy components - non-critical below the fold */
 const JourneyJunctionPromise = lazy(() =>
@@ -24,7 +26,7 @@ export default function Home() {
   const [contentReady, setContentReady] = useState(false);
   const sentinelRef = useRef(null);
 
-  /* Debounced resize for less layout thrash */
+  /* Debounced resize */
   useEffect(() => {
     let resizeTimer;
     const onResize = () => {
@@ -40,16 +42,15 @@ export default function Home() {
     };
   }, []);
 
-  /* Preload & prioritize hero image */
+  /* Preload hero image */
   useEffect(() => {
     const heroSrc = isMobile ? bgMobile : bgDesktop;
 
-    // Preload hero image
     const preloadLink = document.createElement("link");
     preloadLink.rel = "preload";
     preloadLink.as = "image";
     preloadLink.href = heroSrc;
-    preloadLink.fetchPriority = "high"; // Chrome LCP optimization
+    preloadLink.fetchPriority = "high";
     document.head.appendChild(preloadLink);
 
     if (!heroImageAlreadyLoaded) {
@@ -96,6 +97,9 @@ export default function Home() {
     }
   }, [isMobile]);
 
+  const placeholderSrc = isMobile ? placeholderMobile : placeholderDesktop;
+  const heroSrc = isMobile ? bgMobile : bgDesktop;
+
   return (
     <>
       {/* Hero Section */}
@@ -103,6 +107,15 @@ export default function Home() {
         className="w-full h-screen relative flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] bg-[#222] overflow-hidden"
         aria-label="Hero — Wayanad"
       >
+        {/* Placeholder background */}
+        <img
+          src={placeholderSrc}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Main hero image with fade-in */}
         <picture className="absolute inset-0 w-full h-full">
           <source
             srcSet={`${bgMobile} 768w, ${bgDesktop} 1920w`}
@@ -110,7 +123,7 @@ export default function Home() {
             sizes="(max-width: 768px) 100vw, 1920px"
           />
           <img
-            src={isMobile ? bgMobile : bgDesktop}
+            src={heroSrc}
             alt="Wayanad scenic landscape banner"
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
               heroLoaded ? "opacity-100" : "opacity-0"
@@ -145,17 +158,7 @@ export default function Home() {
 
       {/* Lazy Sections */}
       {contentReady && (
-        <Suspense
-          fallback={
-            <div
-              className="p-8 text-center text-white"
-              role="status"
-              aria-live="polite"
-            >
-              Loading content...
-            </div>
-          }
-        >
+        <Suspense fallback={null}>
           <JourneyJunctionPromise />
           <TopDestinationsSlider />
           <NatureGallery />
