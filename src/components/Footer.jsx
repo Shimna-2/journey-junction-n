@@ -1,10 +1,20 @@
-// src/components/Footer.jsx
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Footer = () => {
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 100,
+    });
+  }, []);
 
   const handleLinkClick = (path) => {
     navigate(path);
@@ -12,7 +22,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-10 px-6 font-[Poppins]">
+    <footer
+      className="bg-gray-900 text-white py-10 px-6 font-[Poppins]"
+      data-aos="fade-up"
+    >
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6">
         {/* Description */}
         <div>
@@ -97,20 +110,22 @@ const Footer = () => {
           <p className="text-sm">+91 9744161939</p>
           <p className="text-sm">journeyjunctionwyn@gmail.com</p>
 
-          <div className="flex space-x-3 mt-3">
+          <div className="flex space-x-3 mt-3 text-xl">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1F7BL9EXTb"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-blue-500 transition-colors duration-300"
             >
               <FaFacebookF />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/journey_junction___?igsh=ODZieXo1NTlhNjhr"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-pink-500 transition-colors duration-300"
             >
               <FaInstagram />
             </a>
@@ -119,6 +134,7 @@ const Footer = () => {
               aria-label="WhatsApp"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-green-500 transition-colors duration-300"
             >
               <FaWhatsapp />
             </a>
