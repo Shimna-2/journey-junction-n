@@ -107,12 +107,16 @@ export default function Home() {
         className="w-full h-screen relative flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] bg-[#222] overflow-hidden"
         aria-label="Hero — Wayanad"
       >
-        {/* Placeholder background */}
+        {/* Placeholder background with animation */}
         <img
           src={placeholderSrc}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out ${
+            heroLoaded
+              ? "opacity-0 scale-105 blur-sm"
+              : "opacity-100 scale-100 blur-none"
+          } animate-kenburns`}
         />
 
         {/* Main hero image with fade-in */}
@@ -167,6 +171,21 @@ export default function Home() {
           <Footer />
         </Suspense>
       )}
+
+      {/* Ken Burns animation */}
+      <style jsx>{`
+        @keyframes kenburns {
+          0% {
+            transform: scale(1) translate(0, 0);
+          }
+          100% {
+            transform: scale(1.05) translate(0, 0);
+          }
+        }
+        .animate-kenburns {
+          animation: kenburns 10s ease-in-out infinite alternate;
+        }
+      `}</style>
     </>
   );
 }
