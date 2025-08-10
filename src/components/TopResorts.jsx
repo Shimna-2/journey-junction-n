@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 import msresort1 from "../assets/images/msresort1.webp";
 import coffeeCounty from "../assets/images/topresortsimg2.webp";
-import coffeeAcres from "../assets/images/topresortsimg3.webp";
+import coffeeAcres from "../assets/images/topresortsimg33.webp";
 
 const TopResorts = () => {
   const navigate = useNavigate();

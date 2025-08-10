@@ -3,8 +3,8 @@ import React from "react";
 import Footer from "../components/Footer";
 
 import triimg1 from "../assets/images/blgtribal.webp";
-import triimg6 from "../assets/images/blgtribal1.webp";
-import triimg7 from "../assets/images/blgtribal2.webp";
+// import triimg6 from "../assets/images/blgtribal1.webp";
+// import triimg7 from "../assets/images/blgtribal2.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -64,7 +64,7 @@ export default function BlogTribalCulture() {
 
         {/* Major Tribes */}
         <div className="flex flex-col md:flex-row items-center gap-8 mb-10">
-          <div className="md:w-1/2">
+          {/* <div className="md:w-1/2">
             <img
               src={triimg7}
               width="800"
@@ -75,7 +75,7 @@ export default function BlogTribalCulture() {
               alt="Traditional tribal dance in Wayanad Kerala"
               className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
             />
-          </div>
+          </div> */}
           <div className="md:w-1/2 text-sm sm:text-base text-gray-800 leading-relaxed space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">
               Major Tribal Communities of Wayanad
@@ -104,7 +104,7 @@ export default function BlogTribalCulture() {
         {/* Daily Life & Festivals */}
         <div className="flex flex-col md:flex-row-reverse items-center gap-8 mb-10">
           <div className="md:w-1/2">
-            <img
+            {/* <img
               src={triimg6}
               width="800"
               height="600"
@@ -113,7 +113,7 @@ export default function BlogTribalCulture() {
               onError={(e) => (e.target.src = fallbackImage)}
               alt="Traditional tribal home in Wayanad Kerala"
               className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            />
+            /> */}
           </div>
           <div className="md:w-1/2 text-sm sm:text-base lg:text-lg text-gray-800 leading-relaxed space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">

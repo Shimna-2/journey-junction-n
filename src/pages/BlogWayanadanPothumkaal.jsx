@@ -2,8 +2,8 @@
 import React from "react";
 import Footer from "../components/Footer";
 import pothumkaal2 from "../assets/images/blgpothumkaalimg1.webp";
-import pothumkaal5 from "../assets/images/blgpothumkaal1.webp";
-import pothumkaal6 from "../assets/images/blogpothumkaal2.webp";
+// import pothumkaal5 from "../assets/images/blgpothumkaal1.webp";
+// import pothumkaal6 from "../assets/images/blogpothumkaal2.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -80,7 +80,7 @@ export default function BlogWayanadanPothumkaal() {
             </p>
           </div>
           <div className="flex justify-center">
-            <img
+            {/* <img
               src={pothumkaal6}
               width="800"
               height="600"
@@ -89,7 +89,7 @@ export default function BlogWayanadanPothumkaal() {
               onError={(e) => (e.target.src = fallbackImage)}
               alt="Cooking Wayanadan Pothumkaal beef curry in a traditional uruli vessel"
               className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            />
+            /> */}
           </div>
         </section>
 
@@ -124,7 +124,7 @@ export default function BlogWayanadanPothumkaal() {
             toddy shops also serve it with tapioca and spicy chutneys.
           </p>
           <div className="flex justify-center">
-            <img
+            {/* <img
               src={pothumkaal5}
               width="800"
               height="600"
@@ -133,7 +133,7 @@ export default function BlogWayanadanPothumkaal() {
               onError={(e) => (e.target.src = fallbackImage)}
               alt="Serving Wayanadan Pothumkaal beef curry on a banana leaf"
               className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            />
+            /> */}
           </div>
 
           <h2 className="text-lg sm:text-xl font-bold">Nutritional Value</h2>

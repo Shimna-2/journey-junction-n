@@ -3,9 +3,9 @@ import React from "react";
 import Footer from "../components/Footer";
 
 // Import images
-import climateMain from "../assets/images/blgclimate1.webp";
+// import climateMain from "../assets/images/blgclimate1.webp";
 import climateImg2 from "../assets/images/blgclimate2.webp";
-import climateImg3 from "../assets/images/blgclimate3.webp";
+// import climateImg3 from "../assets/images/blgclimate3.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -34,7 +34,7 @@ export default function BlogWayanadClimate() {
 
         {/* Main Image */}
         <div className="mb-8">
-          <img
+          {/* <img
             src={climateMain}
             width="1280"
             height="720"
@@ -43,7 +43,7 @@ export default function BlogWayanadClimate() {
             onError={(e) => (e.target.src = fallbackImage)}
             alt="Misty morning view of Wayanad's green valleys and hills"
             className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] hover:scale-[1.02] transition-transform duration-500"
-          />
+          /> */}
         </div>
 
         {/* Intro */}
@@ -119,7 +119,7 @@ export default function BlogWayanadClimate() {
             traditions.
           </p>
           <div className="flex justify-center">
-            <img
+            {/* <img
               src={climateImg3}
               width="800"
               height="600"
@@ -128,7 +128,7 @@ export default function BlogWayanadClimate() {
               onError={(e) => (e.target.src = fallbackImage)}
               alt="Wayanad farmers cultivating crops in green terraced fields"
               className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            />
+            /> */}
           </div>
 
           <h2 className="text-xl sm:text-2xl font-bold">
