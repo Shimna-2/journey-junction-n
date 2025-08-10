@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 // Import images
 
-import climateImg2 from "../assets/images/blgclimate2.webp";
+import climateImg2 from "../assets/images/blgcoffee1.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
