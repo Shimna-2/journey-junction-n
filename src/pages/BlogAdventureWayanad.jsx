@@ -4,8 +4,6 @@ import Footer from "../components/Footer";
 
 // Import WebP images (optimized format)
 import adventure1 from "../assets/images/blogadventure1.webp";
-// import adventure2 from "../assets/images/blogadventure2.webp";
-// import adventure3 from "../assets/images/blogadventure2.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -74,18 +72,6 @@ export default function BlogAdventureWayanad() {
 
         {/* Trekking */}
         <section className="grid md:grid-cols-2 gap-6 items-center mb-12">
-          <div className="order-2 md:order-1 flex justify-center">
-            {/* <img
-              src={adventure2}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              onError={(e) => (e.target.src = fallbackImage)}
-              alt="Trekking trail to Chembra Peak in Wayanad with lush greenery"
-              className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            /> */}
-          </div>
           <div className="order-1 md:order-2">
             <h2 className="text-lg sm:text-xl font-bold">
               Trekking – Conquer the Peaks
@@ -111,18 +97,6 @@ export default function BlogAdventureWayanad() {
               serene landscapes, cozy campfires, and the sounds of nature for a
               truly unforgettable experience.
             </p>
-          </div>
-          <div className="flex justify-center">
-            {/* <img
-              src={adventure3}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              onError={(e) => (e.target.src = fallbackImage)}
-              alt="Tourists camping under a starry night near Banasura Dam in Wayanad"
-              className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            /> */}
           </div>
         </section>
 

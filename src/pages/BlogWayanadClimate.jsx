@@ -3,9 +3,8 @@ import React from "react";
 import Footer from "../components/Footer";
 
 // Import images
-// import climateMain from "../assets/images/blgclimate1.webp";
+
 import climateImg2 from "../assets/images/blgclimate2.webp";
-// import climateImg3 from "../assets/images/blgclimate3.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -33,18 +32,6 @@ export default function BlogWayanadClimate() {
         </header>
 
         {/* Main Image */}
-        <div className="mb-8">
-          {/* <img
-            src={climateMain}
-            width="1280"
-            height="720"
-            loading="lazy"
-            decoding="async"
-            onError={(e) => (e.target.src = fallbackImage)}
-            alt="Misty morning view of Wayanad's green valleys and hills"
-            className="rounded-xl shadow-xl object-cover w-full aspect-[16/9] hover:scale-[1.02] transition-transform duration-500"
-          /> */}
-        </div>
 
         {/* Intro */}
         <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-10 space-y-3">
@@ -118,18 +105,6 @@ export default function BlogWayanadClimate() {
             cardamom. Seasonal weather dictates harvest festivals and local
             traditions.
           </p>
-          <div className="flex justify-center">
-            {/* <img
-              src={climateImg3}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              onError={(e) => (e.target.src = fallbackImage)}
-              alt="Wayanad farmers cultivating crops in green terraced fields"
-              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            /> */}
-          </div>
 
           <h2 className="text-xl sm:text-2xl font-bold">
             Cultural & Tourism Influence

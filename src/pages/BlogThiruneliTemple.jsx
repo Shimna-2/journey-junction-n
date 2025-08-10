@@ -3,8 +3,6 @@ import React from "react";
 import Footer from "../components/Footer";
 
 import thirunelli from "../assets/images/blgthirunelli-banner.webp";
-// import thirunelli1 from "../assets/images/blgthirunelli-banner.webp";
-// import thiruneli2 from "../assets/images/blgthirunelli-banner.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -62,30 +60,6 @@ export default function BlogThiruneliTemple() {
             grant <em>moksha</em> (liberation).
           </p>
         </section>
-
-        {/* Two Images Row */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <img
-            src={thirunelli1}
-            width="800"
-            height="600"
-            loading="lazy"
-            decoding="async"
-            onError={(e) => (e.target.src = fallbackImage)}
-            alt="Entrance to Thirunelli Temple, Wayanad"
-            className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-          />
-          <img
-            src={thiruneli2}
-            width="800"
-            height="600"
-            loading="lazy"
-            decoding="async"
-            onError={(e) => (e.target.src = fallbackImage)}
-            alt="Papanasini stream flowing through Brahmagiri Hills"
-            className="rounded-xl shadow-lg object-cover w-full aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-          />
-        </div> */}
 
         {/* Main Content */}
         <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-6">

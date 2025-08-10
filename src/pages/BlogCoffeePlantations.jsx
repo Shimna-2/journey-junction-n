@@ -2,10 +2,6 @@
 import React from "react";
 import Footer from "../components/Footer";
 
-// Optimized WebP images
-// import coffeeHarvest from "../assets/images/blgcoffee1.webp";
-
-// import coffeeProcessing from "../assets/images/blgcoffee1.webp";
 import coffeeEstate from "../assets/images/blgcoffee1.webp";
 
 const fallbackImage =
@@ -76,18 +72,6 @@ export default function BlogCoffeePlantations() {
               heritage and unmatched flavor.
             </p>
           </div>
-          <div className="flex justify-center">
-            {/* <img
-              src={coffeeHarvest}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              onError={(e) => (e.target.src = fallbackImage)}
-              alt="Farmers handpicking ripe coffee cherries in Wayanad plantation"
-              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            /> */}
-          </div>
         </section>
 
         {/* Types & Cultivation */}
@@ -129,18 +113,6 @@ export default function BlogCoffeePlantations() {
             tours where guests can learn about cultivation, pick ripe cherries,
             and sip freshly brewed coffee surrounded by scenic hills.
           </p>
-          <div className="flex justify-center">
-            {/* <img
-              src={coffeeProcessing}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              onError={(e) => (e.target.src = fallbackImage)}
-              alt="Processing fresh coffee beans in Wayanad estate facility"
-              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3] hover:scale-[1.03] transition-transform duration-500"
-            /> */}
-          </div>
 
           <h2 className="text-xl sm:text-2xl font-bold">
             Best Places to Experience Coffee
