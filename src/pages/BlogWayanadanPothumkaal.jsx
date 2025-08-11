@@ -1,7 +1,5 @@
 // src/pages/BlogWayanadanPothumkaal.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
 import pothumkaal2 from "../assets/images/blgpothumkaalimg1.webp";
 
@@ -9,33 +7,20 @@ const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogWayanadanPothumkaal() {
-  const navigate = useNavigate();
-
   return (
-    <div className="bg-[#fdfaf8] w-full font-[Poppins]">
+    <div className="bg-[#fdfaf8] w-full font-sans">
       <article
-        className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8"
+        className="max-w-7xl mx-auto mt-8 mb-12 sm:mt-10 sm:mb-14 pt-16 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8"
         role="article"
         aria-label="Wayanadan Pothumkaal Kerala beef curry blog"
       >
-        {/* Back arrow button */}
-        <button
-          onClick={() => navigate(-1)}
-          aria-label="Go back"
-          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
-          type="button"
-        >
-          <FaArrowLeft className="w-5 h-5" />
-          <span className="text-sm sm:text-base font-medium">Back</span>
-        </button>
-
         {/* Header */}
         <header className="mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3">
             Wayanadan Pothumkaal – Spicy Kerala Beef Curry from the Wayanad
             Highlands
           </h1>
-          <p className="text-sm sm:text-base text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600">
             <strong>Wayanadan Pothumkaal</strong> is a slow-cooked beef delicacy
             from Kerala’s Wayanad region, prepared with roasted coconut, curry
             leaves, and aromatic spices. A must-try for food lovers exploring{" "}
@@ -58,7 +43,7 @@ export default function BlogWayanadanPothumkaal() {
         </div>
 
         {/* Introduction */}
-        <section className="text-sm sm:text-base text-gray-800 leading-relaxed mb-10 space-y-3">
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-10 space-y-4">
           <p>
             Originating in the lush highlands of{" "}
             <strong>Wayanad, Kerala</strong>, Wayanadan Pothumkaal is more than
@@ -77,7 +62,7 @@ export default function BlogWayanadanPothumkaal() {
         {/* History & Origins */}
         <section className="grid md:grid-cols-2 gap-6 mb-10 items-center">
           <div>
-            <h2 className="text-lg sm:text-xl font-bold">History & Origins</h2>
+            <h2 className="text-xl sm:text-2xl font-bold">History & Origins</h2>
             <p className="mt-3">
               The origins of Wayanadan Pothumkaal trace back to the tribal and
               farming communities of Kerala’s Western Ghats, particularly the{" "}
@@ -92,49 +77,55 @@ export default function BlogWayanadanPothumkaal() {
               alterations to preserve authenticity.
             </p>
           </div>
-          <div className="flex justify-center"></div>
+          <div className="flex justify-center">
+            <img
+              src={pothumkaal2}
+              alt="History of Wayanadan Pothumkaal traditional cooking"
+              className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3]"
+              onError={(e) => (e.target.src = fallbackImage)}
+            />
+          </div>
         </section>
 
         {/* Cooking Process */}
-        <section className="mb-10">
-          <h2 className="text-lg sm:text-xl font-bold">
+        <section className="mb-10 space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold">
             Traditional Cooking Process
           </h2>
-          <p className="mt-3">
+          <p>
             The preparation begins by marinating beef with freshly ground black
             pepper, coriander, turmeric, Kashmiri chili powder, rock salt, and
             ginger-garlic paste to ensure deep flavor infusion.
           </p>
-          <p className="mt-3">
+          <p>
             Curry leaves, roasted coconut slices, and coconut oil are key for
             the dish’s aroma. Slow-cooking over a wood-fired stove enhances the
             smoky, earthy undertones that define authentic{" "}
             <em>Kerala beef curry</em>.
           </p>
-          <p className="mt-3">
+          <p>
             The thick, rich gravy pairs perfectly with Kerala parotta, boiled
             tapioca, or steaming hot rice.
           </p>
         </section>
 
         {/* Best Places to Taste */}
-        <section className="space-y-4">
-          <h2 className="text-lg sm:text-xl font-bold">Best Places to Try</h2>
+        <section className="space-y-4 mb-10">
+          <h2 className="text-xl sm:text-2xl font-bold">Best Places to Try</h2>
           <p>
             The most authentic Pothumkaal can be found in local eateries and
             homestays in Kalpetta, Meppadi, and Sulthan Bathery. Traditional
             toddy shops also serve it with tapioca and spicy chutneys.
           </p>
-          <div className="flex justify-center"></div>
 
-          <h2 className="text-lg sm:text-xl font-bold">Nutritional Value</h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Nutritional Value</h2>
           <p>
             High in protein and iron, Pothumkaal also provides anti-inflammatory
             benefits from turmeric and digestion-boosting properties from black
             pepper.
           </p>
 
-          <h2 className="text-lg sm:text-xl font-bold">Cultural Importance</h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Cultural Importance</h2>
           <p>
             More than a dish, Pothumkaal is part of Kerala’s food heritage,
             featured in wedding feasts, Onam celebrations, and local fairs.
@@ -142,8 +133,8 @@ export default function BlogWayanadanPothumkaal() {
         </section>
 
         {/* Pairing & Travel Recommendations */}
-        <section className="mt-8 space-y-3">
-          <h2 className="text-lg sm:text-xl font-bold">
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold">
             Pairing & Travel Tips
           </h2>
           <p>

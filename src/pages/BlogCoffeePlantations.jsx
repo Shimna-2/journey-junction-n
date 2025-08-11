@@ -1,17 +1,12 @@
 // src/pages/BlogCoffeePlantations.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
-
 import coffeeEstate from "../assets/images/blgcoffee4.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogCoffeePlantations() {
-  const navigate = useNavigate();
-
   return (
     <div className="bg-[#fdfaf8] w-full font-serif">
       <article
@@ -19,17 +14,6 @@ export default function BlogCoffeePlantations() {
         role="article"
         aria-label="Coffee Plantations in Wayanad"
       >
-        {/* Back arrow button */}
-        <button
-          onClick={() => navigate(-1)}
-          aria-label="Go back"
-          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
-          type="button"
-        >
-          <FaArrowLeft className="w-5 h-5" />
-          <span className="text-sm sm:text-base font-medium">Back</span>
-        </button>
-
         {/* Header */}
         <header className="mb-6 sm:mb-8 text-left">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3">
@@ -58,7 +42,7 @@ export default function BlogCoffeePlantations() {
         </div>
 
         {/* Intro */}
-        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 space-y-3">
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 space-y-4">
           <p>
             Nestled in the serene <strong>Western Ghats of Kerala</strong>,
             Wayanad is a coffee lover’s paradise, producing world-class{" "}
@@ -69,32 +53,27 @@ export default function BlogCoffeePlantations() {
           </p>
         </section>
 
-        {/* History & Origins */}
-        <section className="grid md:grid-cols-2 gap-6 mb-8 items-center">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold">
-              History of Coffee in Wayanad
-            </h2>
-            <p className="mt-3 text-base sm:text-lg">
-              Coffee cultivation in Wayanad began in the 18th century under
-              British planters. Over generations, local farmers refined the art
-              of coffee farming, making the district a renowned hub for premium
-              coffee in Kerala.
-            </p>
-            <p className="mt-3 text-base sm:text-lg">
-              Today, estates blend age-old traditions with modern processing
-              techniques, ensuring that every cup carries the essence of
-              heritage and unmatched flavor.
-            </p>
-          </div>
-        </section>
+        {/* Main Content */}
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-6">
+          <h2 className="text-xl sm:text-2xl font-bold">
+            History of Coffee in Wayanad
+          </h2>
+          <p>
+            Coffee cultivation in Wayanad began in the 18th century under
+            British planters. Over generations, local farmers refined the art of
+            coffee farming, making the district a renowned hub for premium
+            coffee in Kerala.
+          </p>
+          <p>
+            Today, estates blend age-old traditions with modern processing
+            techniques, ensuring that every cup carries the essence of heritage
+            and unmatched flavor.
+          </p>
 
-        {/* Types & Cultivation */}
-        <section className="mb-8">
           <h2 className="text-xl sm:text-2xl font-bold">
             Types of Coffee Grown
           </h2>
-          <p className="mt-3 text-base sm:text-lg">
+          <p>
             Wayanad’s estates grow two main varieties:{" "}
             <strong>Arabica coffee</strong>, loved for its mild flavor and
             aromatic profile, and <strong>Robusta coffee</strong>, prized for
@@ -102,19 +81,16 @@ export default function BlogCoffeePlantations() {
             pepper, cardamom, and vanilla enriches biodiversity.
           </p>
 
-          <h2 className="text-xl sm:text-2xl font-bold mt-6">
+          <h2 className="text-xl sm:text-2xl font-bold">
             The Cultivation Process
           </h2>
-          <p className="mt-3 text-base sm:text-lg">
+          <p>
             From planting seedlings to harvesting ripe cherries, every stage is
             carefully handled. Post-harvest, beans undergo pulping, fermenting,
             sun-drying, and roasting — steps that preserve their unique aroma
             and taste.
           </p>
-        </section>
 
-        {/* Best Time & Tours */}
-        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold">Best Time to Visit</h2>
           <p>
             The ideal time is <strong>November to March</strong>, when the

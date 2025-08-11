@@ -1,39 +1,22 @@
 // src/pages/BlogWayanadClimate.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
-
-// Import images
 import climateImg2 from "../assets/images/blgclimate.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogWayanadClimate() {
-  const navigate = useNavigate();
-
   return (
     <div className="bg-[#fdfaf8] w-full font-sans">
       <article
-        className="max-w-7xl mx-auto pt-20 sm:pt-28 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8"
+        className="max-w-7xl mx-auto mt-8 mb-12 sm:mt-10 sm:mb-14 pt-16 px-4 sm:px-6 lg:px-12 bg-white shadow-xl rounded-xl p-6 sm:p-8"
         role="article"
         aria-label="Detailed guide on Wayanad's climate and best travel seasons"
       >
-        {/* Back arrow button */}
-        <button
-          onClick={() => navigate(-1)}
-          aria-label="Go back"
-          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
-          type="button"
-        >
-          <FaArrowLeft className="w-5 h-5" />
-          <span className="text-sm sm:text-base font-medium">Back</span>
-        </button>
-
         {/* Header */}
         <header className="mb-8 text-left">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3">
             Wayanad Climate – Year-Round Weather Guide to Kerala’s Highlands
           </h1>
           <p className="text-base sm:text-lg text-gray-600">
@@ -45,10 +28,8 @@ export default function BlogWayanadClimate() {
           </p>
         </header>
 
-        {/* Main Image */}
-
         {/* Intro */}
-        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-10 space-y-3">
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-10 space-y-4">
           <p>
             Nestled in the <strong>Western Ghats</strong>, Wayanad enjoys a
             unique climate that supports its biodiversity, sprawling tea
@@ -95,22 +76,22 @@ export default function BlogWayanadClimate() {
         </section>
 
         {/* Best Time to Visit */}
-        <section className="mb-10">
+        <section className="space-y-4 mb-10">
           <h2 className="text-xl sm:text-2xl font-bold">
             Best Time to Visit Wayanad
           </h2>
-          <p className="mt-3">
+          <p>
             The best time for trekking and sightseeing is Oct–Feb, with pleasant
             weather and clear skies.
           </p>
-          <p className="mt-3">
+          <p>
             Monsoon lovers can visit Jun–Sep for rain-washed scenery and misty
             landscapes, but should be ready for heavy showers.
           </p>
         </section>
 
         {/* Climate Impact on Lifestyle */}
-        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-4">
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-4 mb-10">
           <h2 className="text-xl sm:text-2xl font-bold">
             Impact on Lifestyle & Agriculture
           </h2>
@@ -131,7 +112,7 @@ export default function BlogWayanadClimate() {
         </section>
 
         {/* Travel Tips */}
-        <section className="mt-8 text-base sm:text-lg text-gray-700 leading-relaxed space-y-3">
+        <section className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold">
             Travel Tips for Wayanad Weather
           </h2>

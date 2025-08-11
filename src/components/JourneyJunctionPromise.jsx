@@ -25,27 +25,6 @@ const JourneyJunctionPromise = () => {
 
   return (
     <section className="relative w-full font-[Poppins] bg-gradient-to-br from-gray-200 to-gray-300 pt-0 px-4 sm:px-10">
-      {/* Top upside-down wave */}
-      <div
-        className="w-full overflow-hidden leading-none rotate-180"
-        data-aos="fade-up"
-        data-aos-delay="100"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-          className="block w-full h-20 sm:h-32"
-          style={{ display: "block" }}
-        >
-          <path
-            fill="#9ca3af"
-            fillOpacity="1"
-            d="M0,160L80,149.3C160,139,320,117,480,101.3C640,85,800,75,960,96C1120,117,1280,171,1360,197.3L1440,224L1440,0L0,0Z"
-          />
-        </svg>
-      </div>
-
       {/* Content */}
       <div className="max-w-5xl mx-auto flex flex-col gap-3 sm:gap-6 pb-10">
         {/* Heading Section */}
@@ -99,6 +78,27 @@ const JourneyJunctionPromise = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Bottom wave shape */}
+      <div
+        className="w-full overflow-hidden leading-none"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          className="block w-full h-20 sm:h-32"
+          style={{ display: "block" }}
+        >
+          <path
+            fill="#9ca3af"
+            fillOpacity="1"
+            d="M0,160L80,149.3C160,139,320,117,480,101.3C640,85,800,75,960,96C1120,117,1280,171,1360,197.3L1440,224L1440,320L0,320Z"
+          />
+        </svg>
       </div>
     </section>
   );

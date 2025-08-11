@@ -1,42 +1,26 @@
 // src/pages/BlogTribalCulture.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
-
 import triimg1 from "../assets/images/blgtribal.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
 
 export default function BlogTribalCulture() {
-  const navigate = useNavigate();
-
   return (
     <div className="bg-[#fdfaf8] w-full font-[Poppins]">
       <article
-        className="max-w-7xl mx-auto pt-28 px-4 sm:px-6 lg:px-8 bg-white shadow-xl rounded-xl p-6 sm:p-8"
+        className="max-w-7xl mx-auto mt-8 mb-12 sm:mt-10 sm:mb-14 pt-16 px-4 sm:px-6 lg:px-10 bg-white shadow-xl rounded-xl p-4 sm:p-5"
         role="article"
         aria-label="Wayanad Tribal Culture travel and heritage guide"
       >
-        {/* Back arrow button */}
-        <button
-          onClick={() => navigate(-1)}
-          aria-label="Go back"
-          className="flex items-center text-gray-700 hover:text-gray-900 mb-6 space-x-2"
-          type="button"
-        >
-          <FaArrowLeft className="w-5 h-5" />
-          <span className="text-sm sm:text-base font-medium">Back</span>
-        </button>
-
-        {/* Blog Header */}
-        <header className="mb-10" data-aos="fade-up">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+        {/* Header */}
+        <header className="mb-6 sm:mb-8 text-left">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3">
             Wayanad Tribal Culture – Kerala's Indigenous Heritage in the Western
             Ghats
           </h1>
-          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-600">
             Explore the vibrant <strong>tribal culture of Wayanad</strong>, home
             to the <em>Paniyas</em>, <em>Kurichiyas</em>, <em>Adiyas</em>, and{" "}
             <em>Kattunaikkans</em>. Discover their sustainable lifestyles,
@@ -45,7 +29,7 @@ export default function BlogTribalCulture() {
         </header>
 
         {/* Main Image */}
-        <div className="mb-10" data-aos="zoom-in">
+        <div className="mb-8">
           <img
             src={triimg1}
             width="1280"
@@ -59,7 +43,7 @@ export default function BlogTribalCulture() {
         </div>
 
         {/* Introduction */}
-        <section className="text-gray-800 leading-relaxed mb-10 text-sm sm:text-base space-y-4">
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 space-y-4">
           <p>
             Nestled in Kerala’s <strong>Western Ghats</strong>, Wayanad is
             celebrated not just for its scenic landscapes but also for its{" "}
@@ -75,69 +59,57 @@ export default function BlogTribalCulture() {
           </p>
         </section>
 
-        {/* Major Tribes */}
-        <div className="flex flex-col md:flex-row items-center gap-8 mb-10">
-          <div className="md:w-1/2 text-sm sm:text-base text-gray-800 leading-relaxed space-y-3">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              Major Tribal Communities of Wayanad
-            </h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li>
-                <strong>Paniyas:</strong> Known for folk songs, agricultural
-                skills, and vibrant dance performances.
-              </li>
-              <li>
-                <strong>Kurichiyas:</strong> Skilled farmers, warriors, and
-                archers with a history of martial traditions.
-              </li>
-              <li>
-                <strong>Adiyas:</strong> Experts in herbal medicine and bamboo
-                handicrafts.
-              </li>
-              <li>
-                <strong>Kattunaikkans:</strong> Forest gatherers skilled in
-                honey collection and wildlife tracking.
-              </li>
-            </ul>
-          </div>
-        </div>
+        {/* Main Content */}
+        <section className="text-base sm:text-lg text-gray-800 leading-relaxed space-y-6">
+          <h2 className="text-xl sm:text-2xl font-bold">
+            Major Tribal Communities of Wayanad
+          </h2>
+          <ul className="list-disc list-inside space-y-1">
+            <li>
+              <strong>Paniyas:</strong> Known for folk songs, agricultural
+              skills, and vibrant dance performances.
+            </li>
+            <li>
+              <strong>Kurichiyas:</strong> Skilled farmers, warriors, and
+              archers with a history of martial traditions.
+            </li>
+            <li>
+              <strong>Adiyas:</strong> Experts in herbal medicine and bamboo
+              handicrafts.
+            </li>
+            <li>
+              <strong>Kattunaikkans:</strong> Forest gatherers skilled in honey
+              collection and wildlife tracking.
+            </li>
+          </ul>
 
-        {/* Daily Life & Festivals */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-8 mb-10">
-          <div className="md:w-1/2"></div>
-          <div className="md:w-1/2 text-sm sm:text-base lg:text-lg text-gray-800 leading-relaxed space-y-3">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              Daily Life & Vibrant Festivals
-            </h2>
-            <p>
-              Tribal life in Wayanad revolves around agriculture, forest
-              gathering, and handicrafts. Evenings are spent sharing folk tales,
-              songs, and dances around a communal fire.
-            </p>
-            <ul className="list-disc list-inside space-y-1">
-              <li>
-                <strong>Kurumkali:</strong> Sacred harvest dance to honor
-                deities.
-              </li>
-              <li>
-                <strong>Thira:</strong> Ritual performance with colorful masks
-                and drums.
-              </li>
-              <li>
-                <strong>Harvest Festivals:</strong> Feasts, archery
-                competitions, and boat races mark the season.
-              </li>
-              <li>
-                <strong>Honey Festival:</strong> Celebration of honey collection
-                with community sharing.
-              </li>
-            </ul>
-          </div>
-        </div>
+          <h2 className="text-xl sm:text-2xl font-bold">
+            Daily Life & Vibrant Festivals
+          </h2>
+          <p>
+            Tribal life in Wayanad revolves around agriculture, forest
+            gathering, and handicrafts. Evenings are spent sharing folk tales,
+            songs, and dances around a communal fire.
+          </p>
+          <ul className="list-disc list-inside space-y-1">
+            <li>
+              <strong>Kurumkali:</strong> Sacred harvest dance to honor deities.
+            </li>
+            <li>
+              <strong>Thira:</strong> Ritual performance with colorful masks and
+              drums.
+            </li>
+            <li>
+              <strong>Harvest Festivals:</strong> Feasts, archery competitions,
+              and boat races mark the season.
+            </li>
+            <li>
+              <strong>Honey Festival:</strong> Celebration of honey collection
+              with community sharing.
+            </li>
+          </ul>
 
-        {/* Additional Cultural Insights */}
-        <section className="text-sm sm:text-base text-gray-800 leading-relaxed space-y-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-bold">
             History of Wayanad's Tribes
           </h2>
           <p>
@@ -146,7 +118,7 @@ export default function BlogTribalCulture() {
             rituals, and social systems.
           </p>
 
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-bold">
             Nature & Sustainable Living
           </h2>
           <p>
@@ -154,7 +126,7 @@ export default function BlogTribalCulture() {
             bamboo, and food. Sustainable harvesting ensures ecological balance.
           </p>
 
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-bold">
             Cuisine of Wayanad Tribes
           </h2>
           <p>
@@ -162,7 +134,7 @@ export default function BlogTribalCulture() {
             payasam, and forest honey, reflecting seasonal availability.
           </p>
 
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-bold">
             Challenges & Preservation
           </h2>
           <p>
@@ -174,7 +146,7 @@ export default function BlogTribalCulture() {
       </article>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 mt-10">
+      <footer className="bg-gray-900 text-gray-300 mt-8">
         <Footer />
       </footer>
     </div>
