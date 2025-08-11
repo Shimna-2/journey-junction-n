@@ -122,7 +122,7 @@ export default function BlogWayanadClimate() {
             trekking in rainy months.
           </p>
           <p>
-            Experiencing Wayanad’s climate is like stepping into a live
+            Experiencing Wayanad’s climate is like stepping into live
             postcard—whether it’s winter mist, summer breeze, or monsoon rain.
           </p>
         </section>
