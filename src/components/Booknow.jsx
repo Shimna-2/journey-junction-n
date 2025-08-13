@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer"; // ✅ Import Footer
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import Footer from "./Footer";
 
 export default function BookingPage() {
   const navigate = useNavigate();
@@ -52,7 +54,7 @@ Budget: ₹${budget}
 Message: ${message}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappUrl = `https://wa.me/919633763916?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/9633763916?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
 
     setFormData({
@@ -73,20 +75,19 @@ Message: ${message}`;
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
-      {/* Page Content */}
-      <main className="flex-1 pt-32 pb-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24">
-        <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-4 sm:p-6">
+      <main className="flex-1 pt-24 pb-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24">
+        <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-4 sm:p-6 lg:p-10">
           {!submitted ? (
-            <div className="animate-fadeIn bg-white shadow-lg rounded-xl p-6 sm:p-10">
+            <div className="animate-fadeIn">
               {/* Header */}
               <div className="mb-8 text-center">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
                   Hi Arjun this side 👋
                 </h2>
-                <p className="mt-2 text-base sm:text-lg text-gray-700">
+                <p className="mt-2 text-sm sm:text-base md:text-lg text-gray-700">
                   Tell us — how can we help you?
                 </p>
-                <p className="text-sm sm:text-md text-gray-600">
+                <p className="text-xs sm:text-sm md:text-base text-gray-600">
                   Let’s start your journey with{" "}
                   <span className="font-semibold text-black">
                     Journey Junction
@@ -97,6 +98,7 @@ Message: ${message}`;
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name */}
                 <input
                   name="name"
                   value={formData.name}
@@ -105,15 +107,31 @@ Message: ${message}`;
                   className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                   required
                 />
-                <input
-                  name="phone"
+
+                {/* Phone with Country Code */}
+                <PhoneInput
+                  country={"in"}
                   value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                  className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
-                  required
+                  onChange={(value) =>
+                    setFormData((prev) => ({ ...prev, phone: `+${value}` }))
+                  }
+                  enableSearch={true}
+                  inputProps={{
+                    placeholder: "Enter your number",
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                    border: "1px solid #d1d5db",
+                    borderRadius: "0.5rem",
+                    height: "42px",
+                  }}
+                  buttonStyle={{
+                    border: "1px solid #d1d5db",
+                    borderRadius: "0.5rem 0 0 0.5rem",
+                  }}
                 />
 
+                {/* Adults + Kids */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input
                     name="adults"
@@ -136,11 +154,12 @@ Message: ${message}`;
                   />
                 </div>
 
+                {/* Dates */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="w-full">
                     <label
                       htmlFor="checkIn"
-                      className="block text-gray-700 mb-1 font-medium"
+                      className="block text-gray-700 mb-1 font-medium text-sm sm:text-base"
                     >
                       Check-in Date
                     </label>
@@ -157,7 +176,7 @@ Message: ${message}`;
                   <div className="w-full">
                     <label
                       htmlFor="checkOut"
-                      className="block text-gray-700 mb-1 font-medium"
+                      className="block text-gray-700 mb-1 font-medium text-sm sm:text-base"
                     >
                       Check-out Date
                     </label>
@@ -173,8 +192,9 @@ Message: ${message}`;
                   </div>
                 </div>
 
+                {/* Group Type */}
                 <div>
-                  <label className="block text-gray-700 mb-1 font-medium">
+                  <label className="block text-gray-700 mb-1 font-medium text-sm sm:text-base">
                     Family or Stags
                   </label>
                   <select
@@ -189,9 +209,11 @@ Message: ${message}`;
                   </select>
                 </div>
 
+                {/* Rooms */}
                 <input
                   name="rooms"
                   type="number"
+                  min="0"
                   value={formData.rooms}
                   onChange={handleChange}
                   placeholder="No. of Rooms"
@@ -199,6 +221,7 @@ Message: ${message}`;
                   required
                 />
 
+                {/* Budget */}
                 <input
                   name="budget"
                   value={formData.budget}
@@ -208,6 +231,7 @@ Message: ${message}`;
                   required
                 />
 
+                {/* Message */}
                 <textarea
                   name="message"
                   value={formData.message}
@@ -217,26 +241,27 @@ Message: ${message}`;
                   className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none"
                 />
 
+                {/* Button */}
                 <button
                   type="submit"
-                  className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300"
+                  className="w-full bg-black text-white py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition duration-300 text-sm sm:text-base"
                 >
                   Proceed
                 </button>
               </form>
             </div>
           ) : (
-            <div className="animate-fadeIn bg-white text-center p-8 sm:p-12 rounded-xl shadow-xl">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <div className="animate-fadeIn bg-white text-center p-6 sm:p-8 lg:p-12 rounded-xl shadow-xl">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 Thank You! 🙌
               </h2>
-              <p className="text-gray-700 text-base sm:text-lg mb-6">
+              <p className="text-gray-700 text-sm sm:text-base lg:text-lg mb-6">
                 Your request has been submitted successfully. We'll connect with
                 you shortly!
               </p>
               <button
                 onClick={() => navigate("/home")}
-                className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
+                className="bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition"
               >
                 Go to Home
               </button>
@@ -244,8 +269,6 @@ Message: ${message}`;
           )}
         </div>
       </main>
-
-      {/* Footer - Full Width */}
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaChevronDown, FaArrowLeft } from "react-icons/fa";
-import logo from "../assets/images/logojj.webp";
+import logo from "../assets/images/logo.webp";
 import WeatherPreview from "./WeatherPreview";
 
 export default function Header() {

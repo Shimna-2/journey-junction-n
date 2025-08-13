@@ -4,7 +4,6 @@ import Footer from "./Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Import images
 import tribalCultureImg from "../assets/images/blgtribalhm.webp";
 import climateImg from "../assets/images/blgclimate.webp";
 import pothumkaalImg from "../assets/images/blgpothumkaalimg1.webp";
@@ -12,7 +11,6 @@ import adventureImg from "../assets/images/blgadventureimg1.webp";
 import thiruneliImg from "../assets/images/blgthirunelli-banner.webp";
 import coffeeImg from "../assets/images/blgcoffee1.webp";
 
-// Blog data (shortened excerpts)
 const blogs = [
   {
     title: "Wayanadan Tribal Culture: A Journey into the Indigenous Heart",
@@ -70,19 +68,22 @@ const Blog = () => {
 
   return (
     <>
-      <section className="bg-white pt-32 pb-20 px-4 sm:px-6 lg:px-20 font-[Poppins]">
+      <section className="bg-white pt-28 pb-20 px-4 sm:px-6 lg:px-20 font-[Poppins]">
         {/* Heading */}
-        <div className="max-w-7xl mx-auto mb-12 text-center" data-aos="fade-up">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+        <div className="max-w-7xl mx-auto mb-8 text-center" data-aos="fade-up">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3">
             Explore Wayanad: Culture, Climate, Cuisine & More
           </h1>
-          <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-            A quick guide to Wayanad’s culture, nature, adventure, and cuisine.
+          <p className="text-gray-600 text-l sm:text-xl max-w-3xl mx-auto text-justify leading-relaxed">
+            Wayanad, in Kerala’s Western Ghats, is a scenic haven of misty
+            hills, waterfalls, and wildlife. Known for tea plantations, trekking
+            trails, and serene resorts, it’s a top destination for nature and
+            adventure lovers.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {blogs.map((post, index) => (
             <article
               key={index}
@@ -97,10 +98,12 @@ const Blog = () => {
                 loading="lazy"
               />
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-2">
                   {post.title}
                 </h2>
-                <p className="text-gray-700 mb-4">{post.excerpt}</p>
+                <p className="text-gray-700 text-sm leading-relaxed mb-3">
+                  {post.excerpt}
+                </p>
                 <Link
                   to={post.link}
                   className="inline-block bg-gray-700 text-white px-5 py-2 rounded-full text-sm hover:bg-gray-900 transition"

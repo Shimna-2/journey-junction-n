@@ -2,6 +2,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import pothumkaal2 from "../assets/images/blgpothumkaalimg1.webp";
+import pothumkaal from "../assets/images/pothumkaal.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
@@ -79,7 +80,7 @@ export default function BlogWayanadanPothumkaal() {
           </div>
           <div className="flex justify-center">
             <img
-              src={pothumkaal2}
+              src={pothumkaal}
               alt="History of Wayanadan Pothumkaal traditional cooking"
               className="rounded-xl shadow-lg object-cover w-[85%] aspect-[4/3]"
               onError={(e) => (e.target.src = fallbackImage)}

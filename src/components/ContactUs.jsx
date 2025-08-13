@@ -7,6 +7,8 @@ import {
   FaInstagram,
   FaFacebookF,
 } from "react-icons/fa";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -26,8 +28,8 @@ const ContactUs = () => {
     if (!name.trim() || !phone.trim() || !message.trim()) {
       return "All fields are required.";
     }
-    if (!/^\d{10}$/.test(phone)) {
-      return "Please enter a valid 10-digit phone number.";
+    if (!/^\+?\d{8,15}$/.test(phone)) {
+      return "Please enter a valid phone number with country code.";
     }
     return "";
   };
@@ -44,7 +46,9 @@ const ContactUs = () => {
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/919744161939?text=${encodeURIComponent(whatsappMessage)}`,
+      `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`,
       "_blank"
     );
 
@@ -139,20 +143,28 @@ const ContactUs = () => {
                 />
               </div>
 
-              {/* Phone */}
+              {/* Phone with Country Code */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Phone Number
                 </label>
-                <input
-                  type="tel"
-                  name="phone"
+                <PhoneInput
+                  country={"in"}
                   value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  pattern="\d{10}"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-gray-700"
-                  placeholder="Your Phone Number"
+                  onChange={(phone) =>
+                    setFormData((prev) => ({ ...prev, phone: `+${phone}` }))
+                  }
+                  enableSearch={true}
+                  inputStyle={{
+                    width: "100%",
+                    border: "1px solid #d1d5db",
+                    borderRadius: "0.5rem",
+                    height: "42px",
+                  }}
+                  buttonStyle={{
+                    border: "1px solid #d1d5db",
+                    borderRadius: "0.5rem 0 0 0.5rem",
+                  }}
                 />
               </div>
 

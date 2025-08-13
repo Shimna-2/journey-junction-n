@@ -1,11 +1,4 @@
-import React, {
-  useEffect,
-  lazy,
-  Suspense,
-  useMemo,
-  useState,
-  memo,
-} from "react";
+import React, { useEffect, lazy, Suspense, useMemo, memo } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,7 +20,12 @@ const Blog = lazy(() => import("./components/Blog.jsx"));
 const Resorts = lazy(() => import("./components/Resorts.jsx"));
 const Aboutus = lazy(() => import("./components/Aboutus.jsx"));
 const Booknow = lazy(() => import("./components/Booknow.jsx"));
+
+// Added PrivacyPolicy lazy import ONLY here:
 const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy.jsx"));
+const TermsAndConditions = lazy(() =>
+  import("./components/TermsandConditions.jsx")
+);
 
 // Blog Details
 const BlogTribalCulture = lazy(() => import("./pages/BlogTribalCulture.jsx"));
@@ -58,7 +56,7 @@ const AppLayout = memo(() => {
   return (
     <>
       {!hideHeader && <Header />}
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="text-center p-6">Loading...</div>}>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route
@@ -70,6 +68,7 @@ const AppLayout = memo(() => {
           <Route path="/wayanad" element={<Wayanad />} />
           <Route path="/weather" element={<WeatherCard />} />
           <Route path="/blog" element={<Blog />} />
+
           <Route path="/resorts" element={<Resorts />} />
 
           {[
@@ -83,7 +82,10 @@ const AppLayout = memo(() => {
 
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/booknow" element={<Booknow />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+          {/* ONLY added PrivacyPolicy route here */}
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/termsandconditions" element={<TermsAndConditions />} />
 
           <Route path="/blogs/tribal-culture" element={<BlogTribalCulture />} />
           <Route path="/blogs/climate" element={<BlogWayanadClimate />} />
@@ -110,7 +112,7 @@ function App() {
   useEffect(() => {
     // ✅ Preload optimized hero images for mobile & desktop
     const mobileHero = new Image();
-    mobileHero.src = "/assets/images/home-banner-mobile-compressed.webp";
+    mobileHero.src = "/assets/images/home-banner-mobile.webp";
     const desktopHero = new Image();
     desktopHero.src = "/assets/images/home-banner.webp";
 

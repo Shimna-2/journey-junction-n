@@ -3,6 +3,8 @@ import React, { useState, memo, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const ContactFormOnly = () => {
   const [formData, setFormData] = useState({
@@ -31,8 +33,8 @@ const ContactFormOnly = () => {
     if (!name.trim() || !phone.trim() || !message.trim()) {
       return "All fields are required.";
     }
-    if (!/^\d{10}$/.test(phone)) {
-      return "Please enter a valid 10-digit phone number.";
+    if (!/^\+?\d{8,15}$/.test(phone)) {
+      return "Please enter a valid phone number with country code.";
     }
     return "";
   };
@@ -49,7 +51,9 @@ const ContactFormOnly = () => {
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/919633763916?text=${encodeURIComponent(whatsappMessage)}`,
+      `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`,
       "_blank"
     );
 
@@ -81,7 +85,7 @@ const ContactFormOnly = () => {
       {/* Contact Form Wrapper with AOS */}
       <div
         className="max-w-lg mx-auto bg-white rounded-3xl shadow-xl border border-gray-300 px-6 sm:px-10 py-10"
-        data-aos="fade-left" // ✅ Animate from left
+        data-aos="fade-left"
       >
         <h2
           id="contact-form-heading"
@@ -122,7 +126,7 @@ const ContactFormOnly = () => {
             />
           </div>
 
-          {/* Phone */}
+          {/* Phone with Country Code */}
           <div>
             <label
               htmlFor="phone"
@@ -130,17 +134,23 @@ const ContactFormOnly = () => {
             >
               Phone Number
             </label>
-            <input
-              id="phone"
-              type="tel"
-              name="phone"
+            <PhoneInput
+              country={"in"} // ✅ Default India
               value={formData.phone}
-              onChange={handleChange}
-              required
-              pattern="\d{10}"
-              placeholder="Your Phone Number"
-              autoComplete="tel"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-700"
+              onChange={(phone) =>
+                setFormData((prev) => ({ ...prev, phone: `+${phone}` }))
+              }
+              enableSearch={true}
+              inputStyle={{
+                width: "100%",
+                border: "1px solid #d1d5db",
+                borderRadius: "0.5rem",
+                height: "42px",
+              }}
+              buttonStyle={{
+                border: "1px solid #d1d5db",
+                borderRadius: "0.5rem 0 0 0.5rem",
+              }}
             />
           </div>
 

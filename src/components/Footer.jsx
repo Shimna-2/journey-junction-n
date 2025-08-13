@@ -1,12 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Footer = () => {
-  const navigate = useNavigate();
-
   React.useEffect(() => {
     AOS.init({
       duration: 800,
@@ -15,11 +13,6 @@ const Footer = () => {
       offset: 100,
     });
   }, []);
-
-  const handleLinkClick = (path) => {
-    navigate(path);
-    window.scrollTo(0, 0); // Instant jump to top
-  };
 
   return (
     <footer
@@ -39,29 +32,41 @@ const Footer = () => {
         <div>
           <h3 className="text-md font-semibold mb-2">Resorts</h3>
           <ul className="space-y-1 text-sm">
-            <li
-              onClick={() => handleLinkClick("/resorts#luxury-resorts")}
-              className="cursor-pointer"
-            >
-              Luxury Resorts
+            <li>
+              <Link
+                to="/resorts#luxury-resorts"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Luxury Resorts
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/resorts#premium-resorts")}
-              className="cursor-pointer"
-            >
-              Premium Resorts
+            <li>
+              <Link
+                to="/resorts#premium-resorts"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Premium Resorts
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/resorts#budget-resorts")}
-              className="cursor-pointer"
-            >
-              Budget-Friendly Resorts
+            <li>
+              <Link
+                to="/resorts#budget-resorts"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Budget-Friendly Resorts
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/resorts#private-pool")}
-              className="cursor-pointer"
-            >
-              Private Pool Villas
+            <li>
+              <Link
+                to="/resorts#private-pool"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Private Pool Villas
+              </Link>
             </li>
           </ul>
         </div>
@@ -70,35 +75,68 @@ const Footer = () => {
         <div>
           <h3 className="text-md font-semibold mb-2">Quick Links</h3>
           <ul className="space-y-1 text-sm">
-            <li
-              onClick={() => handleLinkClick("/home")}
-              className="cursor-pointer"
-            >
-              Home
+            <li>
+              <Link
+                to="/home"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Home
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/wayanad")}
-              className="cursor-pointer"
-            >
-              Destinations
+            <li>
+              <Link
+                to="/wayanad"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Destinations
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/blog")}
-              className="cursor-pointer"
-            >
-              Blog
+            <li>
+              <Link
+                to="/blog"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Blog
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/aboutus")}
-              className="cursor-pointer"
-            >
-              About Us
+            <li>
+              <Link
+                to="/aboutus"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                About Us
+              </Link>
             </li>
-            <li
-              onClick={() => handleLinkClick("/booknow")}
-              className="cursor-pointer"
-            >
-              Book Now
+            <li>
+              <Link
+                to="/booknow"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Book Now
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/privacypolicy"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/termsandconditions"
+                className="cursor-pointer hover:underline"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Terms & Conditions
+              </Link>
             </li>
           </ul>
         </div>
