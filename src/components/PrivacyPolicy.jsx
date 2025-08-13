@@ -2,74 +2,70 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 
-export default function TermsAndContact() {
+export default function PrivacyPolicy() {
   const navigate = useNavigate();
 
   return (
     <div className="bg-white text-gray-800 font-[Poppins] flex flex-col min-h-screen">
       {/* Main Content */}
       <div className="flex-grow px-4 sm:px-6 lg:px-16 py-6 sm:py-8">
-        {/* <div className="mb-4 sm:mb-6">
-          <button
-            onClick={() => navigate("/")}
-            className="text-gray-700 hover:underline text-sm sm:text-base"
-          >
-            Back
-          </button>
-        </div> */}
-
         <div className="max-w-5xl mx-auto">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-center">
-            Terms and Conditions
+            Privacy Policy
           </h1>
 
           <p className="mb-6 text-sm sm:text-base text-gray-600 text-justify leading-relaxed">
-            Welcome to Journey Junction! By using our resort booking services,
-            website, and related offerings, you agree to comply with and be
-            bound by the following Terms and Conditions. Please read them
-            carefully.
+            At Journey Junction, we value your privacy and are committed to
+            protecting your personal information. This Privacy Policy explains
+            how we collect, use, and safeguard your data when you use our
+            website and services.
           </p>
 
           {[
             {
-              title: "1. Booking and Payment",
+              title: "1. Information We Collect",
               content:
-                "All bookings are subject to availability. To confirm a reservation, full or partial payment may be required depending on the resort’s policy. Payments must be made through our secure payment gateways. Failure to complete payment may result in cancellation of your booking.",
+                "We may collect personal information such as your name, email address, phone number, and payment details when you make a booking or contact us. We also collect non-personal data such as browser type, device information, and usage statistics.",
             },
             {
-              title: "2. Cancellation and Refunds",
+              title: "2. How We Use Your Information",
               content:
-                "Cancellation policies vary by resort. Please review the cancellation terms provided during booking. Refunds, if applicable, will be processed according to the resort’s guidelines. Journey Junction is not responsible for cancellations or refunds beyond what is stated.",
+                "Your data is used to process bookings, improve our services, communicate with you, and ensure a seamless experience on our platform. We may also send promotional offers if you have opted in.",
             },
             {
-              title: "3. Check-in and Check-out",
+              title: "3. Sharing of Information",
               content:
-                "Check-in and check-out times are determined by each resort and will be communicated at the time of booking. Late check-out or early check-in requests are subject to availability and additional charges.",
+                "We do not sell your personal information. However, we may share your details with partner resorts, payment processors, or service providers strictly for fulfilling your booking or improving our services.",
             },
             {
-              title: "4. User Responsibilities",
+              title: "4. Data Security",
               content:
-                "You agree to provide accurate information when making a booking and to abide by the resort’s rules and regulations during your stay. Any damage to property caused by you or your guests may incur additional charges.",
+                "We implement industry-standard security measures to protect your data. However, no method of transmission over the internet or storage system is completely secure, and we cannot guarantee absolute security.",
             },
             {
-              title: "5. Limitation of Liability",
+              title: "5. Cookies and Tracking",
               content:
-                "Journey Junction acts as a booking intermediary and is not liable for any issues arising directly from your stay, including but not limited to, service quality, amenities, or disputes with the resort. We strongly recommend reviewing resort policies before confirming your booking.",
+                "We use cookies and similar technologies to enhance your browsing experience and analyze website traffic. You can disable cookies in your browser settings, but this may limit certain features.",
             },
             {
-              title: "6. Privacy and Data Protection",
+              title: "6. Third-Party Links",
               content:
-                "Your personal data will be handled in accordance with our Privacy Policy. By using our services, you consent to the collection and use of your data as described therein.",
+                "Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites and encourage you to review their policies.",
             },
             {
-              title: "7. Changes to Terms",
+              title: "7. Your Rights",
               content:
-                "We reserve the right to modify these Terms and Conditions at any time. Updates will be posted on this page with a revised “Last Updated” date. Continued use of our services after changes constitutes acceptance of the new terms.",
+                "You may request access, correction, or deletion of your personal data at any time. Please contact us to exercise these rights.",
             },
             {
-              title: "8. Governing Law",
+              title: "8. Changes to This Policy",
               content:
-                "These Terms and Conditions are governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in Kerala, India.",
+                "We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised 'Last Updated' date.",
+            },
+            {
+              title: "9. Contact Us",
+              content:
+                "If you have any questions or concerns about this Privacy Policy, you can contact us at +91 96050 16881 or email us at support@journeyjunction.com.",
             },
           ].map((section, index) => (
             <div key={index}>
@@ -88,7 +84,7 @@ export default function TermsAndContact() {
         </div>
       </div>
 
-      {/* Footer - Full Width */}
+      {/* Footer */}
       <div className="mt-20 w-full">
         <Footer />
       </div>

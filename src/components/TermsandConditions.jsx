@@ -9,15 +9,6 @@ export default function TermsAndContact() {
     <div className="bg-white text-gray-800 font-[Poppins] flex flex-col min-h-screen">
       {/* Main Content */}
       <div className="flex-grow px-4 sm:px-6 lg:px-16 py-6 sm:py-8">
-        {/* <div className="mb-4 sm:mb-6">
-          <button
-            onClick={() => navigate("/")}
-            className="text-gray-700 hover:underline text-sm sm:text-base"
-          >
-            Back
-          </button>
-        </div> */}
-
         <div className="max-w-5xl mx-auto">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-center">
             Terms and Conditions
