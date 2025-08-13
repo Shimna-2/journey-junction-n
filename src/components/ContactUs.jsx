@@ -43,12 +43,17 @@ const ContactUs = () => {
     }
 
     const { name, phone, message } = formData;
+
+    // ✅ Fixed WhatsApp business number
+    const businessNumber = "+919633763916";
+
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(
-        whatsappMessage
-      )}`,
+      `https://wa.me/${businessNumber.replace(
+        /\D/g,
+        ""
+      )}?text=${encodeURIComponent(whatsappMessage)}`,
       "_blank"
     );
 
@@ -94,7 +99,7 @@ const ContactUs = () => {
             {/* Social Links */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <a
-                href="https://wa.me/919744161939"
+                href="https://wa.me/919633763916"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white p-2 sm:p-3 rounded-full transition"

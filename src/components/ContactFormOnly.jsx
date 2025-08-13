@@ -48,12 +48,17 @@ const ContactFormOnly = () => {
     }
 
     const { name, phone, message } = formData;
+
+    // ✅ Fixed WhatsApp number (your number)
+    const businessNumber = "+919633763916";
+
     const whatsappMessage = `Hello, my name is ${name}. My phone number is ${phone}. Message: ${message}`;
 
     window.open(
-      `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(
-        whatsappMessage
-      )}`,
+      `https://wa.me/${businessNumber.replace(
+        /\D/g,
+        ""
+      )}?text=${encodeURIComponent(whatsappMessage)}`,
       "_blank"
     );
 
