@@ -1,7 +1,7 @@
 // src/pages/BlogWayanadClimate.jsx
 import React from "react";
 import Footer from "../components/Footer";
-import climateImg2 from "../assets/images/blgclimate.webp";
+import climateImg2 from "../assets/images/blogclimate1.webp";
 
 const fallbackImage =
   "https://via.placeholder.com/800x500?text=Image+Not+Available";
