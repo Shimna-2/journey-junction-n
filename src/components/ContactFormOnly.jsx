@@ -142,9 +142,7 @@ const ContactFormOnly = () => {
             <PhoneInput
               country={"in"} // ✅ Default India
               value={formData.phone}
-              onChange={(phone) =>
-                setFormData((prev) => ({ ...prev, phone: `+${phone}` }))
-              }
+              onChange={(phone) => setFormData((prev) => ({ ...prev, phone }))}
               enableSearch={true}
               inputStyle={{
                 width: "100%",
