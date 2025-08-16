@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import bgDesktop from "../assets/images/home-banner.webp";
 import bgMobile from "../assets/images/home-banner-mobile.webp";
 import placeholderDesktop from "../assets/images/home-banner-placeholder.webp";
@@ -24,7 +25,10 @@ export default function Home() {
   );
   const [heroLoaded, setHeroLoaded] = useState(heroImageAlreadyLoaded);
   const [contentReady, setContentReady] = useState(false);
+  const [showStickyIcons, setShowStickyIcons] = useState(false);
+
   const sentinelRef = useRef(null);
+  const heroRef = useRef(null);
 
   /* Debounced resize */
   useEffect(() => {
@@ -97,6 +101,21 @@ export default function Home() {
     }
   }, [isMobile]);
 
+  /* Show sticky icons only when hero section is NOT visible */
+  useEffect(() => {
+    if ("IntersectionObserver" in window && heroRef.current) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          // show icons only when hero is NOT intersecting
+          setShowStickyIcons(!entries[0].isIntersecting);
+        },
+        { threshold: 0 } // triggers as soon as any part is out of view
+      );
+      io.observe(heroRef.current);
+      return () => io.disconnect();
+    }
+  }, []);
+
   const placeholderSrc = isMobile ? placeholderMobile : placeholderDesktop;
   const heroSrc = isMobile ? bgMobile : bgDesktop;
 
@@ -104,10 +123,11 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section
+        ref={heroRef}
         className="w-full h-screen relative flex items-center justify-center px-4 sm:px-6 md:px-16 font-[Poppins] bg-[#222] overflow-hidden"
         aria-label="Hero — Wayanad"
       >
-        {/* Placeholder background with animation */}
+        {/* Placeholder background */}
         <img
           src={placeholderSrc}
           alt=""
@@ -119,7 +139,7 @@ export default function Home() {
           } animate-kenburns`}
         />
 
-        {/* Main hero image with fade-in */}
+        {/* Main hero image */}
         <picture className="absolute inset-0 w-full h-full">
           <source
             srcSet={`${bgMobile} 768w, ${bgDesktop} 1920w`}
@@ -156,6 +176,28 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* Sticky Icons - appear only after hero section */}
+      {showStickyIcons && (
+        <div className="fixed left-4 bottom-4 flex flex-col gap-3 z-50">
+          <a
+            href="https://wa.me/919633763916"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
+            aria-label="Chat on WhatsApp"
+          >
+            <FaWhatsapp size={22} />
+          </a>
+          <a
+            href="tel:+919633763916"
+            className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
+            aria-label="Call Us"
+          >
+            <FaPhoneAlt size={20} />
+          </a>
+        </div>
+      )}
 
       {/* Sentinel for mobile lazy loading */}
       <div ref={sentinelRef} />

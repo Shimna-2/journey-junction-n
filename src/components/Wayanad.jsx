@@ -165,18 +165,21 @@ const Wayanad = () => {
           data-aos="fade-up"
         >
           {/* Distance Chart */}
-          <div>
+          <div className="overflow-x-auto">
             <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">
               📏 Distance Chart
             </h2>
             <p className="text-xs text-center italic text-gray-500 mb-4">
               (KPA: Kalpetta, SBY: Sulthan Bathery, MDY: Mananthavady)
             </p>
-            <table className="w-full text-sm border border-gray-300 text-gray-800">
+            <table className="min-w-[480px] sm:min-w-full text-sm border border-gray-300 text-gray-800">
               <thead className="bg-gray-200">
                 <tr>
                   {["Tourist Places", "KPA", "SBY", "MDY"].map((head) => (
-                    <th key={head} className="border border-gray-300 px-4 py-2">
+                    <th
+                      key={head}
+                      className="border border-gray-300 px-4 py-2 text-center"
+                    >
                       {head}
                     </th>
                   ))}
