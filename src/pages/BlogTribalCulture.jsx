@@ -131,7 +131,7 @@ export default function BlogTribalCulture() {
           </h2>
           <p>
             Meals feature millets, wild greens, smoked meat, bamboo rice
-            payasam, and forest honey, reflecting seasonal availability.
+            payasam, and forest honey, seasonal availability.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold">
