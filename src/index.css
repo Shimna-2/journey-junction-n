@@ -5,9 +5,14 @@
 /* ✅ Tailwind base, components, utilities must come next */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
+html,
 body {
-  font-family: "Inter", sans-serif;
+  margin: 0; /* remove default margin */
+  padding: 0;
+  overflow-x: hidden; /*prevent side scroll */
+  background-color: #000; /* or any color you prefer */
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
