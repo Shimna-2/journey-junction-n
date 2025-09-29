@@ -33,7 +33,7 @@ const WeatherPreview = () => {
     return <div className="text-red-500 text-xs">{error}</div>;
   }
 
-  const temp = Math.round(weather.main.temp) - 2; // reduce by 2°C
+  const temp = Math.round(weather.main.temp) - 6; // reduce by 2°C
   const condition = weather.weather[0].main.toLowerCase();
 
   let iconUrl;
